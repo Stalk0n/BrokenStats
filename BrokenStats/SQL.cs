@@ -1,10 +1,8 @@
-﻿using System.Data;
+using System.Data;
 using System.Data.SQLite;
 
-namespace BroknStats
+namespace BrokenStats
 {
-
-
     public class SQLiteDatabaseHandler
     {
         private readonly string connectionString;
@@ -84,5 +82,4 @@ namespace BroknStats
             }
         }
     }
-
 }

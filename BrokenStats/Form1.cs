@@ -1,60 +1,96 @@
-namespace BrokenStats
+namespace BrokenStats;
+
+using System;
+using System.Windows.Forms;
+using System.Data.SQLite;
+
+public partial class Form1 : Form
 {
-    public partial class Form1 : Form
+    public Form1()
     {
-        public Form1()
-        {
-            Uruchom_sniffer();
-            InitializeComponent();
-            InitializeLogArea();
-        }
+        Uruchom_sniffer();
+        InitializeComponent();
+        InitializeLogArea();
+    }
 
-        private void InitializeLogArea()
-        {
-            // Ustawienia RichTextBox dla obszaru logów
-            logRichTextBox.ReadOnly = true;
-            logRichTextBox.ScrollBars = RichTextBoxScrollBars.Vertical;
-            logRichTextBox.Multiline = true;
+    private void InitializeLogArea()
+    {
+        // Ustawienia RichTextBox dla obszaru logów
+        logRichTextBox.ReadOnly = true;
+        logRichTextBox.ScrollBars = RichTextBoxScrollBars.Vertical;
+        logRichTextBox.Multiline = true;
 
-            // Ustawienia wyglądu obszaru logów
-            logRichTextBox.BackColor = System.Drawing.SystemColors.Window;
-            logRichTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-            logRichTextBox.BorderStyle = BorderStyle.Fixed3D;
+        // Ustawienia wyglądu obszaru logów
+        logRichTextBox.BackColor = System.Drawing.SystemColors.Window;
+        logRichTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
+        logRichTextBox.BorderStyle = BorderStyle.Fixed3D;
 
-            // Dodanie obsługi zdarzenia KeyPress dla textBox1
-            textBox1.KeyPress += textBox1_KeyPress;
-        }
+        // Dodanie obsługi zdarzenia KeyPress dla textBox1
+        textBox1.KeyPress += textBox1_KeyPress;
+    }
 
-        private void DodajLog(string tekst)
-        {
-            
-            // Kolor dla daty
-            string data = $"{DateTime.Now}: ";
-            logRichTextBox.SelectionColor = Color.Blue; // Dostosuj kolor według potrzeb
-            logRichTextBox.AppendText(data);
+    private void DodajLog(string tekst)
+    {
+        // Kolor dla daty
+        string data = $"{DateTime.Now}: ";
+        logRichTextBox.SelectionColor = Color.Blue; // Dostosuj kolor według potrzeb
+        logRichTextBox.AppendText(data);
 
-            // Kolor dla tekstu przesyłanego
-            logRichTextBox.SelectionColor = Color.Green; // Dostosuj kolor według potrzeb
-            logRichTextBox.AppendText($"{tekst}{Environment.NewLine}");
+        // Kolor dla tekstu przesyłanego
+        logRichTextBox.SelectionColor = Color.Green; // Dostosuj kolor według potrzeb
+        logRichTextBox.AppendText($"{tekst}{Environment.NewLine}");
 
-            // Przewiń do ostatniego logu
-            logRichTextBox.ScrollToCaret();
+        // Przewiń do ostatniego logu
+        logRichTextBox.ScrollToCaret();
 
-            // Przywróć domyślny kolor dla następnych wpisów
-            logRichTextBox.SelectionColor = logRichTextBox.ForeColor;
-        }
+        // Przywróć domyślny kolor dla następnych wpisów
+        logRichTextBox.SelectionColor = logRichTextBox.ForeColor;
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
+        SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("MyDB.db");
+        dbHandler.InsertData(tekst);
+        dbHandler.CloseConnection();
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-            
-        }
+        bindingSource1.DataSource = dbHandler.GetData();
+        bindingSource1.ResetBindings(false); // Od�wie� dane w BindingSource
+        dataGridView1.Refresh(); // Od�wie� DataGridView
+    }
 
-        private void button1_Click(object sender, EventArgs e)
+    private void textBox1_TextChanged(object sender, EventArgs e)
+    {
+    }
+
+    private void label1_Click(object sender, EventArgs e)
+    {
+    }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+        // Pobierz tekst z TextBox wejściowego
+        string tekstDoPrzeslania = textBox1.Text;
+
+        // Dodaj log z wejścia
+        DodajLog(tekstDoPrzeslania);
+
+        // Wyczyść TextBox wejściowy
+        textBox1.Clear();
+    }
+
+    private void Form1_Load(object sender, EventArgs e)
+    {
+        SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("MyDB.db");
+        dbHandler.InitializeDatabase();
+
+        // Przypisz dane z bazy do DataGridView przez BindingSource
+        bindingSource1.DataSource = dbHandler.GetData();
+
+        // Ustaw �r�d�o danych dla DataGridView
+        dataGridView1.DataSource = bindingSource1;
+    }
+
+    private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+    {
+        // Sprawdź, czy naciśnięto klawisz Enter
+        if (e.KeyChar == (char)Keys.Enter)
         {
             // Pobierz tekst z TextBox wejściowego
             string tekstDoPrzeslania = textBox1.Text;
@@ -64,52 +100,46 @@ namespace BrokenStats
 
             // Wyczyść TextBox wejściowy
             textBox1.Clear();
-        }
 
-        private void Form1_Load(object sender, EventArgs e)
+            // Zapobiegaj dalszej obsłudze klawisza Enter
+            e.Handled = true;
+        }
+    }
+
+
+    private void tabPage1_Click(object sender, EventArgs e)
+    {
+    }
+
+    private void tabPage1_Click_1(object sender, EventArgs e)
+    {
+    }
+
+    private void Uruchom_sniffer()
+    {
+        Sniffer sniffer = new Sniffer();
+
+        new Thread(() =>
         {
-            // Możesz dodatkowe operacje przy załadowaniu Form1
-        }
+            Thread.CurrentThread.IsBackground = true;
 
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            // Sprawdź, czy naciśnięto klawisz Enter
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                // Pobierz tekst z TextBox wejściowego
-                string tekstDoPrzeslania = textBox1.Text;
+            sniffer.Start();
+        }).Start();
+    }
 
-                // Dodaj log z wejścia
-                DodajLog(tekstDoPrzeslania);
+    private void bindingSource1_CurrentChanged(object sender, EventArgs e)
+    {
+    }
 
-                // Wyczyść TextBox wejściowy
-                textBox1.Clear();
+    private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+    {
+    }
 
-                // Zapobiegaj dalszej obsłudze klawisza Enter
-                e.Handled = true;
-            }
-        }
+    private void sQLiteDatabaseHandlerBindingSource1_CurrentChanged(object sender, EventArgs e)
+    {
+    }
 
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Uruchom_sniffer()
-        {
-            Sniffer sniffer = new Sniffer();
-            
-            new Thread(() => 
-            {
-                Thread.CurrentThread.IsBackground = true; 
-                
-                sniffer.Start();
-            }).Start();
-        }
+    private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+    {
     }
 }

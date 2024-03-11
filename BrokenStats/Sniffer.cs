@@ -110,10 +110,10 @@ namespace BrokenStats
             // if (dataString.Length <= 42) return;
 
             if (!dataString.Contains("3;19;1&")) return;
-            
+
             // Console.WriteLine(dataString);
             // Console.WriteLine();
-            
+
             int indexOfFirstAmpersand = dataString.IndexOf('&');
 
             dataString = dataString.Substring(indexOfFirstAmpersand - 1);
