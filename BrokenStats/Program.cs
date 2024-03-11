@@ -1,4 +1,4 @@
-namespace BroknStats
+namespace BrokenStats
 {
     internal static class Program
     {

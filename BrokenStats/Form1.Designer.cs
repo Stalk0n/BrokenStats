@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace BroknStats
+namespace BrokenStats
 {
     partial class Form1
     {
@@ -121,7 +121,7 @@ namespace BroknStats
             ClientSize = new Size(986, 672);
             Controls.Add(tabControl1);
             Name = "Form1";
-            Text = "BroknStats";
+            Text = "BrokenStats";
             Load += Form1_Load;
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
