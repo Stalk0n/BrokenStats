@@ -30,6 +30,7 @@ namespace BroknStats
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             tabPage1 = new TabPage();
             logRichTextBox = new RichTextBox();
             textBox1 = new TextBox();
@@ -37,9 +38,20 @@ namespace BroknStats
             button1 = new Button();
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
+            dataGridView1 = new DataGridView();
+            bindingSource1 = new BindingSource(components);
+            sQLiteDatabaseHandlerBindingSource = new BindingSource(components);
             colorDialog1 = new ColorDialog();
+            sQLiteDatabaseHandlerBindingSource1 = new BindingSource(components);
+            sQLiteDatabaseHandlerBindingSource2 = new BindingSource(components);
             tabPage1.SuspendLayout();
             tabControl1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)sQLiteDatabaseHandlerBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)sQLiteDatabaseHandlerBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)sQLiteDatabaseHandlerBindingSource2).BeginInit();
             SuspendLayout();
             // 
             // tabPage1
@@ -54,7 +66,7 @@ namespace BroknStats
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(978, 639);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabPage1";
+            tabPage1.Text = "Logs";
             tabPage1.Click += tabPage1_Click_1;
             // 
             // logRichTextBox
@@ -107,12 +119,42 @@ namespace BroknStats
             // tabPage2
             // 
             tabPage2.BackColor = Color.Transparent;
+            tabPage2.Controls.Add(dataGridView1);
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(978, 639);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
+            tabPage2.Text = "Items";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeight = 29;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(972, 633);
+            dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
+            // 
+            // bindingSource1
+            // 
+            bindingSource1.DataSource = typeof(SQLiteDatabaseHandler);
+            bindingSource1.CurrentChanged += bindingSource1_CurrentChanged;
+            // 
+            // sQLiteDatabaseHandlerBindingSource
+            // 
+            sQLiteDatabaseHandlerBindingSource.DataSource = typeof(SQLiteDatabaseHandler);
+            // 
+            // sQLiteDatabaseHandlerBindingSource1
+            // 
+            sQLiteDatabaseHandlerBindingSource1.DataSource = typeof(SQLiteDatabaseHandler);
+            sQLiteDatabaseHandlerBindingSource1.CurrentChanged += sQLiteDatabaseHandlerBindingSource1_CurrentChanged;
+            // 
+            // sQLiteDatabaseHandlerBindingSource2
+            // 
+            sQLiteDatabaseHandlerBindingSource2.DataSource = typeof(SQLiteDatabaseHandler);
             // 
             // Form1
             // 
@@ -126,6 +168,12 @@ namespace BroknStats
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             tabControl1.ResumeLayout(false);
+            tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)sQLiteDatabaseHandlerBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)sQLiteDatabaseHandlerBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)sQLiteDatabaseHandlerBindingSource2).EndInit();
             ResumeLayout(false);
         }
 
@@ -139,5 +187,10 @@ namespace BroknStats
         private TabPage tabPage2;
         private RichTextBox logRichTextBox;
         private ColorDialog colorDialog1;
+        private BindingSource bindingSource1;
+        private DataGridView dataGridView1;
+        private BindingSource sQLiteDatabaseHandlerBindingSource;
+        private BindingSource sQLiteDatabaseHandlerBindingSource2;
+        private BindingSource sQLiteDatabaseHandlerBindingSource1;
     }
 }

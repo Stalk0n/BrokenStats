@@ -1,5 +1,7 @@
 using System;
 using System.Windows.Forms;
+using System.Data.SQLite;
+
 
 namespace BroknStats
 {
@@ -9,7 +11,9 @@ namespace BroknStats
         {
             InitializeComponent();
             InitializeLogArea();
-            laugh();
+
+
+
         }
 
         private void InitializeLogArea()
@@ -44,6 +48,14 @@ namespace BroknStats
 
             // Przywróæ domyœlny kolor dla nastêpnych wpisów
             logRichTextBox.SelectionColor = logRichTextBox.ForeColor;
+
+            SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("MyDB.db");
+            dbHandler.InsertData(tekst);
+            dbHandler.CloseConnection();
+
+            bindingSource1.DataSource = dbHandler.GetData();
+            bindingSource1.ResetBindings(false); // Odœwie¿ dane w BindingSource
+            dataGridView1.Refresh(); // Odœwie¿ DataGridView
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -70,7 +82,14 @@ namespace BroknStats
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // Mo¿esz dodatkowe operacje przy za³adowaniu Form1
+            SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("MyDB.db");
+            dbHandler.InitializeDatabase();
+
+            // Przypisz dane z bazy do DataGridView przez BindingSource
+            bindingSource1.DataSource = dbHandler.GetData();
+
+            // Ustaw Ÿród³o danych dla DataGridView
+            dataGridView1.DataSource = bindingSource1;
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -92,12 +111,34 @@ namespace BroknStats
             }
         }
 
+
+
         private void tabPage1_Click(object sender, EventArgs e)
         {
 
         }
 
         private void tabPage1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void sQLiteDatabaseHandlerBindingSource1_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
         }

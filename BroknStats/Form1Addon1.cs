@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Data.SQLite;
+
 
 namespace BroknStats
 {
 
-    public partial class Form1 : Form
-    {
-        public void laugh()
-        {
-            MessageBox.Show("Haha");
-        }
-    }
+    
 
 
 }
