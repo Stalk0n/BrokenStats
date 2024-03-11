@@ -46,12 +46,12 @@ namespace BrokenStats
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            // Możesz dodatkowe operacje po zmianie tekstu w textBox1
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-            // Możesz dodatkowe operacje po kliknięciu na label1
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -103,7 +103,6 @@ namespace BrokenStats
         private void Uruchom_sniffer()
         {
             Sniffer sniffer = new Sniffer();
-            
             
             new Thread(() => 
             {
