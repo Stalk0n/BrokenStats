@@ -9,14 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Data.SQLite" Version="1.0.118" />
-  </ItemGroup>
-
-  <ItemGroup>
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0" />
   </ItemGroup>
 
 </Project>
