@@ -5,7 +5,7 @@ using System.Data.SQLite;
 
 namespace BroknStats
 {
-    XD
+    
 
     public class SQLiteDatabaseHandler
     {
