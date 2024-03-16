@@ -31,7 +31,7 @@ namespace BroknStats
             // Dodanie obs³ugi zdarzenia KeyPress dla textBox1
             textBox1.KeyPress += textBox1_KeyPress;
         }
-        XD
+        
         private void DodajLog(string tekst)
         {
             // Kolor dla daty
