@@ -9,7 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="SQL.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="SQL.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,6 +1,9 @@
 using System;
 using System.Windows.Forms;
-using System.Data.SQLite;
+using Microsoft.Data.SqlClient;
+using System.Configuration;
+using System.Data;
+
 
 
 namespace BroknStats
@@ -49,13 +52,23 @@ namespace BroknStats
             // Przywróæ domyœlny kolor dla nastêpnych wpisów
             logRichTextBox.SelectionColor = logRichTextBox.ForeColor;
 
-            SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("MyDB.db");
-            dbHandler.InsertData(tekst);
-            dbHandler.CloseConnection();
+            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
+            string sqlQuery = "INSERT INTO Session_Items (Item_Name) VALUES(@itemName)";
+            SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("insertItemData", con);
+            cmd.CommandType = CommandType.StoredProcedure;
 
-            bindingSource1.DataSource = dbHandler.GetData();
-            bindingSource1.ResetBindings(false); // Odœwie¿ dane w BindingSource
-            dataGridView1.Refresh(); // Odœwie¿ DataGridView
+            cmd.Parameters.Add(new SqlParameter("@itemName", tekst));
+
+
+
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+            //bindingSource1.DataSource = dbHandler.GetData();
+            //bindingSource1.ResetBindings(false); // Odœwie¿ dane w BindingSource
+            //dataGridView1.Refresh(); // Odœwie¿ DataGridView
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -82,14 +95,14 @@ namespace BroknStats
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("MyDB.db");
-            dbHandler.InitializeDatabase();
+            //SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("MyDB.db");
+            //dbHandler.InitializeDatabase();
 
             // Przypisz dane z bazy do DataGridView przez BindingSource
-            bindingSource1.DataSource = dbHandler.GetData();
+           // bindingSource1.DataSource = dbHandler.GetData();
 
             // Ustaw Ÿród³o danych dla DataGridView
-            dataGridView1.DataSource = bindingSource1;
+           // dataGridView1.DataSource = bindingSource1;
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)

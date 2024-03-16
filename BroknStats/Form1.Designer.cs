@@ -39,19 +39,13 @@ namespace BroknStats
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
             dataGridView1 = new DataGridView();
-            bindingSource1 = new BindingSource(components);
-            sQLiteDatabaseHandlerBindingSource = new BindingSource(components);
+            //bindingSource1 = new BindingSource(components);
             colorDialog1 = new ColorDialog();
-            sQLiteDatabaseHandlerBindingSource1 = new BindingSource(components);
-            sQLiteDatabaseHandlerBindingSource2 = new BindingSource(components);
             tabPage1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)sQLiteDatabaseHandlerBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)sQLiteDatabaseHandlerBindingSource1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)sQLiteDatabaseHandlerBindingSource2).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             SuspendLayout();
             // 
             // tabPage1
@@ -140,21 +134,8 @@ namespace BroknStats
             // 
             // bindingSource1
             // 
-            bindingSource1.DataSource = typeof(SQLiteDatabaseHandler);
-            bindingSource1.CurrentChanged += bindingSource1_CurrentChanged;
-            // 
-            // sQLiteDatabaseHandlerBindingSource
-            // 
-            sQLiteDatabaseHandlerBindingSource.DataSource = typeof(SQLiteDatabaseHandler);
-            // 
-            // sQLiteDatabaseHandlerBindingSource1
-            // 
-            sQLiteDatabaseHandlerBindingSource1.DataSource = typeof(SQLiteDatabaseHandler);
-            sQLiteDatabaseHandlerBindingSource1.CurrentChanged += sQLiteDatabaseHandlerBindingSource1_CurrentChanged;
-            // 
-            // sQLiteDatabaseHandlerBindingSource2
-            // 
-            sQLiteDatabaseHandlerBindingSource2.DataSource = typeof(SQLiteDatabaseHandler);
+            //bindingSource1.DataSource = typeof(SQLiteDatabaseHandler);
+           // bindingSource1.CurrentChanged += bindingSource1_CurrentChanged;
             // 
             // Form1
             // 
@@ -170,10 +151,7 @@ namespace BroknStats
             tabControl1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)sQLiteDatabaseHandlerBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)sQLiteDatabaseHandlerBindingSource1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)sQLiteDatabaseHandlerBindingSource2).EndInit();
+            //((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             ResumeLayout(false);
         }
 
@@ -187,10 +165,7 @@ namespace BroknStats
         private TabPage tabPage2;
         private RichTextBox logRichTextBox;
         private ColorDialog colorDialog1;
-        private BindingSource bindingSource1;
+        //private BindingSource bindingSource1;
         private DataGridView dataGridView1;
-        private BindingSource sQLiteDatabaseHandlerBindingSource;
-        private BindingSource sQLiteDatabaseHandlerBindingSource2;
-        private BindingSource sQLiteDatabaseHandlerBindingSource1;
     }
 }
