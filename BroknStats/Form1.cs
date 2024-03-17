@@ -11,11 +11,13 @@ namespace BroknStats
 {
     public partial class Form1 : Form
     {
+        int loggingIndex = 0;
+
         public Form1()
         {
             InitializeComponent();
             InitializeLogArea();
-
+            FillSessionItems();
 
 
         }
@@ -99,6 +101,7 @@ namespace BroknStats
                 cmd.ExecuteNonQuery();
                 con.Close();*/
 
+                FillSessionItems();
 
 
             }
@@ -113,6 +116,32 @@ namespace BroknStats
 
 
         }
+
+
+
+        public void FillSessionItems()
+        {
+            SessionGrid.Rows.Clear();
+
+            DataRowImporter importer = new DataRowImporter();
+            List<DataRowImporter> dataRowList = importer.GetTableRows();
+
+            // Dodaj ka¿dy element z dataRowList do SessionGrid
+            foreach (DataRowImporter dataRowItem in dataRowList)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(SessionGrid);
+
+                loggingIndex++;
+                row.Cells[0].Value = loggingIndex;
+                row.Cells[1].Value = dataRowItem.ItemName;
+                row.Cells[2].Value = dataRowItem.ItemQuantity;
+                SessionGrid.Rows.Add(row);
+            }
+
+        }
+
+
 
 
 

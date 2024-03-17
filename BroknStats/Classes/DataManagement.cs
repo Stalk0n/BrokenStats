@@ -47,7 +47,7 @@ namespace BroknStats.Classes
 
         public List<DataRowImporter> GetTableRows()
         {
-            List<DataRowImporter> DataRowList = new List<DataRowImporter>();
+            List<DataRowImporter> dataRowList = new List<DataRowImporter>();
             SqlConnection con = new SqlConnection(connectionString);
             con.Open();
             string sqlQuery = "select Id, ItemName, ItemQuantity from Session_Items order by ItemName";
@@ -61,11 +61,11 @@ namespace BroknStats.Classes
                     dataRow.Id = Convert.ToInt32(dr["Id"]);
                     dataRow.ItemName = dr["ItemName"].ToString();
                     dataRow.ItemQuantity = Convert.ToInt32(dr["ItemQuantity"]);
-                    DataRowList.Add(dataRow);
+                    dataRowList.Add(dataRow);
                 }
             }
             con.Close();
-            return DataRowList;
+            return dataRowList;
         }
 
 

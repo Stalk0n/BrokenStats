@@ -39,7 +39,7 @@ namespace BroknStats
             tabPage2 = new TabPage();
             tabControl2 = new TabControl();
             Items_Session = new TabPage();
-            dataGridView1 = new DataGridView();
+            SessionGrid = new DataGridView();
             Id = new DataGridViewTextBoxColumn();
             ItemName = new DataGridViewTextBoxColumn();
             ItemQuantity = new DataGridViewTextBoxColumn();
@@ -51,7 +51,7 @@ namespace BroknStats
             tabPage2.SuspendLayout();
             tabControl2.SuspendLayout();
             Items_Session.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)SessionGrid).BeginInit();
             SuspendLayout();
             // 
             // tabPage1
@@ -143,7 +143,7 @@ namespace BroknStats
             // 
             // Items_Session
             // 
-            Items_Session.Controls.Add(dataGridView1);
+            Items_Session.Controls.Add(SessionGrid);
             Items_Session.Location = new Point(4, 29);
             Items_Session.Name = "Items_Session";
             Items_Session.Padding = new Padding(3);
@@ -152,36 +152,42 @@ namespace BroknStats
             Items_Session.Text = "Session";
             Items_Session.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // SessionGrid
             // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.ColumnHeadersHeight = 29;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, ItemName, ItemQuantity });
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(958, 594);
-            dataGridView1.TabIndex = 0;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
+            SessionGrid.AllowUserToAddRows = false;
+            SessionGrid.AllowUserToDeleteRows = false;
+            SessionGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            SessionGrid.ColumnHeadersHeight = 29;
+            SessionGrid.Columns.AddRange(new DataGridViewColumn[] { Id, ItemName, ItemQuantity });
+            SessionGrid.Dock = DockStyle.Fill;
+            SessionGrid.Location = new Point(3, 3);
+            SessionGrid.Name = "SessionGrid";
+            SessionGrid.ReadOnly = true;
+            SessionGrid.RowHeadersWidth = 51;
+            SessionGrid.Size = new Size(958, 594);
+            SessionGrid.TabIndex = 0;
+            SessionGrid.CellContentClick += dataGridView1_CellContentClick_1;
             // 
             // Id
             // 
             Id.HeaderText = "#";
             Id.MinimumWidth = 6;
             Id.Name = "Id";
+            Id.ReadOnly = true;
             // 
             // ItemName
             // 
             ItemName.HeaderText = "Item Name";
             ItemName.MinimumWidth = 6;
             ItemName.Name = "ItemName";
+            ItemName.ReadOnly = true;
             // 
             // ItemQuantity
             // 
             ItemQuantity.HeaderText = "Item Quantity";
             ItemQuantity.MinimumWidth = 6;
             ItemQuantity.Name = "ItemQuantity";
+            ItemQuantity.ReadOnly = true;
             // 
             // tabPage4
             // 
@@ -218,7 +224,7 @@ namespace BroknStats
             tabPage2.ResumeLayout(false);
             tabControl2.ResumeLayout(false);
             Items_Session.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)SessionGrid).EndInit();
             ResumeLayout(false);
         }
 
@@ -233,7 +239,7 @@ namespace BroknStats
         private RichTextBox logRichTextBox;
         private ColorDialog colorDialog1;
         //private BindingSource bindingSource1;
-        private DataGridView dataGridView1;
+        private DataGridView SessionGrid;
         private TabControl tabControl2;
         private TabPage Items_Session;
         private TabPage tabPage4;
