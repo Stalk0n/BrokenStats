@@ -64,7 +64,7 @@ namespace BroknStats
             tabPage1.Size = new Size(978, 639);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Logs";
-            tabPage1.Click += tabPage1_Click_1;
+            tabPage1.Click += tabPage1_Click;
             // 
             // logRichTextBox
             // 

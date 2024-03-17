@@ -36,41 +36,86 @@ namespace BroknStats
             textBox1.KeyPress += textBox1_KeyPress;
         }
         
-        private void DodajLog(string tekst)
+        private void DodajLog()
         {
-            // Kolor dla daty
-            string data = $"{DateTime.Now}: ";
-            logRichTextBox.SelectionColor = Color.Blue; // Dostosuj kolor wed³ug potrzeb
-            logRichTextBox.AppendText(data);
 
-            // Kolor dla tekstu przesy³anego
-            logRichTextBox.SelectionColor = Color.Green; // Dostosuj kolor wed³ug potrzeb
-            logRichTextBox.AppendText($"{tekst}{Environment.NewLine}");
+            // Pobierz tekst z TextBox wejœciowego
+            string unformattedLine = textBox1.Text;
 
-            // Przewiñ do ostatniego logu
-            logRichTextBox.ScrollToCaret();
+            string[] parts = unformattedLine.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-            // Przywróæ domyœlny kolor dla nastêpnych wpisów
-            logRichTextBox.SelectionColor = logRichTextBox.ForeColor;
+            string itemName = parts[0]; // Pierwsza czêœæ to tekst
+            int itemQuantity = 0;
+            string droppedFrom = parts[2]; // Pierwsza czêœæ to tekst  ///DODAÆ WYJ¥TEK CO JEZELI WARTOSC W POLU 
+            //TEKSTOWYM JEST ZA KROTKA PRZEZ CO WYSKAKUJEMY POZA WARTOSC
+            // Spróbuj przekonwertowaæ drug¹ czêœæ na liczbê ca³kowit¹
 
-            string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
-            string sqlQuery = "INSERT INTO Session_Items (Item_Name) VALUES(@itemName)";
-            SqlConnection con = new SqlConnection(connectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand("insertItemData", con);
-            cmd.CommandType = CommandType.StoredProcedure;
+            try
+            {
+                if (!(parts.Length > 2 && int.TryParse(parts[1], out itemQuantity)))
+                    throw new Exception();
 
-            cmd.Parameters.Add(new SqlParameter("@itemName", tekst));
+                // Kolor dla daty
+                string data = $"{DateTime.Now}: ";
+                logRichTextBox.SelectionColor = Color.Blue; // Dostosuj kolor wed³ug potrzeb
+                logRichTextBox.AppendText(data);
+
+                // Kolor dla tekstu przesy³anego
+                logRichTextBox.SelectionColor = Color.Green; // Dostosuj kolor wed³ug potrzeb
+                logRichTextBox.AppendText($"{itemName} ");
+
+                // Kolor dla ilosci
+                logRichTextBox.SelectionColor = Color.Red; // Dostosuj kolor wed³ug potrzeb
+                logRichTextBox.AppendText($"{itemQuantity} ");
+
+                // Kolor dla entity
+                logRichTextBox.SelectionColor = Color.Purple; // Dostosuj kolor wed³ug potrzeb
+                logRichTextBox.AppendText($"{droppedFrom}{Environment.NewLine}");
 
 
 
-            cmd.ExecuteNonQuery();
-            con.Close();
+                // Przewiñ do ostatniego logu
+                logRichTextBox.ScrollToCaret();
 
-            //bindingSource1.DataSource = dbHandler.GetData();
-            //bindingSource1.ResetBindings(false); // Odœwie¿ dane w BindingSource
-            //dataGridView1.Refresh(); // Odœwie¿ DataGridView
+                // Przywróæ domyœlny kolor dla nastêpnych wpisów
+                logRichTextBox.SelectionColor = logRichTextBox.ForeColor;
+
+
+                DataManagement dataManagement = new DataManagement();
+
+                dataManagement.SaveItemData(itemName, itemQuantity);
+
+                /*
+                string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
+                SqlConnection con = new SqlConnection(connectionString);
+                con.Open();
+                SqlCommand cmd = new SqlCommand("insertItemData", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(new SqlParameter("@itemName", tekst));
+
+
+
+                cmd.ExecuteNonQuery();
+                con.Close();*/
+
+
+
+            }
+            catch
+            {
+                MessageBox.Show("Nie udalo sie rozdzielic wejscia na podwartosci");
+
+            }
+
+            textBox1.Clear();
+
+
+
         }
+
+
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -82,28 +127,19 @@ namespace BroknStats
             // Mo¿esz dodatkowe operacje po klikniêciu na label1
         }
 
+
+
+
+
+
+
         private void button1_Click(object sender, EventArgs e)
         {
-            // Pobierz tekst z TextBox wejœciowego
-            string tekstDoPrzeslania = textBox1.Text;
-
-            // Dodaj log z wejœcia
-            DodajLog(tekstDoPrzeslania);
-
-            // Wyczyœæ TextBox wejœciowy
-            textBox1.Clear();
+            DodajLog();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("MyDB.db");
-            //dbHandler.InitializeDatabase();
-
-            // Przypisz dane z bazy do DataGridView przez BindingSource
-           // bindingSource1.DataSource = dbHandler.GetData();
-
-            // Ustaw Ÿród³o danych dla DataGridView
-           // dataGridView1.DataSource = bindingSource1;
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
@@ -111,14 +147,7 @@ namespace BroknStats
             // SprawdŸ, czy naciœniêto klawisz Enter
             if (e.KeyChar == (char)Keys.Enter)
             {
-                // Pobierz tekst z TextBox wejœciowego
-                string tekstDoPrzeslania = textBox1.Text;
-
-                // Dodaj log z wejœcia
-                DodajLog(tekstDoPrzeslania);
-
-                // Wyczyœæ TextBox wejœciowy
-                textBox1.Clear();
+                DodajLog();
 
                 // Zapobiegaj dalszej obs³udze klawisza Enter
                 e.Handled = true;
@@ -132,10 +161,6 @@ namespace BroknStats
 
         }
 
-        private void tabPage1_Click_1(object sender, EventArgs e)
-        {
-
-        }
 
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
