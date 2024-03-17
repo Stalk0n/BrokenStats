@@ -37,18 +37,21 @@ namespace BroknStats
             button1 = new Button();
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
-            dataGridView1 = new DataGridView();
-            colorDialog1 = new ColorDialog();
             tabControl2 = new TabControl();
             Items_Session = new TabPage();
+            dataGridView1 = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
+            ItemName = new DataGridViewTextBoxColumn();
+            ItemQuantity = new DataGridViewTextBoxColumn();
             tabPage4 = new TabPage();
             tabPage3 = new TabPage();
+            colorDialog1 = new ColorDialog();
             tabPage1.SuspendLayout();
             tabControl1.SuspendLayout();
             tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabControl2.SuspendLayout();
             Items_Session.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // tabPage1
@@ -126,17 +129,6 @@ namespace BroknStats
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Items";
             // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeight = 29;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 3);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(958, 594);
-            dataGridView1.TabIndex = 0;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
-            // 
             // tabControl2
             // 
             tabControl2.Controls.Add(Items_Session);
@@ -159,6 +151,37 @@ namespace BroknStats
             Items_Session.TabIndex = 0;
             Items_Session.Text = "Session";
             Items_Session.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.ColumnHeadersHeight = 29;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, ItemName, ItemQuantity });
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(958, 594);
+            dataGridView1.TabIndex = 0;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick_1;
+            // 
+            // Id
+            // 
+            Id.HeaderText = "#";
+            Id.MinimumWidth = 6;
+            Id.Name = "Id";
+            // 
+            // ItemName
+            // 
+            ItemName.HeaderText = "Item Name";
+            ItemName.MinimumWidth = 6;
+            ItemName.Name = "ItemName";
+            // 
+            // ItemQuantity
+            // 
+            ItemQuantity.HeaderText = "Item Quantity";
+            ItemQuantity.MinimumWidth = 6;
+            ItemQuantity.Name = "ItemQuantity";
             // 
             // tabPage4
             // 
@@ -193,9 +216,9 @@ namespace BroknStats
             tabPage1.PerformLayout();
             tabControl1.ResumeLayout(false);
             tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tabControl2.ResumeLayout(false);
             Items_Session.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -215,5 +238,8 @@ namespace BroknStats
         private TabPage Items_Session;
         private TabPage tabPage4;
         private TabPage tabPage3;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn ItemName;
+        private DataGridViewTextBoxColumn ItemQuantity;
     }
 }

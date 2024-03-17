@@ -34,28 +34,38 @@ namespace BroknStats.Classes
         }
 
 
+
+    }
+
+    public class DataRowImporter
+    {
+        string connectionString = ConfigurationManager.ConnectionStrings["DatabaseConnectionString"].ConnectionString;
+
         public int Id { get; set; }
-        public string SensorTypeName { get; set; }
-        public List<SensorType> GetSensorTypes()
+        public string ItemName { get; set; }
+        public int ItemQuantity { get; set; }
+
+        public List<DataRowImporter> GetTableRows()
         {
-            List<SensorType> sensorTypeList = new List<SensorType>();
+            List<DataRowImporter> DataRowList = new List<DataRowImporter>();
             SqlConnection con = new SqlConnection(connectionString);
             con.Open();
-            string sqlQuery = "select SensorTypeId, SensorType from SENSOR_TYPE order by SensorType";
+            string sqlQuery = "select Id, ItemName, ItemQuantity from Session_Items order by ItemName";
             SqlCommand cmd = new SqlCommand(sqlQuery, con);
             SqlDataReader dr = cmd.ExecuteReader();
             if (dr != null)
             {
                 while (dr.Read())
                 {
-                    SensorType sensorType = new SensorType();
-                    sensorType.SensorTypeId = Convert.ToInt32(dr["SensorTypeId"]);
-                    sensorType.SensorTypeName = dr["SensorType"].ToString();
-                    sensorTypeList.Add(sensorType);
+                    DataRowImporter dataRow = new DataRowImporter();
+                    dataRow.Id = Convert.ToInt32(dr["Id"]);
+                    dataRow.ItemName = dr["ItemName"].ToString();
+                    dataRow.ItemQuantity = Convert.ToInt32(dr["ItemQuantity"]);
+                    DataRowList.Add(dataRow);
                 }
             }
             con.Close();
-            return sensorTypeList;
+            return DataRowList;
         }
 
 
@@ -73,7 +83,7 @@ namespace BroknStats.Classes
 
 
 
-
-
     }
+
+    
 }
