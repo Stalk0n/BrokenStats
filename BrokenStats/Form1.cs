@@ -11,6 +11,22 @@ public partial class Form1 : Form
         Uruchom_sniffer();
         InitializeComponent();
         InitializeLogArea();
+        Sniffer.PacketFound += OnPacketFound;
+    }
+    private void OnPacketFound(string packetData)
+    {
+        HandlePacketFound(packetData, this);
+    }
+    static void HandlePacketFound(string packetData,Form1 formInstance)
+    {
+        // Console.WriteLine("Received packet data: " + packetData);
+        SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("D:\\BrokenStats\\BrokenStats\\MyDB.db");
+        dbHandler.InsertData(packetData);
+        dbHandler.CloseConnection();
+   
+        formInstance.bindingSource1.DataSource = dbHandler.GetData();
+        formInstance.bindingSource1.ResetBindings(false); 
+        formInstance.dataGridView1.Refresh();
     }
 
     private void InitializeLogArea()
@@ -46,13 +62,13 @@ public partial class Form1 : Form
         // Przywróć domyślny kolor dla następnych wpisów
         logRichTextBox.SelectionColor = logRichTextBox.ForeColor;
 
-        SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("MyDB.db");
+        SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("D:\\BrokenStats\\BrokenStats\\MyDB.db");
         dbHandler.InsertData(tekst);
         dbHandler.CloseConnection();
 
         bindingSource1.DataSource = dbHandler.GetData();
-        bindingSource1.ResetBindings(false); // Od�wie� dane w BindingSource
-        dataGridView1.Refresh(); // Od�wie� DataGridView
+        bindingSource1.ResetBindings(false);
+        dataGridView1.Refresh();
     }
 
     private void textBox1_TextChanged(object sender, EventArgs e)
@@ -77,7 +93,7 @@ public partial class Form1 : Form
 
     private void Form1_Load(object sender, EventArgs e)
     {
-        SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("MyDB.db");
+        SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("D:\\BrokenStats\\BrokenStats\\MyDB.db");
         dbHandler.InitializeDatabase();
 
         // Przypisz dane z bazy do DataGridView przez BindingSource
@@ -118,7 +134,7 @@ public partial class Form1 : Form
     private void Uruchom_sniffer()
     {
         Sniffer sniffer = new Sniffer();
-
+        
         new Thread(() =>
         {
             Thread.CurrentThread.IsBackground = true;

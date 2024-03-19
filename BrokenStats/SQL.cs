@@ -19,7 +19,7 @@ namespace BrokenStats
                 connection.Open();
 
                 // Tutaj możesz umieścić kod inicjalizujący bazę danych, tworzenie tabel itp.
-                string createTableQuery = "CREATE TABLE IF NOT EXISTS MyTable (Id INTEGER PRIMARY KEY, Name TEXT);";
+                string createTableQuery = "CREATE TABLE IF NOT EXISTS MyTable (Id INTEGER PRIMARY KEY, Nick VARCHAR(30), Experience FLOAT, Psycho_Experience FLOAT, Gold FLOAT, Dropped_items VARCHAR(200), Opponents VARCHAR(300));";
 
                 using (SQLiteCommand command = new SQLiteCommand(createTableQuery, connection))
                 {
@@ -34,11 +34,19 @@ namespace BrokenStats
             {
                 connection.Open();
 
-                string insertDataQuery = "INSERT INTO MyTable (Name) VALUES (@Name);";
+                string[] parts = name.Split('\t');
+                
+                string insertDataQuery = "INSERT INTO MyTable (Nick, Experience, Psycho_Experience, Gold, Dropped_items, Opponents) VALUES (@Nick, @Experience, @Psycho_Experience, @Gold, @Dropped_items, @Opponents);";
 
                 using (SQLiteCommand command = new SQLiteCommand(insertDataQuery, connection))
                 {
-                    command.Parameters.AddWithValue("@Name", name);
+                    
+                    command.Parameters.AddWithValue("@Nick", parts[0]);
+                    command.Parameters.AddWithValue("@Experience", parts[1]);
+                    command.Parameters.AddWithValue("@Psycho_Experience", parts[2]);
+                    command.Parameters.AddWithValue("@Gold", parts[3]);
+                    command.Parameters.AddWithValue("@Dropped_items", parts[4]);
+                    command.Parameters.AddWithValue("@Opponents", parts[5]);
                     command.ExecuteNonQuery();
                 }
             }

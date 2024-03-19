@@ -7,8 +7,12 @@ namespace BrokenStats
 {
     class Sniffer
     {
+        public delegate void PacketFoundEventHandler(string packetData);
+
+        public static event PacketFoundEventHandler PacketFound;
         public void Start()
         {
+            
             // Retrieve the device list from the local machine
             IList<LivePacketDevice> allDevices = LivePacketDevice.AllLocalMachine;
 
@@ -89,9 +93,6 @@ namespace BrokenStats
         // Callback function invoked by libpcap for every incoming packet
         private static void PacketHandler(Packet packet)
         {
-            // print timestamp and length of the packet
-            // Console.WriteLine(packet.Timestamp.ToString("yyyy-MM-dd hh:mm:ss.fff") + " length:" + packet.Length);
-
             IpV4Datagram ip = packet.Ethernet.IpV4;
             TcpDatagram tcp = ip.Tcp;
 
@@ -103,16 +104,12 @@ namespace BrokenStats
 
             // Convert byte array to string (you may need to use an appropriate encoding)
             string dataString = System.Text.Encoding.UTF8.GetString(dataBytes);
-
-            // Print the data
-            // Console.WriteLine("Data carried by the TCP packet:");
-            // if (dataString.Length >= 750) return;
-            // if (dataString.Length <= 42) return;
-
+            
             if (!dataString.Contains("3;19;1&")) return;
-
-            // Console.WriteLine(dataString);
-            // Console.WriteLine();
+            
+            
+            Console.WriteLine(dataString);
+            Console.WriteLine();
 
             int indexOfFirstAmpersand = dataString.IndexOf('&');
 
@@ -148,16 +145,13 @@ namespace BrokenStats
                 // result += parts[0] + "\t"; //    Party
                 result += parts[1] + "\t"; //    Nick
                 result += parts[2] + "\t"; //    Experience
-                result += parts[3] + "\t"; //    Psycho Experience (jednak nie)
+                result += parts[24] + "\t"; //    Psycho Experience 
                 result += parts[4] + "\t"; //    Gold
-                result += parts[5] + "\t"; //    Dropped items
+                result += parts[9] + "\t"; //    Dropped items
                 result += opponents;
                 Console.WriteLine(result);
+                PacketFound?.Invoke(result);
             }
-
-
-            // print ip addresses and tcp ports
-            // Console.WriteLine(ip.Source + ":" + tcp.SourcePort+ " -> " + ip.Destination + ":" + tcp.DestinationPort);
         }
     }
 }
