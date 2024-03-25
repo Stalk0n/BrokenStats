@@ -33,9 +33,9 @@ namespace BrokenStats
             components = new System.ComponentModel.Container();
             tabPage1 = new TabPage();
             logRichTextBox = new RichTextBox();
-            textBox1 = new TextBox();
+
             label1 = new Label();
-            button1 = new Button();
+
             tabControl1 = new TabControl();
             tabPage2 = new TabPage();
             dataGridView1 = new DataGridView();
@@ -58,9 +58,9 @@ namespace BrokenStats
             // 
             tabPage1.BackColor = Color.Transparent;
             tabPage1.Controls.Add(logRichTextBox);
-            tabPage1.Controls.Add(textBox1);
+
             tabPage1.Controls.Add(label1);
-            tabPage1.Controls.Add(button1);
+
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
@@ -77,14 +77,6 @@ namespace BrokenStats
             logRichTextBox.TabIndex = 5;
             logRichTextBox.Text = "";
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(483, 164);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(388, 27);
-            textBox1.TabIndex = 1;
-            textBox1.TextChanged += textBox1_TextChanged;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -94,16 +86,6 @@ namespace BrokenStats
             label1.TabIndex = 2;
             label1.Text = "Console Log";
             label1.Click += label1_Click;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(632, 197);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 3;
-            button1.Text = "Send";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
             // 
             // tabControl1
             // 
@@ -180,9 +162,7 @@ namespace BrokenStats
         #endregion
 
         private TabPage tabPage1;
-        private TextBox textBox1;
         private Label label1;
-        private Button button1;
         private TabControl tabControl1;
         private TabPage tabPage2;
         private RichTextBox logRichTextBox;

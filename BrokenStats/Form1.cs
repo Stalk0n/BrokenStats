@@ -13,19 +13,21 @@ public partial class Form1 : Form
         InitializeLogArea();
         Sniffer.PacketFound += OnPacketFound;
     }
+
     private void OnPacketFound(string packetData)
     {
         HandlePacketFound(packetData, this);
     }
-    static void HandlePacketFound(string packetData,Form1 formInstance)
+
+    static void HandlePacketFound(string packetData, Form1 formInstance)
     {
         // Console.WriteLine("Received packet data: " + packetData);
-        SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("D:\\BrokenStats\\BrokenStats\\MyDB.db");
+        SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("MyDB.db");
         dbHandler.InsertData(packetData);
         dbHandler.CloseConnection();
-   
+
         formInstance.bindingSource1.DataSource = dbHandler.GetData();
-        formInstance.bindingSource1.ResetBindings(false); 
+        formInstance.bindingSource1.ResetBindings(false);
         formInstance.dataGridView1.Refresh();
     }
 
@@ -40,9 +42,6 @@ public partial class Form1 : Form
         logRichTextBox.BackColor = System.Drawing.SystemColors.Window;
         logRichTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
         logRichTextBox.BorderStyle = BorderStyle.Fixed3D;
-
-        // Dodanie obsługi zdarzenia KeyPress dla textBox1
-        textBox1.KeyPress += textBox1_KeyPress;
     }
 
     private void DodajLog(string tekst)
@@ -62,7 +61,7 @@ public partial class Form1 : Form
         // Przywróć domyślny kolor dla następnych wpisów
         logRichTextBox.SelectionColor = logRichTextBox.ForeColor;
 
-        SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("D:\\BrokenStats\\BrokenStats\\MyDB.db");
+        SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("MyDB.db");
         dbHandler.InsertData(tekst);
         dbHandler.CloseConnection();
 
@@ -79,21 +78,10 @@ public partial class Form1 : Form
     {
     }
 
-    private void button1_Click(object sender, EventArgs e)
-    {
-        // Pobierz tekst z TextBox wejściowego
-        string tekstDoPrzeslania = textBox1.Text;
-
-        // Dodaj log z wejścia
-        DodajLog(tekstDoPrzeslania);
-
-        // Wyczyść TextBox wejściowy
-        textBox1.Clear();
-    }
 
     private void Form1_Load(object sender, EventArgs e)
     {
-        SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("D:\\BrokenStats\\BrokenStats\\MyDB.db");
+        SQLiteDatabaseHandler dbHandler = new SQLiteDatabaseHandler("MyDB.db");
         dbHandler.InitializeDatabase();
 
         // Przypisz dane z bazy do DataGridView przez BindingSource
@@ -101,25 +89,6 @@ public partial class Form1 : Form
 
         // Ustaw �r�d�o danych dla DataGridView
         dataGridView1.DataSource = bindingSource1;
-    }
-
-    private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
-    {
-        // Sprawdź, czy naciśnięto klawisz Enter
-        if (e.KeyChar == (char)Keys.Enter)
-        {
-            // Pobierz tekst z TextBox wejściowego
-            string tekstDoPrzeslania = textBox1.Text;
-
-            // Dodaj log z wejścia
-            DodajLog(tekstDoPrzeslania);
-
-            // Wyczyść TextBox wejściowy
-            textBox1.Clear();
-
-            // Zapobiegaj dalszej obsłudze klawisza Enter
-            e.Handled = true;
-        }
     }
 
 
@@ -134,7 +103,7 @@ public partial class Form1 : Form
     private void Uruchom_sniffer()
     {
         Sniffer sniffer = new Sniffer();
-        
+
         new Thread(() =>
         {
             Thread.CurrentThread.IsBackground = true;

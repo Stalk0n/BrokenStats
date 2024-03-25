@@ -204,7 +204,7 @@ StyleCopReport.xml
 *_h.h
 *.ilk
 *.meta
-# *.obj
+*.obj
 *.iobj
 *.pch
 *.pdb
@@ -529,8 +529,8 @@ FodyWeavers.xsd
 # ignore generated binaries
 # but not the data folder
 
-# /bin/*
-# !/bin/data/
+/bin/*
+!/bin/data/
 
 # general
 
