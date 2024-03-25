@@ -3,18 +3,13 @@ using System.Data.SQLite;
 
 namespace BrokenStats
 {
-    public class SQLiteDatabaseHandler
+    public class SqLiteDatabaseHandler(string databasePath)
     {
-        private readonly string connectionString;
-
-        public SQLiteDatabaseHandler(string databasePath)
-        {
-            connectionString = $"Data Source={databasePath};Version=3;";
-        }
+        private readonly string _connectionString = $"Data Source={databasePath};Version=3;";
 
         public void InitializeDatabase()
         {
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -30,7 +25,7 @@ namespace BrokenStats
 
         public void InsertData(string name)
         {
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -56,7 +51,7 @@ namespace BrokenStats
         {
             DataTable dataTable = new DataTable();
 
-            using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
             {
                 connection.Open();
 
@@ -76,17 +71,16 @@ namespace BrokenStats
 
         public void CloseConnection()
         {
-            // Możesz użyć try-catch, aby obsłużyć ewentualne wyjątki
             try
             {
-                using (SQLiteConnection connection = new SQLiteConnection(connectionString))
+                using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
                 {
                     connection.Close();
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Błąd podczas zamykania połączenia: {ex.Message}");
+                Console.WriteLine($@"Błąd podczas zamykania połączenia: {ex.Message}");
             }
         }
     }

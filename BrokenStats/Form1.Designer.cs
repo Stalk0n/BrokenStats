@@ -54,21 +54,6 @@ namespace BrokenStats
             ((System.ComponentModel.ISupportInitialize)sQLiteDatabaseHandlerBindingSource2).BeginInit();
             SuspendLayout();
             // 
-            // tabPage1
-            // 
-            tabPage1.BackColor = Color.Transparent;
-            tabPage1.Controls.Add(logRichTextBox);
-
-            tabPage1.Controls.Add(label1);
-
-            tabPage1.Location = new Point(4, 29);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(978, 639);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "Logs";
-            tabPage1.Click += tabPage1_Click_1;
-            // 
             // logRichTextBox
             // 
             logRichTextBox.Location = new Point(8, 43);
@@ -89,7 +74,6 @@ namespace BrokenStats
             // 
             // tabControl1
             // 
-            tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
@@ -122,21 +106,21 @@ namespace BrokenStats
             // 
             // bindingSource1
             // 
-            bindingSource1.DataSource = typeof(SQLiteDatabaseHandler);
+            bindingSource1.DataSource = typeof(SqLiteDatabaseHandler);
             bindingSource1.CurrentChanged += bindingSource1_CurrentChanged;
             // 
             // sQLiteDatabaseHandlerBindingSource
             // 
-            sQLiteDatabaseHandlerBindingSource.DataSource = typeof(SQLiteDatabaseHandler);
+            sQLiteDatabaseHandlerBindingSource.DataSource = typeof(SqLiteDatabaseHandler);
             // 
             // sQLiteDatabaseHandlerBindingSource1
             // 
-            sQLiteDatabaseHandlerBindingSource1.DataSource = typeof(SQLiteDatabaseHandler);
+            sQLiteDatabaseHandlerBindingSource1.DataSource = typeof(SqLiteDatabaseHandler);
             sQLiteDatabaseHandlerBindingSource1.CurrentChanged += sQLiteDatabaseHandlerBindingSource1_CurrentChanged;
             // 
             // sQLiteDatabaseHandlerBindingSource2
             // 
-            sQLiteDatabaseHandlerBindingSource2.DataSource = typeof(SQLiteDatabaseHandler);
+            sQLiteDatabaseHandlerBindingSource2.DataSource = typeof(SqLiteDatabaseHandler);
             // 
             // Form1
             // 

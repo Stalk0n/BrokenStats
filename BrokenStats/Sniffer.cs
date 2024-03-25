@@ -9,7 +9,7 @@ namespace BrokenStats
     {
         public delegate void PacketFoundEventHandler(string packetData);
 
-        public static event PacketFoundEventHandler PacketFound;
+        public static event PacketFoundEventHandler? PacketFound;
 
         public void Start()
         {
@@ -18,7 +18,7 @@ namespace BrokenStats
 
             if (allDevices.Count == 0)
             {
-                Console.WriteLine("No interfaces found! Make sure WinPcap is installed.");
+                Console.WriteLine(@"No interfaces found! Make sure WinPcap is installed.");
                 return;
             }
 
@@ -26,11 +26,11 @@ namespace BrokenStats
             for (int i = 0; i != allDevices.Count; ++i)
             {
                 LivePacketDevice device = allDevices[i];
-                Console.Write((i + 1) + ". " + device.Name);
+                Console.Write((i + 1) + @". " + device.Name);
                 if (device.Description != null)
-                    Console.WriteLine(" (" + device.Description + ")");
+                    Console.WriteLine(@" (" + device.Description + @")");
                 else
-                    Console.WriteLine(" (No description available)");
+                    Console.WriteLine(@" (No description available)");
             }
 
             int deviceIndex = 1;
@@ -56,11 +56,11 @@ namespace BrokenStats
                        1000)) // read timeout
             {
                 // Check the link layer. We support only Ethernet for simplicity.
-                if (communicator.DataLink.Kind != DataLinkKind.Ethernet)
-                {
-                    Console.WriteLine("This program works only on Ethernet networks.");
-                    return;
-                }
+                // if (communicator.DataLink.Kind != DataLinkKind.Ethernet)
+                // {
+                //     Console.WriteLine("This program works only on Ethernet networks.");
+                //     return;
+                // }
 
                 // Compile the filter
                 string ipAddress = "147.135.70.223";
@@ -70,7 +70,7 @@ namespace BrokenStats
                     communicator.SetFilter(filter);
                 }
 
-                Console.WriteLine("Listening on " + selectedDevice.Description + "...");
+                Console.WriteLine(@"Listening on " + selectedDevice.Description + @"...");
 
                 communicator.ReceivePackets(0, PacketHandler);
             }
@@ -98,93 +98,72 @@ namespace BrokenStats
             // Console.WriteLine(dataString);
             // Console.WriteLine();
 
-            string[] subStrings2 = dataString.Split("\0");
+            string[] actualDataString = dataString.Split("\0");
             string y = "";
-            foreach (string s in subStrings2)
+            foreach (string s in actualDataString)
             {
-                // Console.WriteLine(s);
-                // Console.WriteLine();
                 try
                 {
                     if (s.Contains("3;19;")) y = s;
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("e1 = " + e);
+                    Console.WriteLine(@"e1 = " + e);
                 }
             }
-
-            // Console.WriteLine("y= " + y);
-            string[] subStrings3 = [];
+            
+            string[] everyCharacterData = [];
             try
             {
-                subStrings3 = y.Split(";");
+                everyCharacterData = y.Split(";");
             }
             catch (Exception e)
             {
-                Console.WriteLine("e2 = " + e);
+                Console.WriteLine(@"e2 = " + e);
             }
 
-            string g = subStrings3[2];
-            Console.WriteLine("g = " + g);
+            string g = everyCharacterData[2];
 
-            string[] subStrings4 = [];
+            string[] eachCharacterData = [];
             try
             {
-                subStrings4 = g.Split("$");
+                eachCharacterData = g.Split("$");
             }
             catch (Exception e)
             {
-                Console.WriteLine("e3 = " + e);
+                Console.WriteLine(@"e3 = " + e);
             }
-
-            // foreach (string s in subStrings4)
-            // {
-            //     Console.WriteLine(s);
-            //     Console.WriteLine();
-            // }
-            string t = subStrings4[1];
-            string[] subStrings5 = [];
-            try
-            {
-                subStrings5 = t.Split("&");
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("e4 = " + e);
-            }
+            
 
             int countOnes = 0;
             string opponents = "";
-            for (int k = 0; k < subStrings4.Length; k++)
+            for (int k = 0; k < eachCharacterData.Length; k++)
             {
-                if (subStrings4[k] == "") break;
-                if (subStrings4[k][0] == '1')
+                if (eachCharacterData[k] == "") break;
+                if (eachCharacterData[k][0] == '1')
                 {
                     countOnes++;
                 }
-                else if (subStrings4[k][0] == '2')
+                else if (eachCharacterData[k][0] == '2')
                 {
-                    string[] parts = subStrings4[k].Split('&');
+                    string[] parts = eachCharacterData[k].Split('&');
                     opponents += parts[1] + ",";
                 }
                 else break;
             }
 
-            Console.WriteLine(countOnes + " " + opponents);
-
             opponents = opponents[..^1];
 
             for (int i = 0; i < countOnes; i++)
             {
-                string[] parts = subStrings4[i].Split("&");
+                string[] parts = eachCharacterData[i].Split("&");
                 string result = "";
                 // result += parts[0] + "\t"; //    Party
                 result += parts[1] + "\t"; //    Nick
                 result += parts[2] + "\t"; //    Experience
                 result += parts[24] + "\t"; //    Psycho Experience 
                 result += parts[4] + "\t"; //    Gold
-                result += parts[7] + " " + parts[9] + "\t"; //    Dropped items 7 item, 9 creature product 
+                result += parts[7] + " " + parts[9] + "\t"; //    Dropped items: [7] item, [9] creature product 
                 result += opponents;
                 Console.WriteLine(result);
                 PacketFound?.Invoke(result);
