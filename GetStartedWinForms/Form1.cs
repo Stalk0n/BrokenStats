@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 
-namespace GetStartedWinForms
+namespace BrokenStats
 {
     public partial class MainForm : Form
     {
@@ -22,9 +22,9 @@ namespace GetStartedWinForms
             // this.dbContext.Database.EnsureDeleted();
             this.dbContext.Database.EnsureCreated();
 
-            this.dbContext.Categories.Load();
+            this.dbContext.Nicknames.Load();
 
-            this.categoryBindingSource.DataSource = dbContext.Categories.Local.ToBindingList();
+            this.categoryBindingSource.DataSource = dbContext.Nicknames.Local.ToBindingList();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -35,15 +35,15 @@ namespace GetStartedWinForms
             this.dbContext = null;
         }
 
-        private void dataGridViewCategories_SelectionChanged(object sender, EventArgs e)
+        private void dataGridViewNicknames_SelectionChanged(object sender, EventArgs e)
         {
             if (this.dbContext != null)
             {
-                var category = (Category)this.dataGridViewCategories.CurrentRow.DataBoundItem;
+                var nickname = (Nickname)this.dataGridViewNicknames.CurrentRow.DataBoundItem;
 
-                if (category != null)
+                if (nickname != null)
                 {
-                    this.dbContext.Entry(category).Collection(e => e.Products).Load();
+                    this.dbContext.Entry(nickname).Collection(e => e.Messages).Load();
                 }
             }
         }
@@ -52,12 +52,32 @@ namespace GetStartedWinForms
         {
             this.dbContext!.SaveChanges();
 
-            this.dataGridViewCategories.Refresh();
-            this.dataGridViewProducts.Refresh();
+            this.dataGridViewNicknames.Refresh();
+            this.dataGridViewMessages.Refresh();
         }
 
-        private void dataGridViewCategories_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewNicknames_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            if (dbContext != null)
+            {
+                dbContext.AddMessageFromInput("trzy", "2");
+                dbContext.SaveChanges();
+
+                // Odœwie¿anie danych w formularzu
+                this.dbContext.Nicknames.Load();
+                this.categoryBindingSource.DataSource = dbContext.Nicknames.Local.ToBindingList();
+            }
+            else
+            {
+                MessageBox.Show("Brak dostêpu do bazy danych.");
+            }
 
         }
     }

@@ -1,4 +1,4 @@
-namespace GetStartedWinForms
+namespace BrokenStats
 {
     internal static class Program
     {

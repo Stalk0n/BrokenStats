@@ -1,56 +1,88 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Windows.Forms;
 
-namespace GetStartedWinForms;
+namespace BrokenStats;
 
 public class ProductsContext : DbContext
 {
-    public DbSet<Product> Products { get; set; }
-    public DbSet<Category> Categories { get; set; }
+    public DbSet<Message> Messages { get; set; }
+    public DbSet<Nickname> Nicknames { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlite("Data Source=products.db");
+        => optionsBuilder.UseSqlite("Data Source=MyDB.db");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Category>().HasData(
-            new Category { CategoryId = 1, Name = "Cheese" },
-            new Category { CategoryId = 2, Name = "Meat" },
-            new Category { CategoryId = 3, Name = "Fish" },
-            new Category { CategoryId = 4, Name = "Bread" });
+        modelBuilder.Entity<Nickname>().HasData(
+            new Nickname { NicknameId = 1, Nick = "Cheese" },
+            new Nickname { NicknameId = 2, Nick = "Meat" },
+            new Nickname { NicknameId = 3, Nick = "Fish" },
+            new Nickname { NicknameId = 4, Nick = "Bread" });
 
-        modelBuilder.Entity<Product>().HasData(
-            new Product { ProductId = 1, CategoryId = 1, Name = "Cheddar" },
-            new Product { ProductId = 2, CategoryId = 1, Name = "Brie" },
-            new Product { ProductId = 3, CategoryId = 1, Name = "Stilton" },
-            new Product { ProductId = 4, CategoryId = 1, Name = "Cheshire" },
-            new Product { ProductId = 5, CategoryId = 1, Name = "Swiss" },
-            new Product { ProductId = 6, CategoryId = 1, Name = "Gruyere" },
-            new Product { ProductId = 7, CategoryId = 1, Name = "Colby" },
-            new Product { ProductId = 8, CategoryId = 1, Name = "Mozzela" },
-            new Product { ProductId = 9, CategoryId = 1, Name = "Ricotta" },
-            new Product { ProductId = 10, CategoryId = 1, Name = "Parmesan" },
-            new Product { ProductId = 11, CategoryId = 2, Name = "Ham" },
-            new Product { ProductId = 12, CategoryId = 2, Name = "Beef" },
-            new Product { ProductId = 13, CategoryId = 2, Name = "Chicken" },
-            new Product { ProductId = 14, CategoryId = 2, Name = "Turkey" },
-            new Product { ProductId = 15, CategoryId = 2, Name = "Prosciutto" },
-            new Product { ProductId = 16, CategoryId = 2, Name = "Bacon" },
-            new Product { ProductId = 17, CategoryId = 2, Name = "Mutton" },
-            new Product { ProductId = 18, CategoryId = 2, Name = "Pastrami" },
-            new Product { ProductId = 19, CategoryId = 2, Name = "Hazlet" },
-            new Product { ProductId = 20, CategoryId = 2, Name = "Salami" },
-            new Product { ProductId = 21, CategoryId = 3, Name = "Salmon" },
-            new Product { ProductId = 22, CategoryId = 3, Name = "Tuna" },
-            new Product { ProductId = 23, CategoryId = 3, Name = "Mackerel" },
-            new Product { ProductId = 24, CategoryId = 4, Name = "Rye" },
-            new Product { ProductId = 25, CategoryId = 4, Name = "Wheat" },
-            new Product { ProductId = 26, CategoryId = 4, Name = "Brioche" },
-            new Product { ProductId = 27, CategoryId = 4, Name = "Naan" },
-            new Product { ProductId = 28, CategoryId = 4, Name = "Focaccia" },
-            new Product { ProductId = 29, CategoryId = 4, Name = "Malted" },
-            new Product { ProductId = 30, CategoryId = 4, Name = "Sourdough" },
-            new Product { ProductId = 31, CategoryId = 4, Name = "Corn" },
-            new Product { ProductId = 32, CategoryId = 4, Name = "White" },
-            new Product { ProductId = 33, CategoryId = 4, Name = "Soda" });
+        modelBuilder.Entity<Message>().HasData(
+            new Message { MessageId = 1, NicknameId = 1, Data="2024.1.1", message = "Cheddar" },
+            new Message { MessageId = 2, NicknameId = 1, message = "Brie" },
+            new Message { MessageId = 3, NicknameId = 1, message = "Stilton" },
+            new Message { MessageId = 4, NicknameId = 1, message = "Cheshire" },
+            new Message { MessageId = 5, NicknameId = 1, message = "Swiss" },
+            new Message { MessageId = 6, NicknameId = 1, message = "Gruyere" },
+            new Message { MessageId = 7, NicknameId = 1, message = "Colby" },
+            new Message { MessageId = 8, NicknameId = 1, message = "Mozzela" },
+            new Message { MessageId = 9, NicknameId = 1, message = "Ricotta" },
+            new Message { MessageId = 10, NicknameId = 1, message = "Parmesan" },
+            new Message { MessageId = 11, NicknameId = 2, message = "Ham" },
+            new Message { MessageId = 12, NicknameId = 2, message = "Beef" },
+            new Message { MessageId = 13, NicknameId = 2, message = "Chicken" },
+            new Message { MessageId = 14, NicknameId = 2, message = "Turkey" },
+            new Message { MessageId = 15, NicknameId = 2, message = "Prosciutto" },
+            new Message { MessageId = 16, NicknameId = 2, message = "Bacon" },
+            new Message { MessageId = 17, NicknameId = 2, message = "Mutton" },
+            new Message { MessageId = 18, NicknameId = 2, message = "Pastrami" },
+            new Message { MessageId = 19, NicknameId = 2, message = "Hazlet" },
+            new Message { MessageId = 20, NicknameId = 2, message = "Salami" },
+            new Message { MessageId = 21, NicknameId = 3, message = "Salmon" },
+            new Message { MessageId = 22, NicknameId = 3, message = "Tuna" },
+            new Message { MessageId = 23, NicknameId = 3, message = "Mackerel" },
+            new Message { MessageId = 24, NicknameId = 4, message = "Rye" },
+            new Message { MessageId = 25, NicknameId = 4, message = "Wheat" },
+            new Message { MessageId = 26, NicknameId = 4, message = "Brioche" },
+            new Message { MessageId = 27, NicknameId = 4, message = "Naan" },
+            new Message { MessageId = 28, NicknameId = 4, message = "Focaccia" },
+            new Message { MessageId = 29, NicknameId = 4, message = "Malted" },
+            new Message { MessageId = 30, NicknameId = 4, message = "Sourdough" },
+            new Message { MessageId = 31, NicknameId = 4, message = "Corn" },
+            new Message { MessageId = 32, NicknameId = 4, message = "White" },
+            new Message { MessageId = 33, NicknameId = 4, message = "Soda" });
     }
+
+
+    public void AddMessageFromInput(string newMessage, string nicknameId)
+    {
+        if (int.TryParse(nicknameId, out int nicknameIdValue))
+        {
+            DateTime now = DateTime.Now;
+            string dateString = now.ToString("yyyy-MM-dd HH:mm:ss");
+
+
+            var message = new Message { message = newMessage, NicknameId = nicknameIdValue, Data=dateString };
+            Messages.Add(message);
+            SaveChanges();
+        }
+        else
+        {
+            Console.WriteLine("Nieprawidłowy identyfikator kategorii.");
+        }
+
+
+
+
+    }
+
+
+    public void WypiszWiadomosc()
+    {
+        MessageBox.Show("elo");
+    }
+
+
 }
