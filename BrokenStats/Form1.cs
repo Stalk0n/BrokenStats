@@ -77,11 +77,14 @@ namespace BrokenStats
 
         }
 
+
+
+        //mozna skasowac
         private void label1_Click(object sender, EventArgs e)
         {
             try
             {
-                // Otwarcie okna przegl¹darki internetowej na okreœlonej stronie
+                
                 System.Diagnostics.Process.Start(new ProcessStartInfo
                 {
                     FileName = "cmd",
