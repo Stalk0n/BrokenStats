@@ -1,22 +1,25 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace BrokenStats
 {
     public partial class MainForm : Form
     {
-        private ProductsContext? dbContext;
+        private LogsContext? dbContext;
 
         public MainForm()
         {
             InitializeComponent();
+
         }
 
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
 
-            this.dbContext = new ProductsContext();
+            this.dbContext = new LogsContext();
 
             // Uncomment the line below to start fresh with a new database.
             // this.dbContext.Database.EnsureDeleted();
@@ -48,13 +51,6 @@ namespace BrokenStats
             }
         }
 
-        private void Button_Click(object sender, EventArgs e)
-        {
-            this.dbContext!.SaveChanges();
-
-            this.dataGridViewNicknames.Refresh();
-            this.dataGridViewMessages.Refresh();
-        }
 
         private void dataGridViewNicknames_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -67,7 +63,7 @@ namespace BrokenStats
 
             if (dbContext != null)
             {
-                dbContext.AddMessageFromInput("trzy", "2");
+                dbContext.AddMessageFromInput("Kamil;PIWO");
                 dbContext.SaveChanges();
 
                 // Odœwie¿anie danych w formularzu
@@ -79,6 +75,25 @@ namespace BrokenStats
                 MessageBox.Show("Brak dostêpu do bazy danych.");
             }
 
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Otwarcie okna przegl¹darki internetowej na okreœlonej stronie
+                System.Diagnostics.Process.Start(new ProcessStartInfo
+                {
+                    FileName = "cmd",
+                    Arguments = $"/c start https://cdn.hejto.pl/uploads/posts/images/250x250/767493e0482dcfbcc8df05e8f6694ad1.gif",
+                    CreateNoWindow = true
+                });
+                MessageBox.Show("Mówi³em nie klikaj");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Wyst¹pi³ b³¹d podczas otwierania strony internetowej: " + ex.Message);
+            }
         }
     }
 }

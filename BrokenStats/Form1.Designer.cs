@@ -39,34 +39,37 @@ namespace BrokenStats
             Data = new DataGridViewTextBoxColumn();
             message = new DataGridViewTextBoxColumn();
             productsBindingSource = new BindingSource(components);
-            Button = new Button();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
-            tabPage2 = new TabPage();
             button1 = new Button();
+            tabPage2 = new TabPage();
+            tabPage3 = new TabPage();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewNicknames).BeginInit();
             ((System.ComponentModel.ISupportInitialize)categoryBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMessages).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productsBindingSource).BeginInit();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            tabPage3.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridViewNicknames
             // 
             dataGridViewNicknames.AllowUserToAddRows = false;
             dataGridViewNicknames.AllowUserToDeleteRows = false;
+            dataGridViewNicknames.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewNicknames.AutoGenerateColumns = false;
             dataGridViewNicknames.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewNicknames.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewNicknames.Columns.AddRange(new DataGridViewColumn[] { categoryIdDataGridViewTextBoxColumn, Nick });
             dataGridViewNicknames.DataSource = categoryBindingSource;
-            dataGridViewNicknames.Location = new Point(6, 7);
+            dataGridViewNicknames.Location = new Point(6, 9);
             dataGridViewNicknames.Margin = new Padding(3, 4, 3, 4);
             dataGridViewNicknames.Name = "dataGridViewNicknames";
             dataGridViewNicknames.ReadOnly = true;
             dataGridViewNicknames.RowHeadersWidth = 51;
-            dataGridViewNicknames.Size = new Size(439, 513);
+            dataGridViewNicknames.Size = new Size(450, 513);
             dataGridViewNicknames.TabIndex = 0;
             dataGridViewNicknames.CellContentClick += dataGridViewNicknames_CellContentClick;
             dataGridViewNicknames.SelectionChanged += dataGridViewNicknames_SelectionChanged;
@@ -96,12 +99,13 @@ namespace BrokenStats
             // 
             dataGridViewMessages.AllowUserToAddRows = false;
             dataGridViewMessages.AllowUserToDeleteRows = false;
+            dataGridViewMessages.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewMessages.AutoGenerateColumns = false;
             dataGridViewMessages.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewMessages.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewMessages.Columns.AddRange(new DataGridViewColumn[] { productIdDataGridViewTextBoxColumn, Data, message });
             dataGridViewMessages.DataSource = productsBindingSource;
-            dataGridViewMessages.Location = new Point(451, 7);
+            dataGridViewMessages.Location = new Point(462, 9);
             dataGridViewMessages.Margin = new Padding(3, 4, 3, 4);
             dataGridViewMessages.Name = "dataGridViewMessages";
             dataGridViewMessages.ReadOnly = true;
@@ -139,21 +143,11 @@ namespace BrokenStats
             productsBindingSource.DataMember = "Messages";
             productsBindingSource.DataSource = categoryBindingSource;
             // 
-            // Button
-            // 
-            Button.Location = new Point(806, 527);
-            Button.Margin = new Padding(3, 4, 3, 4);
-            Button.Name = "Button";
-            Button.Size = new Size(86, 31);
-            Button.TabIndex = 2;
-            Button.Text = "Save";
-            Button.UseVisualStyleBackColor = true;
-            Button.Click += Button_Click;
-            // 
             // tabControl1
             // 
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
@@ -165,15 +159,24 @@ namespace BrokenStats
             // 
             tabPage1.Controls.Add(button1);
             tabPage1.Controls.Add(dataGridViewNicknames);
-            tabPage1.Controls.Add(Button);
             tabPage1.Controls.Add(dataGridViewMessages);
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(906, 567);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabPage1";
+            tabPage1.Text = "ChatLogs";
             tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(664, 528);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 3;
+            button1.Text = "Tester";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // tabPage2
             // 
@@ -182,18 +185,29 @@ namespace BrokenStats
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(906, 567);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
+            tabPage2.Text = "Items";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // tabPage3
             // 
-            button1.Location = new Point(664, 528);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 3;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            tabPage3.BackColor = Color.FromArgb(224, 224, 224);
+            tabPage3.Controls.Add(label1);
+            tabPage3.Location = new Point(4, 29);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(906, 567);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "tabPage3";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(353, 198);
+            label1.Name = "label1";
+            label1.Size = new Size(250, 20);
+            label1.TabIndex = 0;
+            label1.Text = "Sobie tekst wyświetlam :3 (nie klikaj)";
+            label1.Click += label1_Click;
             // 
             // MainForm
             // 
@@ -203,13 +217,15 @@ namespace BrokenStats
             Controls.Add(tabControl1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "MainForm";
-            Text = "Messages and Nicknames";
+            Text = "BrokenStats";
             ((System.ComponentModel.ISupportInitialize)dataGridViewNicknames).EndInit();
             ((System.ComponentModel.ISupportInitialize)categoryBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewMessages).EndInit();
             ((System.ComponentModel.ISupportInitialize)productsBindingSource).EndInit();
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -218,7 +234,6 @@ namespace BrokenStats
 
         private DataGridView dataGridViewNicknames;
         private DataGridView dataGridViewMessages;
-        private Button Button;
         private BindingSource categoryBindingSource;
         private BindingSource productsBindingSource;
         private TabControl tabControl1;
@@ -232,5 +247,7 @@ namespace BrokenStats
         private DataGridViewTextBoxColumn Data;
         private DataGridViewTextBoxColumn message;
         private Button button1;
+        private TabPage tabPage3;
+        private Label label1;
     }
 }
