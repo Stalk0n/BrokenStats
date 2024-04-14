@@ -239,8 +239,6 @@ namespace BrokenStats
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;
-        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn categoryIdDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn Nick;
         private DataGridViewTextBoxColumn productIdDataGridViewTextBoxColumn;
