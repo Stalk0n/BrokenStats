@@ -8,5 +8,5 @@ public class Nickname
 
     public string? Nick { get; set; }
 
-    public virtual ObservableCollectionListSource<Message> Messages { get; } = new();
+    public virtual ObservableCollectionListSource<Messages> Messages { get; } = new();
 }

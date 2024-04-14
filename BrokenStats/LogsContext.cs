@@ -5,7 +5,7 @@ namespace BrokenStats;
 
 public class LogsContext : DbContext
 {
-    public DbSet<Message> Messages { get; set; }
+    public DbSet<Messages> Messages { get; set; }
     public DbSet<Nickname> Nicknames { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -21,18 +21,12 @@ public class LogsContext : DbContext
 
     public void AddMessageFromInput(string input)
     {
-        // Rozdzielanie ciągu na nick gracza i wiadomość
-        string[] parts = input.Split(';');
-        if (parts.Length != 2)
-        {
-            Console.WriteLine("Nieprawidłowy format danych.");
-            return;
-        }
 
-        string nickname = parts[0];
-        string messageContent = parts[1];
-
-        // Sprawdzenie, czy nick gracza istnieje w tabeli Nicknames
+        int firstSpaceIndex = input.IndexOf(' ');
+        
+        string nickname = firstSpaceIndex == -1 ? input : input.Substring(0, firstSpaceIndex);
+        string messageContent = firstSpaceIndex == -1 ? "" : input.Substring(firstSpaceIndex + 1);
+        
         var existingNickname = Nicknames.FirstOrDefault(n => n.Nick == nickname);
         if (existingNickname == null)
         {
@@ -43,9 +37,9 @@ public class LogsContext : DbContext
         }
 
         // Dodanie nowej wiadomości dla gracza
-        var newMessage = new Message
+        var newMessage = new Messages
         {
-            message = messageContent,
+            Message = messageContent,
             NicknameId = existingNickname.NicknameId,
             Data = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
         };

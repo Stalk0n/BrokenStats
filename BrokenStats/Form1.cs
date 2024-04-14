@@ -1,74 +1,41 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Xml.Linq;
 
 namespace BrokenStats
 {
     public partial class MainForm : Form
     {
-        private LogsContext? dbContext;
+        private LogsContext? _dbContext;
 
         public MainForm()
         {
+            Uruchom_sniffer();
             InitializeComponent();
-
+            Sniffer.ChatLogPacketFound += OnChatLogPackedFound;
         }
 
-        protected override void OnLoad(EventArgs e)
+        private static void Uruchom_sniffer()
         {
-            base.OnLoad(e);
+            Sniffer sniffer = new Sniffer();
 
-            this.dbContext = new LogsContext();
-
-            // Uncomment the line below to start fresh with a new database.
-            // this.dbContext.Database.EnsureDeleted();
-            this.dbContext.Database.EnsureCreated();
-
-            this.dbContext.Nicknames.Load();
-
-            this.categoryBindingSource.DataSource = dbContext.Nicknames.Local.ToBindingList();
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-
-            this.dbContext?.Dispose();
-            this.dbContext = null;
-        }
-
-        private void dataGridViewNicknames_SelectionChanged(object sender, EventArgs e)
-        {
-            if (this.dbContext != null)
+            new Thread(() =>
             {
-                var nickname = (Nickname)this.dataGridViewNicknames.CurrentRow.DataBoundItem;
+                Thread.CurrentThread.IsBackground = true;
 
-                if (nickname != null)
-                {
-                    this.dbContext.Entry(nickname).Collection(e => e.Messages).Load();
-                }
-            }
+                sniffer.Start();
+            }).Start();
         }
 
-
-        private void dataGridViewNicknames_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        
+        private void OnChatLogPackedFound(string packetData)
         {
-
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            if (dbContext != null)
+            if (_dbContext != null)
             {
-                dbContext.AddMessageFromInput("Kamil;PIWO");
-                dbContext.SaveChanges();
-
-                // Odœwie¿anie danych w formularzu
-                this.dbContext.Nicknames.Load();
-                this.categoryBindingSource.DataSource = dbContext.Nicknames.Local.ToBindingList();
+                _dbContext.AddMessageFromInput(packetData);
+                _dbContext.SaveChanges();
+                
+                _dbContext.Nicknames.Load();
+                categoryBindingSource.DataSource = _dbContext.Nicknames.Local.ToBindingList();
             }
             else
             {
@@ -77,25 +44,67 @@ namespace BrokenStats
 
         }
 
-
-
-        //mozna skasowac
-        private void label1_Click(object sender, EventArgs e)
+        private void OnBattleLogPacketFound(string packet)
         {
-            try
+            
+        }
+        
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            _dbContext = new LogsContext();
+
+            // Uncomment the line below to start fresh with a new database.
+            // this.dbContext.Database.EnsureDeleted();
+            _dbContext.Database.EnsureCreated();
+
+            _dbContext.Nicknames.Load();
+
+            categoryBindingSource.DataSource = _dbContext.Nicknames.Local.ToBindingList();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+
+            _dbContext?.Dispose();
+            _dbContext = null;
+        }
+
+        private void dataGridViewNicknames_SelectionChanged(object sender, EventArgs e)
+        {
+            if (_dbContext != null)
             {
-                
-                System.Diagnostics.Process.Start(new ProcessStartInfo
+                var nickname = (Nickname)dataGridViewNicknames.CurrentRow!.DataBoundItem;
+
+                if (nickname != null)
                 {
-                    FileName = "cmd",
-                    Arguments = $"/c start https://cdn.hejto.pl/uploads/posts/images/250x250/767493e0482dcfbcc8df05e8f6694ad1.gif",
-                    CreateNoWindow = true
-                });
-                MessageBox.Show("Mówi³em nie klikaj");
+                    _dbContext.Entry(nickname).Collection(e => e.Messages).Load();
+                }
             }
-            catch (Exception ex)
+        }
+
+
+        private void dataGridViewNicknames_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (_dbContext != null)
             {
-                MessageBox.Show("Wyst¹pi³ b³¹d podczas otwierania strony internetowej: " + ex.Message);
+                _dbContext.AddMessageFromInput("Mateusz PIWO");
+                _dbContext.SaveChanges();
+
+                // Odœwie¿anie danych w formularzu
+                _dbContext.Nicknames.Load();
+                categoryBindingSource.DataSource = _dbContext.Nicknames.Local.ToBindingList();
+            }
+            else
+            {
+                MessageBox.Show("Brak dostêpu do bazy danych.");
             }
         }
     }

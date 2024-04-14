@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.3" />
+    <PackageReference Include="Pcap.Net.x64" Version="1.0.4.1" />
   </ItemGroup>
 
 </Project>

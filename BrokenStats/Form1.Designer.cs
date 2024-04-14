@@ -130,10 +130,10 @@ namespace BrokenStats
             Data.Name = "Data";
             Data.ReadOnly = true;
             // 
-            // message
+            // Message
             // 
-            message.DataPropertyName = "message";
-            message.HeaderText = "Message";
+            message.DataPropertyName = "Message";
+            message.HeaderText = "Messages";
             message.MinimumWidth = 6;
             message.Name = "message";
             message.ReadOnly = true;
@@ -206,8 +206,6 @@ namespace BrokenStats
             label1.Name = "label1";
             label1.Size = new Size(250, 20);
             label1.TabIndex = 0;
-            label1.Text = "Sobie tekst wyświetlam :3 (nie klikaj)";
-            label1.Click += label1_Click;
             // 
             // MainForm
             // 
