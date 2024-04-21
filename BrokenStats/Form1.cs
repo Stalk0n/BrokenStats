@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+ï»¿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 
 namespace BrokenStats
@@ -12,6 +12,7 @@ namespace BrokenStats
             Uruchom_sniffer();
             InitializeComponent();
             Sniffer.ChatLogPacketFound += OnChatLogPackedFound;
+            Sniffer.BattleLogPackedFound += OnBattleLogPacketFound;
         }
 
         private static void Uruchom_sniffer()
@@ -26,29 +27,53 @@ namespace BrokenStats
             }).Start();
         }
 
-        
+
         private void OnChatLogPackedFound(string packetData)
         {
+            if (InvokeRequired)
+            {
+                Invoke((Action)(() => OnChatLogPackedFound(packetData)));
+                return;
+            }
+
             if (_dbContext != null)
             {
-                _dbContext.AddMessageFromInput(packetData);
+                _dbContext.AddChatLogMessage(packetData);
                 _dbContext.SaveChanges();
-                
-                _dbContext.Nicknames.Load();
-                categoryBindingSource.DataSource = _dbContext.Nicknames.Local.ToBindingList();
+
+                _dbContext.ChatLogNicknames.Load();
+                chatLogNicknameBindingSource.DataSource = _dbContext.ChatLogNicknames.Local.ToBindingList();
             }
             else
             {
-                MessageBox.Show("Brak dostêpu do bazy danych.");
+                MessageBox.Show("Brak dostÄ™pu do bazy danych.");
+            }
+        }
+
+
+        private void OnBattleLogPacketFound(string packetData)
+        {
+            if (InvokeRequired)
+            {
+                Invoke((Action)(() => OnBattleLogPacketFound(packetData)));
+                return;
             }
 
+            if (_dbContext != null)
+            {
+                _dbContext.AddBattleLogInstance(packetData);
+                _dbContext.SaveChanges();
+
+                _dbContext.BattleLogNicknames.Load();
+                battleLogNicknameBindingSource.DataSource = _dbContext.BattleLogNicknames.Local.ToBindingList();
+            }
+            else
+            {
+                MessageBox.Show("Brak dostÄ™pu do bazy danych.");
+            }
         }
 
-        private void OnBattleLogPacketFound(string packet)
-        {
-            
-        }
-        
+
 
         protected override void OnLoad(EventArgs e)
         {
@@ -57,12 +82,16 @@ namespace BrokenStats
             _dbContext = new LogsContext();
 
             // Uncomment the line below to start fresh with a new database.
-            // this.dbContext.Database.EnsureDeleted();
+            _dbContext.Database.EnsureDeleted();
             _dbContext.Database.EnsureCreated();
 
-            _dbContext.Nicknames.Load();
+            _dbContext.ChatLogNicknames.Load();
 
-            categoryBindingSource.DataSource = _dbContext.Nicknames.Local.ToBindingList();
+            _dbContext.BattleLogNicknames.Load();
+
+            chatLogNicknameBindingSource.DataSource = _dbContext.ChatLogNicknames.Local.ToBindingList();
+
+            battleLogNicknameBindingSource.DataSource = _dbContext.BattleLogNicknames.Local.ToBindingList();
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -77,7 +106,7 @@ namespace BrokenStats
         {
             if (_dbContext != null)
             {
-                var nickname = (Nickname)dataGridViewNicknames.CurrentRow!.DataBoundItem;
+                var nickname = (ChatLogNickname)dataGridViewChatNickname.CurrentRow!.DataBoundItem;
 
                 if (nickname != null)
                 {
@@ -95,17 +124,18 @@ namespace BrokenStats
         {
             if (_dbContext != null)
             {
-                _dbContext.AddMessageFromInput("Mateusz PIWO");
+                _dbContext.AddChatLogMessage("Mateusz PIWO");
                 _dbContext.SaveChanges();
 
-                // Odœwie¿anie danych w formularzu
-                _dbContext.Nicknames.Load();
-                categoryBindingSource.DataSource = _dbContext.Nicknames.Local.ToBindingList();
+                // OdÅ“wieÂ¿anie danych w formularzu
+                _dbContext.ChatLogNicknames.Load();
+                chatLogNicknameBindingSource.DataSource = _dbContext.ChatLogNicknames.Local.ToBindingList();
             }
             else
             {
-                MessageBox.Show("Brak dostêpu do bazy danych.");
+                MessageBox.Show("Brak dostÃªpu do bazy danych.");
             }
         }
+
     }
 }

@@ -8,10 +8,12 @@ namespace BrokenStats
     class Sniffer
     {
         public delegate void BattleLogPackedFoundEventHandler(string packetData);
+
         public static event BattleLogPackedFoundEventHandler? BattleLogPackedFound;
 
-        
+
         public delegate void ChatLogPacketFoundEventHandler(string packetData);
+
         public static event ChatLogPacketFoundEventHandler? ChatLogPacketFound;
 
         public void Start()
@@ -66,7 +68,8 @@ namespace BrokenStats
                 // }
 
                 // Compile the filter
-                string ipAddress = "147.135.70.223";
+                // string ipAddress = "147.135.70.223";
+                string ipAddress = "145.239.19.54";
                 using (BerkeleyPacketFilter filter = communicator.CreateFilter("ip and tcp and src host " + ipAddress))
                 {
                     // Set the filter
@@ -97,7 +100,7 @@ namespace BrokenStats
             // Console.WriteLine(dataString);
 
             // if (!dataString.Contains("3;19;1&")) return;
-            
+
             if (dataString.Contains("3;19;1&"))
             {
                 // Console.WriteLine(dataString);
@@ -174,14 +177,14 @@ namespace BrokenStats
                     BattleLogPackedFound?.Invoke(result);
                 }
             }
-            
+
             else if (dataString.Contains("2;10;"))
             {
                 string[] actualDataString = dataString.Split(";");
                 if (actualDataString[3].Count(char.IsLetter) >= 3)
                 {
                     string decodedText = Uri.UnescapeDataString(actualDataString[4]);
-                    decodedText = decodedText.Substring(4);
+                    // decodedText = decodedText.Substring(4);
                     string result = actualDataString[3] + " " + decodedText;
                     ChatLogPacketFound?.Invoke(result);
                 }
