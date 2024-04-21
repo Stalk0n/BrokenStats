@@ -1,5 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
+using BrokenStats.ViewModels;
+using BrokenStats.Tables;
+
+
 
 namespace BrokenStats
 {
@@ -7,13 +13,33 @@ namespace BrokenStats
     {
         private LogsContext? _dbContext;
 
+        private ChartViewModel _chartViewModel;
+
+
         public MainForm()
         {
             Uruchom_sniffer();
             InitializeComponent();
             Sniffer.ChatLogPacketFound += OnChatLogPackedFound;
             Sniffer.BattleLogPackedFound += OnBattleLogPacketFound;
+
+
+            InitializeChart();
+
         }
+
+
+        private void InitializeChart()
+        {
+            _chartViewModel = new ChartViewModel();
+            cartesianChart1.Series = _chartViewModel.Series;
+
+            // Tutaj możesz dostosować ustawienia wykresu
+            // Na przykład osie, etykiety itp.
+        }
+
+
+
 
         private static void Uruchom_sniffer()
         {
@@ -137,5 +163,30 @@ namespace BrokenStats
             }
         }
 
+        private void cartesianChart1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            string text = textBox1.Text;
+
+                if ( ( int.TryParse(text, out int number) ) && _dbContext != null && !string.IsNullOrWhiteSpace(text))
+                {
+                        _dbContext.AddXP(number);
+                        _dbContext.SaveChanges();
+
+                 }
+
+
+
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace BrokenStats;
+namespace BrokenStats.Tables;
 
 public class ChatLogNickname
 {

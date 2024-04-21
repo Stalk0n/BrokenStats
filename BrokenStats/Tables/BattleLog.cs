@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BrokenStats;
+namespace BrokenStats.Tables;
 
 public class BattleLog
 {
@@ -12,7 +12,7 @@ public class BattleLog
     public double? Gold { get; set; }
     public string? Dropped_items { get; set; }
     public string? Opponents { get; set; }
-    
+
     public int NicknameId { get; set; }
     public virtual BattleLogNickname BattleLogNickname { get; set; } = null!;
 }

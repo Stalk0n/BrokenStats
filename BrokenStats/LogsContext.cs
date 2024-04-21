@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BrokenStats.Tables;
+using Microsoft.EntityFrameworkCore;
 
 namespace BrokenStats;
 
@@ -10,6 +11,9 @@ public class LogsContext : DbContext
     public DbSet<BattleLog> BattleLogs { get; set; }
     public DbSet<BattleLogNickname> BattleLogNicknames { get; set; }
 
+    public DbSet<XP> XPtable { get; set; }
+
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlite("Data Source=MyDB.db");
 
@@ -18,6 +22,10 @@ public class LogsContext : DbContext
         //Funkcja wykonywana na tworzenie modelu danych
     }
 
+    public XP GetLastXPRecord()
+    {
+        return XPtable.OrderByDescending(x => x.LogId).FirstOrDefault();
+    }
 
     public void AddChatLogMessage(string input)
     {
@@ -43,6 +51,20 @@ public class LogsContext : DbContext
             Data = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
         };
         ChatMessages.Add(newMessage);
+        SaveChanges();
+    }
+
+
+    public void AddXP(int value)
+    {
+
+
+        var newValue = new XP
+        {
+            Experience = value,
+            Data = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+        };
+        XPtable.Add(newValue);
         SaveChanges();
     }
 

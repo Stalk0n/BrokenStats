@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace BrokenStats;
+namespace BrokenStats.Tables;
 
 public class BattleLogNickname
 {
