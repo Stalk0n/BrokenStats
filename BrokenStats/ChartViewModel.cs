@@ -32,7 +32,7 @@ namespace BrokenStats.ViewModels
             Series = new ISeries[]
             {
                 new LineSeries<double>
-                {
+                {fe
                     Values = _xpValues,
                     GeometrySize = 0,
                     LineSmoothness = 0
