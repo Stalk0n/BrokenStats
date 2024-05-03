@@ -12,7 +12,7 @@ public class LogsContext : DbContext
     public DbSet<BattleLogNickname> BattleLogNicknames { get; set; }
 
     public DbSet<XP> XPtable { get; set; }
-
+    public DbSet<ChartSeries> ChartSerie { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlite("Data Source=MyDB.db");
