@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 using BrokenStats.Tables;
-
+using LiveCharts; //Core of the library
+using LiveCharts.Wpf; //The WPF controls
+using LiveCharts.WinForms //the WinForm wrappers;
 
 
 namespace BrokenStats
