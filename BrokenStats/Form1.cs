@@ -1,8 +1,5 @@
-﻿using LiveChartsCore.SkiaSharpView;
-using LiveChartsCore;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
-using BrokenStats.ViewModels;
 using BrokenStats.Tables;
 
 
@@ -13,7 +10,6 @@ namespace BrokenStats
     {
         private LogsContext? _dbContext;
 
-        private ChartViewModel _chartViewModel;
         private System.Windows.Forms.Timer timer;
 
         public MainForm()
@@ -24,83 +20,13 @@ namespace BrokenStats
             Sniffer.BattleLogPackedFound += OnBattleLogPacketFound;
 
 
-            InitializeChart();
-            InitializeTimer();
-        }
-
-        private void InitializeTimer()
-        {
-            timer = new System.Windows.Forms.Timer();
-            timer.Interval = 3000; // 3000 milisekund = 3 sekundy
-            timer.Tick += Timer_Tick;
-            timer.Start();
-        }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            if (_dbContext != null)
-            {
-                // Oblicz obecną godzinę
-                var currentTime = DateTime.UtcNow;
-
-                // Oblicz początkową godzinę (godzinę wcześniej niż obecna)
-                var startTime = currentTime.AddHours(-1);
-
-                // Oblicz różnicę czasu w sekundach
-                var diffInSeconds = (int)(currentTime - startTime).TotalSeconds;
-
-                // Pobierz wszystkie dane z tabeli XPtable, które są w zakresie ostatniej godziny
-                var xpData = _dbContext.XPtable
-                    .Where(x => EF.Functions.Like(x.Data, $"{startTime:yyyy-MM-dd HH:mm:ss}%"))
-                    .OrderBy(x => x.Data)
-                    .ToList();
-
-                // Zainicjuj listę, która będzie przechowywać dane na wykresie
-                List<double> xpValues = new List<double>();
-
-                // Uzupełnij listę danymi z XPtable
-                var timePointer = startTime;
-                foreach (var xpRecord in xpData)
-                {
-                    // Dopóki nie dojdziemy do aktualnego czasu, wypełniaj braki zerami
-                    while (timePointer < currentTime && timePointer < DateTime.Parse(xpRecord.Data))
-                    {
-                        xpValues.Add(0);
-                        timePointer = timePointer.AddSeconds(3); // Dodaj 3 sekundy do wskaźnika czasu
-                    }
-
-                    // Dodaj wartość do listy
-                    xpValues.Add(xpRecord.Experience);
-                    timePointer = timePointer.AddSeconds(3); // Dodaj 3 sekundy do wskaźnika czasu
-                }
-
-                // Dopóki nie osiągniemy aktualnego czasu, wypełniaj braki zerami
-                while (timePointer <= currentTime)
-                {
-                    xpValues.Add(0);
-                    timePointer = timePointer.AddSeconds(3); // Dodaj 3 sekundy do wskaźnika czasu
-                }
-
-                // Aktualizuj dane na wykresie
-                _chartViewModel.UpdateData(xpValues);
-
-                // Odśwież wyświetlanie wykresu
-                cartesianChart1.Update();
-            }
         }
 
 
 
 
 
-        private void InitializeChart()
-        {
-            _chartViewModel = new ChartViewModel();
-            cartesianChart1.Series = _chartViewModel.Series;
 
-            // Tutaj możesz dostosować ustawienia wykresu
-            // Na przykład osie, etykiety itp.
-        }
 
 
 

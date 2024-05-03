@@ -57,10 +57,9 @@ namespace BrokenStats
             opponentsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             battleLogBindingSource = new BindingSource(components);
             tabPage3 = new TabPage();
-            cartesianChart1 = new LiveChartsCore.SkiaSharpView.WinForms.CartesianChart();
-            label1 = new Label();
-            button2 = new Button();
             textBox1 = new TextBox();
+            button2 = new Button();
+            label1 = new Label();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -329,7 +328,6 @@ namespace BrokenStats
             tabPage3.BackColor = Color.FromArgb(224, 224, 224);
             tabPage3.Controls.Add(textBox1);
             tabPage3.Controls.Add(button2);
-            tabPage3.Controls.Add(cartesianChart1);
             tabPage3.Controls.Add(label1);
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
@@ -338,21 +336,13 @@ namespace BrokenStats
             tabPage3.TabIndex = 2;
             tabPage3.Text = "tabPage3";
             // 
-            // cartesianChart1
+            // textBox1
             // 
-            cartesianChart1.Location = new Point(216, 115);
-            cartesianChart1.Name = "cartesianChart1";
-            cartesianChart1.Size = new Size(488, 294);
-            cartesianChart1.TabIndex = 1;
-            cartesianChart1.Load += cartesianChart1_Load;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(353, 197);
-            label1.Name = "label1";
-            label1.Size = new Size(0, 20);
-            label1.TabIndex = 0;
+            textBox1.Location = new Point(851, 233);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(125, 27);
+            textBox1.TabIndex = 9;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // button2
             // 
@@ -364,13 +354,13 @@ namespace BrokenStats
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // textBox1
+            // label1
             // 
-            textBox1.Location = new Point(851, 233);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 9;
-            textBox1.TextChanged += textBox1_TextChanged;
+            label1.AutoSize = true;
+            label1.Location = new Point(353, 197);
+            label1.Name = "label1";
+            label1.Size = new Size(0, 20);
+            label1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -428,7 +418,6 @@ namespace BrokenStats
         private DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn messageDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nickDataGridViewTextBoxColumn;
-        private LiveChartsCore.SkiaSharpView.WinForms.CartesianChart cartesianChart1;
         private TextBox textBox1;
         private Button button2;
     }
