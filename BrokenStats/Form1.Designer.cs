@@ -57,12 +57,14 @@ namespace BrokenStats
             opponentsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             battleLogBindingSource = new BindingSource(components);
             tabPage3 = new TabPage();
+            chart_label = new Label();
             formsPlot1 = new ScottPlot.WinForms.FormsPlot();
             textBox1 = new TextBox();
             button2 = new Button();
             label1 = new Label();
             sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
             timer1 = new System.Windows.Forms.Timer(components);
+            button3 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -329,6 +331,8 @@ namespace BrokenStats
             // tabPage3
             // 
             tabPage3.BackColor = Color.FromArgb(224, 224, 224);
+            tabPage3.Controls.Add(button3);
+            tabPage3.Controls.Add(chart_label);
             tabPage3.Controls.Add(formsPlot1);
             tabPage3.Controls.Add(textBox1);
             tabPage3.Controls.Add(button2);
@@ -339,6 +343,15 @@ namespace BrokenStats
             tabPage3.Size = new Size(1071, 567);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "tabPage3";
+            // 
+            // chart_label
+            // 
+            chart_label.AutoSize = true;
+            chart_label.Location = new Point(52, 22);
+            chart_label.Name = "chart_label";
+            chart_label.Size = new Size(183, 20);
+            chart_label.TabIndex = 11;
+            chart_label.Text = "Tyle punktów na wykresie: ";
             // 
             // formsPlot1
             // 
@@ -381,6 +394,16 @@ namespace BrokenStats
             sqliteCommand1.Connection = null;
             sqliteCommand1.Transaction = null;
             sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(66, 260);
+            button3.Name = "button3";
+            button3.Size = new Size(133, 39);
+            button3.TabIndex = 12;
+            button3.Text = "Fit Plot";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // MainForm
             // 
@@ -444,5 +467,7 @@ namespace BrokenStats
         private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
         private ScottPlot.WinForms.FormsPlot formsPlot1;
         private System.Windows.Forms.Timer timer1;
+        private Label chart_label;
+        private Button button3;
     }
 }

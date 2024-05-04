@@ -14,7 +14,7 @@ namespace BrokenStats
         private LogsContext? _dbContext;
 
         private System.Windows.Forms.Timer timer;
-        
+
         double[] dataX = new double[0];
         double[] dataY = new double[0];
 
@@ -32,29 +32,49 @@ namespace BrokenStats
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            formsPlot1.MouseDown += formsPlot1_MouseDown;
+            formsPlot1.MouseUp += formsPlot1_MouseUp;
+
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
             CreateChart();
             Sniffer.ChatLogPacketFound += OnChatLogPackedFound;
             Sniffer.BattleLogPackedFound += OnBattleLogPacketFound;
 
             timer = new System.Windows.Forms.Timer();
-            timer.Interval = 500; // 30 sekund
+            timer.Interval = 2500; // 30 sekund
             timer.Tick += Timer_Tick;
             timer.Start();
         }
-
         private void CreateChart()
         {
             formsPlot1.Plot.XLabel("Timeline");
             formsPlot1.Plot.YLabel("XP");
 
-            double[] dataX = new double[] { 1, 2, 3, 4, 5 };
-            double[] dataY = new double[] { 1, 4, 9, 16, 25 };
-            formsPlot1.Plot.Add.Scatter(dataX, dataY);
+            //var viewLimits = formsPlot1.Plot.Axes;
+            //MessageBox.Show(viewLimits.ToString());
+            //formsPlot1.Plot.Axes.SetLimitsY(0,maxY);
+            formsPlot1.Plot.Axes.Bottom.TickGenerator = myTickGenerator;
+
 
             formsPlot1.Refresh();
         }
 
+
+        private void formsPlot1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                formsPlot1.Interaction.Disable();
+            }
+        }
+        private void formsPlot1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                formsPlot1.Interaction.Enable();
+            }
+        }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
@@ -81,8 +101,9 @@ namespace BrokenStats
                     }
 
                 }
-
+                chart_label.Text = "Tyle punktów na wykresie: " + (_dbContext.ChartSerie.Count() + 1).ToString();
                 // Dodaj nowy wpis do bazy danych i zapisz zmiany
+
                 _dbContext.ChartSerie.Add(newEntry);
                 _dbContext.SaveChanges();
             }
@@ -109,12 +130,11 @@ namespace BrokenStats
         public void UpdateData(IEnumerable<int> xpValues)
         {
             // Sprawdź, czy ilość danych jest wystarczająca do wygenerowania ticków na osi OX
-            int requiredTickCount = 1; // Liczba ticków, dla których chcesz mieć punkty na osi OX
 
             // Obliczamy różnicę w czasie między obecnym czasem a czasem dla każdego punktu danych
             var currentTime = DateTime.Now;
             var timeDifferences = Enumerable.Range(0, xpValues.Count())
-                                            .Select(i => -5 * (xpValues.Count() - 1 - i)); // Przesunięcie w czasie, np. -5 * (n - 1) dla n punktów danych
+                                            .Select(i => -30 * (xpValues.Count() - 1 - i)); // Przesunięcie w czasie, np. -5 * (n - 1) dla n punktów danych
 
             // Aktualizujemy dane na wykresie
             dataX = timeDifferences.Select(Convert.ToDouble).ToArray();
@@ -124,29 +144,53 @@ namespace BrokenStats
             formsPlot1.Plot.Add.Scatter(dataX, dataY);
             formsPlot1.Refresh();
 
-            // Ustaw tick generator tylko jeśli ilość danych jest wystarczająca
-            if (xpValues.Count() >= requiredTickCount)
-            {
-                formsPlot1.Plot.Axes.Bottom.TickGenerator = myTickGenerator;
-            }
-            else
-            {
-                // W przypadku gdy ilość danych jest niewystarczająca, pomiń ustawienie tick generatora
-                Console.WriteLine("Ilość danych jest niewystarczająca do wygenerowania ticków na osi OX.");
-            }
-
             formsPlot1.Plot.Axes.AutoScale();
+
+
+            AxisLimits limits = formsPlot1.Plot.Axes.GetLimits();
+            double yMax = limits.Top;
+            double yMin = limits.Bottom;
+
+
+            formsPlot1.Plot.Axes.SetLimits(null, null, yMin - 0.5, yMax + 5);
+            //var limits = formsPlot1.Plot.Axes.GetLimits();
+
+            // Maximum Y value
+            //double maxY = limits.Top;
+
+            //formsPlot1.Plot.Axes.SetLimitsY(0, maxY); // set the lower limit of Y-axis to 0
+
+
+
         }
 
         // create a static function containing the string formatting logic
         static string CustomFormatter(double position)
         {
-            // Konwertuj pozycję na minutę
-            int minutes = (int)(position / -5);
+            // Jeśli wartość na osi X jest mniejsza niż 1 minuta, wyświetl w sekundach
+            if (position > -60)
+            {
+                // Konwertuj pozycję na sekundy
+                int seconds = (int)(position);
 
-            // Formatuj wartość na osi X jako -(liczba)min
-            return $"-{minutes}min";
+                // Formatuj wartość na osi X jako -(liczba)sec
+                return $"{seconds}sec";
+            }
+            else
+            {
+                // Konwertuj pozycję na minutę
+                int minutes = (int)(position / 60);
+
+                // Formatuj wartość na osi X jako -(liczba)min
+                return $"{minutes}min";
+            }
         }
+
+
+
+
+
+
         ScottPlot.TickGenerators.NumericAutomatic myTickGenerator = new()
         {
             LabelFormatter = CustomFormatter
@@ -312,6 +356,22 @@ namespace BrokenStats
 
         private void formsPlot1_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            formsPlot1.Refresh();
+
+            formsPlot1.Plot.Axes.AutoScale();
+
+
+            AxisLimits limits = formsPlot1.Plot.Axes.GetLimits();
+            double yMax = limits.Top;
+            double yMin = limits.Bottom;
+
+
+            formsPlot1.Plot.Axes.SetLimits(null, null, yMin - 0.5, yMax + 5);
 
         }
     }
