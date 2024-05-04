@@ -22,6 +22,28 @@ public class LogsContext : DbContext
         //Funkcja wykonywana na tworzenie modelu danych
     }
 
+    public double GetAverageXPForLast30Seconds()
+    {
+        DateTime thirtySecondsAgo = DateTime.Now.AddSeconds(-30);
+
+        // Pobierz wszystkie dane XP z bazy danych
+        var allXPData = XPtable.ToList();
+
+        // Wyfiltruj dane, aby pozostały tylko te z ostatnich 30 sekund
+        var xpDataForLast30Seconds = allXPData
+            .Where(x => DateTime.Parse(x.Data) >= thirtySecondsAgo)
+            .Select(x => x.Experience);
+
+        if (xpDataForLast30Seconds.Any())
+        {
+            return xpDataForLast30Seconds.Average();
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
     public XP GetLastXPRecord()
     {
         return XPtable.OrderByDescending(x => x.LogId).FirstOrDefault();

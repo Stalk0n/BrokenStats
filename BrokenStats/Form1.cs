@@ -4,7 +4,8 @@ using BrokenStats.Tables;
 using LiveCharts; //Core of the library
 using LiveCharts.Wpf; //The WPF controls
 using LiveCharts.WinForms; //the WinForm wrappers;
-
+using ScottPlot.WinForms;
+using ScottPlot;
 
 namespace BrokenStats
 {
@@ -13,6 +14,10 @@ namespace BrokenStats
         private LogsContext? _dbContext;
 
         private System.Windows.Forms.Timer timer;
+        
+        double[] dataX = new double[0];
+        double[] dataY = new double[0];
+
 
         public MainForm()
         {
@@ -22,12 +27,136 @@ namespace BrokenStats
             Sniffer.BattleLogPackedFound += OnBattleLogPacketFound;
 
 
+            //viewModel = new ChartViewModel();
+
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+            CreateChart();
+            Sniffer.ChatLogPacketFound += OnChatLogPackedFound;
+            Sniffer.BattleLogPackedFound += OnBattleLogPacketFound;
+
+            timer = new System.Windows.Forms.Timer();
+            timer.Interval = 500; // 30 sekund
+            timer.Tick += Timer_Tick;
+            timer.Start();
+        }
+
+        private void CreateChart()
+        {
+            formsPlot1.Plot.XLabel("Timeline");
+            formsPlot1.Plot.YLabel("XP");
+
+            double[] dataX = new double[] { 1, 2, 3, 4, 5 };
+            double[] dataY = new double[] { 1, 4, 9, 16, 25 };
+            formsPlot1.Plot.Add.Scatter(dataX, dataY);
+
+            formsPlot1.Refresh();
         }
 
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            if (_dbContext != null)
+            {
+                double averageXP = _dbContext.GetAverageXPForLast30Seconds();
 
+                // Dodaj nowy wpis do tabeli ChartSeries
+                var newEntry = new ChartSeries
+                {
+                    Data = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                    Experience = averageXP
+                };
 
+                // Sprawdź, czy liczba wpisów w tabeli przekracza 120
+                if (_dbContext.ChartSerie.Count() >= 60)
+                {
+                    // Jeśli tak, usuń najstarszy wpis
+                    var oldestEntry = _dbContext.ChartSerie.OrderBy(entry => entry.Data).FirstOrDefault();
+                    if (oldestEntry != null)
+                    {
+                        _dbContext.ChartSerie.Remove(oldestEntry);
 
+                    }
+
+                }
+
+                // Dodaj nowy wpis do bazy danych i zapisz zmiany
+                _dbContext.ChartSerie.Add(newEntry);
+                _dbContext.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Brak dostępu do bazy danych.");
+            }
+
+            UpdateChart();
+        }
+
+        private void UpdateChart()
+        {
+            // Pobierz najnowsze dane z tabeli ChartSeries
+            var xpData = _dbContext.ChartSerie.OrderBy(x => x.LogId).Select(x => x.Experience).ToList();
+
+            // Przekonwertuj listę double na listę int
+            var xpDataInt = xpData.Select(x => (int)x);
+
+            // Aktualizuj dane na wykresie
+            UpdateData(xpDataInt);
+        }
+
+        public void UpdateData(IEnumerable<int> xpValues)
+        {
+            // Sprawdź, czy ilość danych jest wystarczająca do wygenerowania ticków na osi OX
+            int requiredTickCount = 1; // Liczba ticków, dla których chcesz mieć punkty na osi OX
+
+            // Obliczamy różnicę w czasie między obecnym czasem a czasem dla każdego punktu danych
+            var currentTime = DateTime.Now;
+            var timeDifferences = Enumerable.Range(0, xpValues.Count())
+                                            .Select(i => -5 * (xpValues.Count() - 1 - i)); // Przesunięcie w czasie, np. -5 * (n - 1) dla n punktów danych
+
+            // Aktualizujemy dane na wykresie
+            dataX = timeDifferences.Select(Convert.ToDouble).ToArray();
+            dataY = xpValues.Select(Convert.ToDouble).ToArray();
+            formsPlot1.Plot.Clear();
+
+            formsPlot1.Plot.Add.Scatter(dataX, dataY);
+            formsPlot1.Refresh();
+
+            // Ustaw tick generator tylko jeśli ilość danych jest wystarczająca
+            if (xpValues.Count() >= requiredTickCount)
+            {
+                formsPlot1.Plot.Axes.Bottom.TickGenerator = myTickGenerator;
+            }
+            else
+            {
+                // W przypadku gdy ilość danych jest niewystarczająca, pomiń ustawienie tick generatora
+                Console.WriteLine("Ilość danych jest niewystarczająca do wygenerowania ticków na osi OX.");
+            }
+
+            formsPlot1.Plot.Axes.AutoScale();
+        }
+
+        // create a static function containing the string formatting logic
+        static string CustomFormatter(double position)
+        {
+            // Konwertuj pozycję na minutę
+            int minutes = (int)(position / -5);
+
+            // Formatuj wartość na osi X jako -(liczba)min
+            return $"-{minutes}min";
+        }
+        ScottPlot.TickGenerators.NumericAutomatic myTickGenerator = new()
+        {
+            LabelFormatter = CustomFormatter
+        };
+
+        private double GetXPData()
+
+        {
+            return 0;
+        }
 
 
 
@@ -178,6 +307,11 @@ namespace BrokenStats
             }
 
 
+
+        }
+
+        private void formsPlot1_Load(object sender, EventArgs e)
+        {
 
         }
     }

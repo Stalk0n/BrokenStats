@@ -8,6 +8,5 @@ public class ChartSeries
 
     public string? Data { get; set; }
 
-    public int Experience { get; set; }
-
+    public double Experience { get; set; } 
 }

@@ -57,9 +57,12 @@ namespace BrokenStats
             opponentsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             battleLogBindingSource = new BindingSource(components);
             tabPage3 = new TabPage();
+            formsPlot1 = new ScottPlot.WinForms.FormsPlot();
             textBox1 = new TextBox();
             button2 = new Button();
             label1 = new Label();
+            sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
+            timer1 = new System.Windows.Forms.Timer(components);
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -326,6 +329,7 @@ namespace BrokenStats
             // tabPage3
             // 
             tabPage3.BackColor = Color.FromArgb(224, 224, 224);
+            tabPage3.Controls.Add(formsPlot1);
             tabPage3.Controls.Add(textBox1);
             tabPage3.Controls.Add(button2);
             tabPage3.Controls.Add(label1);
@@ -335,6 +339,15 @@ namespace BrokenStats
             tabPage3.Size = new Size(1071, 567);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "tabPage3";
+            // 
+            // formsPlot1
+            // 
+            formsPlot1.DisplayScale = 1.25F;
+            formsPlot1.Location = new Point(52, 45);
+            formsPlot1.Name = "formsPlot1";
+            formsPlot1.Size = new Size(442, 200);
+            formsPlot1.TabIndex = 10;
+            formsPlot1.Load += formsPlot1_Load;
             // 
             // textBox1
             // 
@@ -362,6 +375,13 @@ namespace BrokenStats
             label1.Size = new Size(0, 20);
             label1.TabIndex = 0;
             // 
+            // sqliteCommand1
+            // 
+            sqliteCommand1.CommandTimeout = 30;
+            sqliteCommand1.Connection = null;
+            sqliteCommand1.Transaction = null;
+            sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -371,6 +391,7 @@ namespace BrokenStats
             Margin = new Padding(3, 4, 3, 4);
             Name = "MainForm";
             Text = "BrokenStats";
+            Load += Form1_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
@@ -420,5 +441,8 @@ namespace BrokenStats
         private DataGridViewTextBoxColumn nickDataGridViewTextBoxColumn;
         private TextBox textBox1;
         private Button button2;
+        private Microsoft.Data.Sqlite.SqliteCommand sqliteCommand1;
+        private ScottPlot.WinForms.FormsPlot formsPlot1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
