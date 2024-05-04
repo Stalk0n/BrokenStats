@@ -32,7 +32,7 @@ namespace BrokenStats
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            formsPlot1.MouseDown += formsPlot1_MouseDown;
+            //formsPlot1.MouseDown += formsPlot1_MouseDown;
             formsPlot1.MouseUp += formsPlot1_MouseUp;
 
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -42,7 +42,7 @@ namespace BrokenStats
             Sniffer.BattleLogPackedFound += OnBattleLogPacketFound;
 
             timer = new System.Windows.Forms.Timer();
-            timer.Interval = 2500; // 30 sekund
+            timer.Interval = 100; // 30 sekund
             timer.Tick += Timer_Tick;
             timer.Start();
         }
@@ -90,7 +90,7 @@ namespace BrokenStats
                 };
 
                 // Sprawdź, czy liczba wpisów w tabeli przekracza 120
-                if (_dbContext.ChartSerie.Count() >= 60)
+                if (_dbContext.ChartSerie.Count() >= 120)
                 {
                     // Jeśli tak, usuń najstarszy wpis
                     var oldestEntry = _dbContext.ChartSerie.OrderBy(entry => entry.Data).FirstOrDefault();
@@ -101,10 +101,10 @@ namespace BrokenStats
                     }
 
                 }
-                chart_label.Text = "Tyle punktów na wykresie: " + (_dbContext.ChartSerie.Count() + 1).ToString();
                 // Dodaj nowy wpis do bazy danych i zapisz zmiany
 
                 _dbContext.ChartSerie.Add(newEntry);
+                chart_label.Text = "Tyle punktów na wykresie: " + (_dbContext.ChartSerie.Count()).ToString();
                 _dbContext.SaveChanges();
             }
             else
