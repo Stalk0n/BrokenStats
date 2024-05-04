@@ -57,6 +57,7 @@ namespace BrokenStats
             opponentsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             battleLogBindingSource = new BindingSource(components);
             tabPage3 = new TabPage();
+            button3 = new Button();
             chart_label = new Label();
             formsPlot1 = new ScottPlot.WinForms.FormsPlot();
             textBox1 = new TextBox();
@@ -64,7 +65,6 @@ namespace BrokenStats
             label1 = new Label();
             sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
             timer1 = new System.Windows.Forms.Timer(components);
-            button3 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -344,6 +344,16 @@ namespace BrokenStats
             tabPage3.TabIndex = 2;
             tabPage3.Text = "tabPage3";
             // 
+            // button3
+            // 
+            button3.Location = new Point(66, 260);
+            button3.Name = "button3";
+            button3.Size = new Size(133, 39);
+            button3.TabIndex = 12;
+            button3.Text = "Fit Plot";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // chart_label
             // 
             chart_label.AutoSize = true;
@@ -358,7 +368,7 @@ namespace BrokenStats
             formsPlot1.DisplayScale = 1.25F;
             formsPlot1.Location = new Point(52, 45);
             formsPlot1.Name = "formsPlot1";
-            formsPlot1.Size = new Size(442, 200);
+            formsPlot1.Size = new Size(429, 200);
             formsPlot1.TabIndex = 10;
             formsPlot1.Load += formsPlot1_Load;
             // 
@@ -394,16 +404,6 @@ namespace BrokenStats
             sqliteCommand1.Connection = null;
             sqliteCommand1.Transaction = null;
             sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(66, 260);
-            button3.Name = "button3";
-            button3.Size = new Size(133, 39);
-            button3.TabIndex = 12;
-            button3.Text = "Fit Plot";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
             // 
             // MainForm
             // 

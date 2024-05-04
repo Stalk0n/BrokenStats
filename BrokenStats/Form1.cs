@@ -42,8 +42,9 @@ namespace BrokenStats
             Sniffer.BattleLogPackedFound += OnBattleLogPacketFound;
 
             timer = new System.Windows.Forms.Timer();
-            timer.Interval = 100; // 30 sekund
+            timer.Interval = 3000; // 30 sekund
             timer.Tick += Timer_Tick;
+
             timer.Start();
         }
         private void CreateChart()
@@ -151,8 +152,7 @@ namespace BrokenStats
             double yMax = limits.Top;
             double yMin = limits.Bottom;
 
-
-            formsPlot1.Plot.Axes.SetLimits(null, null, yMin - 0.5, yMax + 5);
+            formsPlot1.Plot.Axes.SetLimits(null,null, yMin - 0.5, yMax + 5);
             //var limits = formsPlot1.Plot.Axes.GetLimits();
 
             // Maximum Y value
@@ -283,6 +283,13 @@ namespace BrokenStats
             chatLogNicknameBindingSource.DataSource = _dbContext.ChatLogNicknames.Local.ToBindingList();
 
             battleLogNicknameBindingSource.DataSource = _dbContext.BattleLogNicknames.Local.ToBindingList();
+
+            Timer_Tick(null, null);
+
+
+
+
+
         }
 
         protected override void OnClosing(CancelEventArgs e)
