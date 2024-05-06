@@ -68,8 +68,8 @@ namespace BrokenStats
                 // }
 
                 // Compile the filter
-                // string ipAddress = "147.135.70.223";
-                string ipAddress = "145.239.19.54";
+                string ipAddress = "147.135.70.223";
+                // string ipAddress = "145.239.19.54";
                 using (BerkeleyPacketFilter filter = communicator.CreateFilter("ip and tcp and src host " + ipAddress))
                 {
                     // Set the filter

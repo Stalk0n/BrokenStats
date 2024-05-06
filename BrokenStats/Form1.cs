@@ -38,11 +38,9 @@ namespace BrokenStats
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
             CreateChart();
-            Sniffer.ChatLogPacketFound += OnChatLogPackedFound;
-            Sniffer.BattleLogPackedFound += OnBattleLogPacketFound;
 
             timer = new System.Windows.Forms.Timer();
-            timer.Interval = 3000; // 30 sekund
+            timer.Interval = 3000; 
             timer.Tick += Timer_Tick;
 
             timer.Start();
@@ -81,7 +79,7 @@ namespace BrokenStats
         {
             if (_dbContext != null)
             {
-                double averageXP = _dbContext.GetAverageXPForLast30Seconds();
+                double averageXP = _dbContext.GetAverageXPForLastXseconds();
 
                 // Dodaj nowy wpis do tabeli ChartSeries
                 var newEntry = new ChartSeries
@@ -253,6 +251,12 @@ namespace BrokenStats
             if (_dbContext != null)
             {
                 _dbContext.AddBattleLogInstance(packetData);
+                string[] parts = packetData.Split('\t');
+
+                if ((int.TryParse(parts[1], out int number)) && _dbContext != null && !string.IsNullOrWhiteSpace(parts[1]))
+                {
+                    _dbContext.AddXP(number);
+                }
                 _dbContext.SaveChanges();
 
                 _dbContext.BattleLogNicknames.Load();

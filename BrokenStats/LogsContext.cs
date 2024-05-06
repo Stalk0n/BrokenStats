@@ -22,7 +22,7 @@ public class LogsContext : DbContext
         //Funkcja wykonywana na tworzenie modelu danych
     }
 
-    public double GetAverageXPForLast30Seconds()
+    public double GetAverageXPForLastXseconds()
     {
         DateTime thirtySecondsAgo = DateTime.Now.AddSeconds(-30);
 
@@ -30,13 +30,13 @@ public class LogsContext : DbContext
         var allXPData = XPtable.ToList();
 
         // Wyfiltruj dane, aby pozostały tylko te z ostatnich 30 sekund
-        var xpDataForLast30Seconds = allXPData
+        var xpDataForLastXSeconds = allXPData
             .Where(x => DateTime.Parse(x.Data) >= thirtySecondsAgo)
             .Select(x => x.Experience);
 
-        if (xpDataForLast30Seconds.Any())
+        if (xpDataForLastXSeconds.Any())
         {
-            return xpDataForLast30Seconds.Average();
+            return xpDataForLastXSeconds.Average();
         }
         else
         {
