@@ -57,7 +57,22 @@ namespace BrokenStats
             opponentsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             battleLogBindingSource = new BindingSource(components);
             tabPage3 = new TabPage();
-            button3 = new Button();
+            customButton1 = new CustomControls.CustomButton();
+            customComboBox2 = new CustomControls.CustomComboBox();
+            customComboBox1 = new CustomControls.CustomComboBox();
+            customTextBox3 = new CustomControls.CustomTextBox();
+            customTextBox2 = new CustomControls.CustomTextBox();
+            customTextBox1 = new CustomControls.CustomTextBox();
+            label8 = new Label();
+            label7 = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            toggleButton3 = new CustomControls.ToggleButton();
+            toggleButton2 = new CustomControls.ToggleButton();
+            label2 = new Label();
+            toggleButton1 = new CustomControls.ToggleButton();
+            label3 = new Label();
             chart_label = new Label();
             formsPlot1 = new ScottPlot.WinForms.FormsPlot();
             textBox1 = new TextBox();
@@ -331,7 +346,22 @@ namespace BrokenStats
             // tabPage3
             // 
             tabPage3.BackColor = Color.FromArgb(224, 224, 224);
-            tabPage3.Controls.Add(button3);
+            tabPage3.Controls.Add(customButton1);
+            tabPage3.Controls.Add(customComboBox2);
+            tabPage3.Controls.Add(customComboBox1);
+            tabPage3.Controls.Add(customTextBox3);
+            tabPage3.Controls.Add(customTextBox2);
+            tabPage3.Controls.Add(customTextBox1);
+            tabPage3.Controls.Add(label8);
+            tabPage3.Controls.Add(label7);
+            tabPage3.Controls.Add(label6);
+            tabPage3.Controls.Add(label5);
+            tabPage3.Controls.Add(label4);
+            tabPage3.Controls.Add(toggleButton3);
+            tabPage3.Controls.Add(toggleButton2);
+            tabPage3.Controls.Add(label2);
+            tabPage3.Controls.Add(toggleButton1);
+            tabPage3.Controls.Add(label3);
             tabPage3.Controls.Add(chart_label);
             tabPage3.Controls.Add(formsPlot1);
             tabPage3.Controls.Add(textBox1);
@@ -342,39 +372,264 @@ namespace BrokenStats
             tabPage3.Padding = new Padding(3);
             tabPage3.Size = new Size(1071, 567);
             tabPage3.TabIndex = 2;
-            tabPage3.Text = "tabPage3";
+            tabPage3.Text = "Addons";
+            tabPage3.Click += tabPage3_Click;
             // 
-            // button3
+            // customButton1
             // 
-            button3.Location = new Point(66, 260);
-            button3.Name = "button3";
-            button3.Size = new Size(133, 39);
-            button3.TabIndex = 12;
-            button3.Text = "Fit Plot";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            customButton1.BackColor = Color.MediumSlateBlue;
+            customButton1.BackgroundColor = Color.MediumSlateBlue;
+            customButton1.BorderColor = Color.PaleVioletRed;
+            customButton1.BorderRadius = 0;
+            customButton1.BorderSize = 0;
+            customButton1.FlatAppearance.BorderSize = 0;
+            customButton1.FlatStyle = FlatStyle.Flat;
+            customButton1.ForeColor = Color.White;
+            customButton1.Location = new Point(30, 245);
+            customButton1.Name = "customButton1";
+            customButton1.Size = new Size(188, 50);
+            customButton1.TabIndex = 33;
+            customButton1.Text = "Fit Plot";
+            customButton1.TextColor = Color.White;
+            customButton1.UseVisualStyleBackColor = false;
+            customButton1.Click += customButton1_Click;
+            // 
+            // customComboBox2
+            // 
+            customComboBox2.BackColor = Color.WhiteSmoke;
+            customComboBox2.BorderColor = Color.MediumSlateBlue;
+            customComboBox2.BorderSize = 1;
+            customComboBox2.DropDownStyle = ComboBoxStyle.DropDown;
+            customComboBox2.Font = new Font("Segoe UI", 10F);
+            customComboBox2.ForeColor = Color.DimGray;
+            customComboBox2.IconColor = Color.MediumSlateBlue;
+            customComboBox2.Items.AddRange(new object[] { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII" });
+            customComboBox2.ListBackColor = Color.FromArgb(230, 228, 245);
+            customComboBox2.ListTextColor = Color.DimGray;
+            customComboBox2.Location = new Point(908, 283);
+            customComboBox2.MinimumSize = new Size(71, 34);
+            customComboBox2.Name = "customComboBox2";
+            customComboBox2.Padding = new Padding(1);
+            customComboBox2.Size = new Size(71, 34);
+            customComboBox2.TabIndex = 32;
+            customComboBox2.Texts = "";
+            // 
+            // customComboBox1
+            // 
+            customComboBox1.BackColor = Color.WhiteSmoke;
+            customComboBox1.BorderColor = Color.MediumSlateBlue;
+            customComboBox1.BorderSize = 1;
+            customComboBox1.DropDownStyle = ComboBoxStyle.DropDown;
+            customComboBox1.Font = new Font("Segoe UI", 10F);
+            customComboBox1.ForeColor = Color.DimGray;
+            customComboBox1.IconColor = Color.MediumSlateBlue;
+            customComboBox1.Items.AddRange(new object[] { "1* - Bronze 1", "2* - Bronze 2", "3* - Bronze 3", "4* - Silver 1", "5* - Silver 2", "6* - Silver 3", "7* - Gold 1", "8* - Gold 2", "9* - Gold 3" });
+            customComboBox1.ListBackColor = Color.FromArgb(230, 228, 245);
+            customComboBox1.ListTextColor = Color.DimGray;
+            customComboBox1.Location = new Point(908, 209);
+            customComboBox1.MinimumSize = new Size(71, 34);
+            customComboBox1.Name = "customComboBox1";
+            customComboBox1.Padding = new Padding(1);
+            customComboBox1.Size = new Size(146, 34);
+            customComboBox1.TabIndex = 32;
+            customComboBox1.Texts = "";
+            // 
+            // customTextBox3
+            // 
+            customTextBox3.BackColor = SystemColors.Window;
+            customTextBox3.BorderColor = Color.MediumSlateBlue;
+            customTextBox3.BorderFocusColor = Color.HotPink;
+            customTextBox3.BorderRadius = 0;
+            customTextBox3.BorderSize = 2;
+            customTextBox3.Font = new Font("Segoe UI", 9.5F);
+            customTextBox3.ForeColor = Color.DimGray;
+            customTextBox3.Location = new Point(773, 100);
+            customTextBox3.Margin = new Padding(4);
+            customTextBox3.Multiline = false;
+            customTextBox3.Name = "customTextBox3";
+            customTextBox3.Padding = new Padding(7);
+            customTextBox3.PasswordChar = false;
+            customTextBox3.PlaceholderColor = Color.DarkGray;
+            customTextBox3.PlaceholderText = "Cena odłamków";
+            customTextBox3.Size = new Size(129, 36);
+            customTextBox3.TabIndex = 31;
+            customTextBox3.Texts = "";
+            customTextBox3.UnderlinedStyle = false;
+            // 
+            // customTextBox2
+            // 
+            customTextBox2.BackColor = SystemColors.Window;
+            customTextBox2.BorderColor = Color.MediumSlateBlue;
+            customTextBox2.BorderFocusColor = Color.HotPink;
+            customTextBox2.BorderRadius = 0;
+            customTextBox2.BorderSize = 2;
+            customTextBox2.Font = new Font("Segoe UI", 9.5F);
+            customTextBox2.ForeColor = Color.DimGray;
+            customTextBox2.Location = new Point(638, 100);
+            customTextBox2.Margin = new Padding(4);
+            customTextBox2.Multiline = false;
+            customTextBox2.Name = "customTextBox2";
+            customTextBox2.Padding = new Padding(7);
+            customTextBox2.PasswordChar = false;
+            customTextBox2.PlaceholderColor = Color.DarkGray;
+            customTextBox2.PlaceholderText = "Cena esencji";
+            customTextBox2.Size = new Size(129, 36);
+            customTextBox2.TabIndex = 31;
+            customTextBox2.Texts = "";
+            customTextBox2.UnderlinedStyle = false;
+            // 
+            // customTextBox1
+            // 
+            customTextBox1.BackColor = SystemColors.Window;
+            customTextBox1.BorderColor = Color.MediumSlateBlue;
+            customTextBox1.BorderFocusColor = Color.HotPink;
+            customTextBox1.BorderRadius = 0;
+            customTextBox1.BorderSize = 2;
+            customTextBox1.Font = new Font("Segoe UI", 9.5F);
+            customTextBox1.ForeColor = Color.DimGray;
+            customTextBox1.Location = new Point(503, 100);
+            customTextBox1.Margin = new Padding(4);
+            customTextBox1.Multiline = false;
+            customTextBox1.Name = "customTextBox1";
+            customTextBox1.Padding = new Padding(7);
+            customTextBox1.PasswordChar = false;
+            customTextBox1.PlaceholderColor = Color.DarkGray;
+            customTextBox1.PlaceholderText = "Cena plat. za szt.";
+            customTextBox1.Size = new Size(129, 36);
+            customTextBox1.TabIndex = 31;
+            customTextBox1.Texts = "";
+            customTextBox1.UnderlinedStyle = false;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 12F);
+            label8.Location = new Point(669, 31);
+            label8.Name = "label8";
+            label8.Size = new Size(101, 28);
+            label8.TabIndex = 30;
+            label8.Text = "Kalkulator";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(908, 260);
+            label7.Name = "label7";
+            label7.Size = new Size(51, 20);
+            label7.TabIndex = 29;
+            label7.Text = "Ranga";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(906, 186);
+            label6.Name = "label6";
+            label6.Size = new Size(69, 20);
+            label6.TabIndex = 28;
+            label6.Text = "Gwiazdki";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(954, 142);
+            label5.Name = "label5";
+            label5.Size = new Size(65, 20);
+            label5.TabIndex = 27;
+            label5.Text = "Inhibitor";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(954, 112);
+            label4.Name = "label4";
+            label4.Size = new Size(100, 20);
+            label4.TabIndex = 26;
+            label4.Text = "Targ Premium";
+            // 
+            // toggleButton3
+            // 
+            toggleButton3.AutoSize = true;
+            toggleButton3.Location = new Point(908, 142);
+            toggleButton3.MinimumSize = new Size(45, 22);
+            toggleButton3.Name = "toggleButton3";
+            toggleButton3.OffBackColor = Color.Gray;
+            toggleButton3.OffToggleColor = Color.Gainsboro;
+            toggleButton3.OnBackColor = Color.MediumSlateBlue;
+            toggleButton3.OnToggleColor = Color.WhiteSmoke;
+            toggleButton3.Size = new Size(45, 22);
+            toggleButton3.TabIndex = 25;
+            toggleButton3.UseVisualStyleBackColor = true;
+            // 
+            // toggleButton2
+            // 
+            toggleButton2.AutoSize = true;
+            toggleButton2.Location = new Point(908, 114);
+            toggleButton2.MinimumSize = new Size(45, 22);
+            toggleButton2.Name = "toggleButton2";
+            toggleButton2.OffBackColor = Color.Gray;
+            toggleButton2.OffToggleColor = Color.Gainsboro;
+            toggleButton2.OnBackColor = Color.MediumSlateBlue;
+            toggleButton2.OnToggleColor = Color.WhiteSmoke;
+            toggleButton2.Size = new Size(45, 22);
+            toggleButton2.TabIndex = 25;
+            toggleButton2.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(954, 86);
+            label2.Name = "label2";
+            label2.Size = new Size(64, 20);
+            label2.TabIndex = 24;
+            label2.Text = "Set Item";
+            // 
+            // toggleButton1
+            // 
+            toggleButton1.AutoSize = true;
+            toggleButton1.Location = new Point(908, 86);
+            toggleButton1.MinimumSize = new Size(45, 22);
+            toggleButton1.Name = "toggleButton1";
+            toggleButton1.OffBackColor = Color.Gray;
+            toggleButton1.OffToggleColor = Color.Gainsboro;
+            toggleButton1.OnBackColor = Color.MediumSlateBlue;
+            toggleButton1.OnToggleColor = Color.WhiteSmoke;
+            toggleButton1.Size = new Size(45, 22);
+            toggleButton1.TabIndex = 23;
+            toggleButton1.UseVisualStyleBackColor = true;
+            toggleButton1.CheckedChanged += toggleButton1_CheckedChanged;
+            // 
+            // label3
+            // 
+            label3.BackColor = Color.Black;
+            label3.BorderStyle = BorderStyle.Fixed3D;
+            label3.Location = new Point(490, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(2, 567);
+            label3.TabIndex = 14;
+            label3.Click += label3_Click;
             // 
             // chart_label
             // 
             chart_label.AutoSize = true;
-            chart_label.Location = new Point(52, 22);
+            chart_label.Location = new Point(30, 22);
             chart_label.Name = "chart_label";
             chart_label.Size = new Size(183, 20);
             chart_label.TabIndex = 11;
             chart_label.Text = "Tyle punktów na wykresie: ";
+            chart_label.Click += chart_label_Click;
             // 
             // formsPlot1
             // 
             formsPlot1.DisplayScale = 1.25F;
-            formsPlot1.Location = new Point(52, 45);
+            formsPlot1.Location = new Point(30, 45);
             formsPlot1.Name = "formsPlot1";
-            formsPlot1.Size = new Size(429, 200);
+            formsPlot1.Size = new Size(389, 179);
             formsPlot1.TabIndex = 10;
             formsPlot1.Load += formsPlot1_Load;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(851, 233);
+            textBox1.Location = new Point(136, 372);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(125, 27);
             textBox1.TabIndex = 9;
@@ -382,7 +637,7 @@ namespace BrokenStats
             // 
             // button2
             // 
-            button2.Location = new Point(851, 344);
+            button2.Location = new Point(156, 405);
             button2.Name = "button2";
             button2.Size = new Size(79, 38);
             button2.TabIndex = 8;
@@ -468,6 +723,21 @@ namespace BrokenStats
         private ScottPlot.WinForms.FormsPlot formsPlot1;
         private System.Windows.Forms.Timer timer1;
         private Label chart_label;
-        private Button button3;
+        private Label label3;
+        private CustomControls.ToggleButton toggleButton1;
+        private Label label2;
+        private CustomControls.ToggleButton toggleButton2;
+        private Label label5;
+        private Label label4;
+        private CustomControls.ToggleButton toggleButton3;
+        private Label label8;
+        private Label label7;
+        private Label label6;
+        private CustomControls.CustomTextBox customTextBox3;
+        private CustomControls.CustomTextBox customTextBox2;
+        private CustomControls.CustomTextBox customTextBox1;
+        private CustomControls.CustomComboBox customComboBox1;
+        private CustomControls.CustomComboBox customComboBox2;
+        private CustomControls.CustomButton customButton1;
     }
 }

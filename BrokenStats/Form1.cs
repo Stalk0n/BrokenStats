@@ -40,7 +40,7 @@ namespace BrokenStats
             CreateChart();
 
             timer = new System.Windows.Forms.Timer();
-            timer.Interval = 3000; 
+            timer.Interval = 3000;
             timer.Tick += Timer_Tick;
 
             timer.Start();
@@ -150,7 +150,7 @@ namespace BrokenStats
             double yMax = limits.Top;
             double yMin = limits.Bottom;
 
-            formsPlot1.Plot.Axes.SetLimits(null,null, yMin - 0.5, yMax + 5);
+            formsPlot1.Plot.Axes.SetLimits(null, null, yMin - 0.5, yMax + 5);
             //var limits = formsPlot1.Plot.Axes.GetLimits();
 
             // Maximum Y value
@@ -384,6 +384,41 @@ namespace BrokenStats
 
             formsPlot1.Plot.Axes.SetLimits(null, null, yMin - 0.5, yMax + 5);
 
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e) //usunac jakos funkcje
+        {
+
+        }
+
+        private void chart_label_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toggleButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void customButton1_Click(object sender, EventArgs e)
+        {
+            formsPlot1.Refresh();
+
+            formsPlot1.Plot.Axes.AutoScale();
+
+
+            AxisLimits limits = formsPlot1.Plot.Axes.GetLimits();
+            double yMax = limits.Top;
+            double yMin = limits.Bottom;
+
+
+            formsPlot1.Plot.Axes.SetLimits(null, null, yMin - 0.5, yMax + 5);
         }
     }
 }
