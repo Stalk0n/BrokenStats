@@ -32,12 +32,11 @@ namespace BrokenStats
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
             dataGridViewChatLogMessage = new DataGridView();
-            dataDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            messageDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             messagesBindingSource = new BindingSource(components);
             chatLogNicknameBindingSource = new BindingSource(components);
             dataGridViewChatNickname = new DataGridView();
@@ -65,6 +64,8 @@ namespace BrokenStats
             label1 = new Label();
             sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
             timer1 = new System.Windows.Forms.Timer(components);
+            dataDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            messageDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -88,19 +89,22 @@ namespace BrokenStats
             tabControl1.Controls.Add(tabPage3);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
+            tabControl1.Margin = new Padding(3, 2, 3, 2);
+            tabControl1.Multiline = true;
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1079, 600);
+            tabControl1.Size = new Size(944, 450);
             tabControl1.TabIndex = 3;
             // 
             // tabPage1
             // 
             tabPage1.Controls.Add(tableLayoutPanel1);
             tabPage1.Controls.Add(button1);
-            tabPage1.Location = new Point(4, 29);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Margin = new Padding(3, 2, 3, 2);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1071, 567);
+            tabPage1.Padding = new Padding(3, 2, 3, 2);
+            tabPage1.Size = new Size(936, 422);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "ChatLogs";
             tabPage1.UseVisualStyleBackColor = true;
@@ -113,11 +117,10 @@ namespace BrokenStats
             tableLayoutPanel1.Controls.Add(dataGridViewChatLogMessage, 1, 0);
             tableLayoutPanel1.Controls.Add(dataGridViewChatNickname, 0, 0);
             tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1070, 521);
+            tableLayoutPanel1.Size = new Size(936, 391);
             tableLayoutPanel1.TabIndex = 6;
             // 
             // dataGridViewChatLogMessage
@@ -125,34 +128,26 @@ namespace BrokenStats
             dataGridViewChatLogMessage.AllowUserToAddRows = false;
             dataGridViewChatLogMessage.AllowUserToDeleteRows = false;
             dataGridViewChatLogMessage.AutoGenerateColumns = false;
+            dataGridViewChatLogMessage.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewChatLogMessage.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewChatLogMessage.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewChatLogMessage.Columns.AddRange(new DataGridViewColumn[] { dataDataGridViewTextBoxColumn, messageDataGridViewTextBoxColumn });
             dataGridViewChatLogMessage.DataSource = messagesBindingSource;
-            dataGridViewChatLogMessage.Location = new Point(455, 4);
-            dataGridViewChatLogMessage.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewChatLogMessage.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewChatLogMessage.Dock = DockStyle.Left;
+            dataGridViewChatLogMessage.Location = new Point(302, 3);
             dataGridViewChatLogMessage.Name = "dataGridViewChatLogMessage";
             dataGridViewChatLogMessage.ReadOnly = true;
             dataGridViewChatLogMessage.RowHeadersWidth = 51;
-            dataGridViewChatLogMessage.Size = new Size(774, 513);
+            dataGridViewChatLogMessage.Size = new Size(631, 385);
             dataGridViewChatLogMessage.TabIndex = 5;
-            // 
-            // dataDataGridViewTextBoxColumn
-            // 
-            dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
-            dataDataGridViewTextBoxColumn.HeaderText = "Date";
-            dataDataGridViewTextBoxColumn.MinimumWidth = 6;
-            dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
-            dataDataGridViewTextBoxColumn.ReadOnly = true;
-            dataDataGridViewTextBoxColumn.Width = 125;
-            // 
-            // messageDataGridViewTextBoxColumn
-            // 
-            messageDataGridViewTextBoxColumn.DataPropertyName = "Message";
-            messageDataGridViewTextBoxColumn.HeaderText = "Message";
-            messageDataGridViewTextBoxColumn.MinimumWidth = 6;
-            messageDataGridViewTextBoxColumn.Name = "messageDataGridViewTextBoxColumn";
-            messageDataGridViewTextBoxColumn.ReadOnly = true;
-            messageDataGridViewTextBoxColumn.Width = 125;
             // 
             // messagesBindingSource
             // 
@@ -171,12 +166,11 @@ namespace BrokenStats
             dataGridViewChatNickname.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewChatNickname.Columns.AddRange(new DataGridViewColumn[] { nickDataGridViewTextBoxColumn });
             dataGridViewChatNickname.DataSource = chatLogNicknameBindingSource;
-            dataGridViewChatNickname.Location = new Point(3, 4);
-            dataGridViewChatNickname.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewChatNickname.Location = new Point(3, 3);
             dataGridViewChatNickname.Name = "dataGridViewChatNickname";
             dataGridViewChatNickname.ReadOnly = true;
             dataGridViewChatNickname.RowHeadersWidth = 51;
-            dataGridViewChatNickname.Size = new Size(446, 513);
+            dataGridViewChatNickname.Size = new Size(293, 385);
             dataGridViewChatNickname.TabIndex = 4;
             // 
             // nickDataGridViewTextBoxColumn
@@ -190,9 +184,10 @@ namespace BrokenStats
             // 
             // button1
             // 
-            button1.Location = new Point(664, 528);
+            button1.Location = new Point(581, 396);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(82, 22);
             button1.TabIndex = 3;
             button1.Text = "Tester";
             button1.UseVisualStyleBackColor = true;
@@ -201,10 +196,11 @@ namespace BrokenStats
             // tabPage2
             // 
             tabPage2.Controls.Add(tableLayoutPanel2);
-            tabPage2.Location = new Point(4, 29);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Margin = new Padding(3, 2, 3, 2);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1071, 567);
+            tabPage2.Padding = new Padding(3, 2, 3, 2);
+            tabPage2.Size = new Size(936, 422);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Items";
             tabPage2.UseVisualStyleBackColor = true;
@@ -217,11 +213,10 @@ namespace BrokenStats
             tableLayoutPanel2.Controls.Add(dataGridViewBattleLogNickname, 0, 0);
             tableLayoutPanel2.Controls.Add(dataGridViewBattleLogLogs, 1, 0);
             tableLayoutPanel2.Location = new Point(0, 0);
-            tableLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(1070, 563);
+            tableLayoutPanel2.Size = new Size(936, 422);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // dataGridViewBattleLogNickname
@@ -232,12 +227,11 @@ namespace BrokenStats
             dataGridViewBattleLogNickname.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewBattleLogNickname.Columns.AddRange(new DataGridViewColumn[] { nickDataGridViewTextBoxColumn1 });
             dataGridViewBattleLogNickname.DataSource = battleLogNicknameBindingSource;
-            dataGridViewBattleLogNickname.Location = new Point(3, 4);
-            dataGridViewBattleLogNickname.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewBattleLogNickname.Location = new Point(3, 3);
             dataGridViewBattleLogNickname.Name = "dataGridViewBattleLogNickname";
             dataGridViewBattleLogNickname.ReadOnly = true;
             dataGridViewBattleLogNickname.RowHeadersWidth = 51;
-            dataGridViewBattleLogNickname.Size = new Size(274, 555);
+            dataGridViewBattleLogNickname.Size = new Size(240, 416);
             dataGridViewBattleLogNickname.TabIndex = 0;
             // 
             // nickDataGridViewTextBoxColumn1
@@ -261,12 +255,11 @@ namespace BrokenStats
             dataGridViewBattleLogLogs.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewBattleLogLogs.Columns.AddRange(new DataGridViewColumn[] { dataDataGridViewTextBoxColumn1, experienceDataGridViewTextBoxColumn, psychoExperienceDataGridViewTextBoxColumn, goldDataGridViewTextBoxColumn, droppeditemsDataGridViewTextBoxColumn, opponentsDataGridViewTextBoxColumn });
             dataGridViewBattleLogLogs.DataSource = battleLogBindingSource;
-            dataGridViewBattleLogLogs.Location = new Point(283, 4);
-            dataGridViewBattleLogLogs.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewBattleLogLogs.Location = new Point(249, 3);
             dataGridViewBattleLogLogs.Name = "dataGridViewBattleLogLogs";
             dataGridViewBattleLogLogs.ReadOnly = true;
             dataGridViewBattleLogLogs.RowHeadersWidth = 51;
-            dataGridViewBattleLogLogs.Size = new Size(782, 555);
+            dataGridViewBattleLogLogs.Size = new Size(684, 416);
             dataGridViewBattleLogLogs.TabIndex = 1;
             // 
             // dataDataGridViewTextBoxColumn1
@@ -337,18 +330,20 @@ namespace BrokenStats
             tabPage3.Controls.Add(textBox1);
             tabPage3.Controls.Add(button2);
             tabPage3.Controls.Add(label1);
-            tabPage3.Location = new Point(4, 29);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Margin = new Padding(3, 2, 3, 2);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(1071, 567);
+            tabPage3.Padding = new Padding(3, 2, 3, 2);
+            tabPage3.Size = new Size(936, 422);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "tabPage3";
             // 
             // button3
             // 
-            button3.Location = new Point(66, 260);
+            button3.Location = new Point(58, 195);
+            button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
-            button3.Size = new Size(133, 39);
+            button3.Size = new Size(116, 29);
             button3.TabIndex = 12;
             button3.Text = "Fit Plot";
             button3.UseVisualStyleBackColor = true;
@@ -357,34 +352,37 @@ namespace BrokenStats
             // chart_label
             // 
             chart_label.AutoSize = true;
-            chart_label.Location = new Point(52, 22);
+            chart_label.Location = new Point(46, 16);
             chart_label.Name = "chart_label";
-            chart_label.Size = new Size(183, 20);
+            chart_label.Size = new Size(147, 15);
             chart_label.TabIndex = 11;
             chart_label.Text = "Tyle punktów na wykresie: ";
             // 
             // formsPlot1
             // 
             formsPlot1.DisplayScale = 1.25F;
-            formsPlot1.Location = new Point(52, 45);
+            formsPlot1.Location = new Point(46, 34);
+            formsPlot1.Margin = new Padding(3, 2, 3, 2);
             formsPlot1.Name = "formsPlot1";
-            formsPlot1.Size = new Size(429, 200);
+            formsPlot1.Size = new Size(375, 150);
             formsPlot1.TabIndex = 10;
             formsPlot1.Load += formsPlot1_Load;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(851, 233);
+            textBox1.Location = new Point(745, 175);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
+            textBox1.Size = new Size(110, 23);
             textBox1.TabIndex = 9;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
             // button2
             // 
-            button2.Location = new Point(851, 344);
+            button2.Location = new Point(745, 258);
+            button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(79, 38);
+            button2.Size = new Size(69, 28);
             button2.TabIndex = 8;
             button2.Text = "DodajXP";
             button2.UseVisualStyleBackColor = true;
@@ -393,9 +391,9 @@ namespace BrokenStats
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(353, 197);
+            label1.Location = new Point(309, 148);
             label1.Name = "label1";
-            label1.Size = new Size(0, 20);
+            label1.Size = new Size(0, 15);
             label1.TabIndex = 0;
             // 
             // sqliteCommand1
@@ -405,13 +403,31 @@ namespace BrokenStats
             sqliteCommand1.Transaction = null;
             sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
             // 
+            // dataDataGridViewTextBoxColumn
+            // 
+            dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
+            dataDataGridViewTextBoxColumn.HeaderText = "Date";
+            dataDataGridViewTextBoxColumn.MinimumWidth = 6;
+            dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
+            dataDataGridViewTextBoxColumn.ReadOnly = true;
+            dataDataGridViewTextBoxColumn.Width = 56;
+            // 
+            // messageDataGridViewTextBoxColumn
+            // 
+            messageDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            messageDataGridViewTextBoxColumn.DataPropertyName = "Message";
+            messageDataGridViewTextBoxColumn.HeaderText = "Message";
+            messageDataGridViewTextBoxColumn.MinimumWidth = 6;
+            messageDataGridViewTextBoxColumn.Name = "messageDataGridViewTextBoxColumn";
+            messageDataGridViewTextBoxColumn.ReadOnly = true;
+            messageDataGridViewTextBoxColumn.Width = 78;
+            // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1079, 600);
+            ClientSize = new Size(944, 450);
             Controls.Add(tabControl1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "MainForm";
             Text = "BrokenStats";
             Load += Form1_Load;
@@ -459,8 +475,6 @@ namespace BrokenStats
         private DataGridViewTextBoxColumn droppeditemsDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn opponentsDataGridViewTextBoxColumn;
         private BindingSource battleLogBindingSource;
-        private DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn messageDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nickDataGridViewTextBoxColumn;
         private TextBox textBox1;
         private Button button2;
@@ -469,5 +483,7 @@ namespace BrokenStats
         private System.Windows.Forms.Timer timer1;
         private Label chart_label;
         private Button button3;
+        private DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn messageDataGridViewTextBoxColumn;
     }
 }

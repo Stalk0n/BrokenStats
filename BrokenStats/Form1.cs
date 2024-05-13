@@ -326,7 +326,7 @@ namespace BrokenStats
         {
             if (_dbContext != null)
             {
-                _dbContext.AddChatLogMessage("Mateusz PIWO");
+                _dbContext.AddChatLogMessage("Mateusz PIWOcvzsfvbdfbdfbzdfbzdfbzdbzxcvbxbcxcbzxbzxcbzxcbzxc zxcb zxb zxcb xczbxcbzxcb zxcb zxcb  xcb");
                 _dbContext.SaveChanges();
 
                 // Odœwie¿anie danych w formularzu
