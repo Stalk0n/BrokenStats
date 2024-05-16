@@ -37,6 +37,8 @@ namespace BrokenStats
             tabPage1 = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
             dataGridViewChatLogMessage = new DataGridView();
+            dataDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            messageDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             messagesBindingSource = new BindingSource(components);
             chatLogNicknameBindingSource = new BindingSource(components);
             dataGridViewChatNickname = new DataGridView();
@@ -64,8 +66,6 @@ namespace BrokenStats
             label1 = new Label();
             sqliteCommand1 = new Microsoft.Data.Sqlite.SqliteCommand();
             timer1 = new System.Windows.Forms.Timer(components);
-            dataDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            messageDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -148,6 +148,25 @@ namespace BrokenStats
             dataGridViewChatLogMessage.RowHeadersWidth = 51;
             dataGridViewChatLogMessage.Size = new Size(631, 385);
             dataGridViewChatLogMessage.TabIndex = 5;
+            // 
+            // dataDataGridViewTextBoxColumn
+            // 
+            dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
+            dataDataGridViewTextBoxColumn.HeaderText = "Date";
+            dataDataGridViewTextBoxColumn.MinimumWidth = 6;
+            dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
+            dataDataGridViewTextBoxColumn.ReadOnly = true;
+            dataDataGridViewTextBoxColumn.Width = 56;
+            // 
+            // messageDataGridViewTextBoxColumn
+            // 
+            messageDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            messageDataGridViewTextBoxColumn.DataPropertyName = "Message";
+            messageDataGridViewTextBoxColumn.HeaderText = "Message";
+            messageDataGridViewTextBoxColumn.MinimumWidth = 6;
+            messageDataGridViewTextBoxColumn.Name = "messageDataGridViewTextBoxColumn";
+            messageDataGridViewTextBoxColumn.ReadOnly = true;
+            messageDataGridViewTextBoxColumn.Width = 78;
             // 
             // messagesBindingSource
             // 
@@ -402,25 +421,6 @@ namespace BrokenStats
             sqliteCommand1.Connection = null;
             sqliteCommand1.Transaction = null;
             sqliteCommand1.UpdatedRowSource = System.Data.UpdateRowSource.None;
-            // 
-            // dataDataGridViewTextBoxColumn
-            // 
-            dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
-            dataDataGridViewTextBoxColumn.HeaderText = "Date";
-            dataDataGridViewTextBoxColumn.MinimumWidth = 6;
-            dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
-            dataDataGridViewTextBoxColumn.ReadOnly = true;
-            dataDataGridViewTextBoxColumn.Width = 56;
-            // 
-            // messageDataGridViewTextBoxColumn
-            // 
-            messageDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            messageDataGridViewTextBoxColumn.DataPropertyName = "Message";
-            messageDataGridViewTextBoxColumn.HeaderText = "Message";
-            messageDataGridViewTextBoxColumn.MinimumWidth = 6;
-            messageDataGridViewTextBoxColumn.Name = "messageDataGridViewTextBoxColumn";
-            messageDataGridViewTextBoxColumn.ReadOnly = true;
-            messageDataGridViewTextBoxColumn.Width = 78;
             // 
             // MainForm
             // 
