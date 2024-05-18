@@ -1,4 +1,6 @@
-﻿namespace BrokenStats
+﻿using Krypton.Toolkit;
+
+namespace BrokenStats
 {
     partial class Form2
     {
@@ -28,40 +30,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             panel1 = new Panel();
-            guna2ControlBox3 = new Guna.UI2.WinForms.Guna2ControlBox();
-            guna2ControlBox2 = new Guna.UI2.WinForms.Guna2ControlBox();
-            guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
+            minimiseButton = new KryptonButton();
+            maximiseButton = new KryptonButton();
+            exitButton = new KryptonButton();
             label2 = new Label();
             label1 = new Label();
             pictureBox1 = new PictureBox();
-            guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            kryptonButton1 = new KryptonButton();
             panelContainer = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
+            kryptonButton7 = new KryptonButton();
+            kryptonButton2 = new KryptonButton();
+            kryptonButton4 = new KryptonButton();
+            kryptonButton3 = new KryptonButton();
+            kryptonButton5 = new KryptonButton();
+            kryptonButton6 = new KryptonButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
@@ -70,9 +55,9 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(26, 26, 26);
-            panel1.Controls.Add(guna2ControlBox3);
-            panel1.Controls.Add(guna2ControlBox2);
-            panel1.Controls.Add(guna2ControlBox1);
+            panel1.Controls.Add(minimiseButton);
+            panel1.Controls.Add(maximiseButton);
+            panel1.Controls.Add(exitButton);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
@@ -82,46 +67,120 @@
             panel1.Size = new Size(800, 55);
             panel1.TabIndex = 0;
             // 
-            // guna2ControlBox3
+            // minimiseButton
             // 
-            guna2ControlBox3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            guna2ControlBox3.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MinimizeBox;
-            guna2ControlBox3.CustomizableEdges = customizableEdges1;
-            guna2ControlBox3.FillColor = Color.FromArgb(26, 26, 26);
-            guna2ControlBox3.HoverState.FillColor = Color.FromArgb(56, 56, 56);
-            guna2ControlBox3.IconColor = Color.White;
-            guna2ControlBox3.Location = new Point(697, 0);
-            guna2ControlBox3.Name = "guna2ControlBox3";
-            guna2ControlBox3.ShadowDecoration.CustomizableEdges = customizableEdges2;
-            guna2ControlBox3.Size = new Size(37, 20);
-            guna2ControlBox3.TabIndex = 6;
+            minimiseButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            minimiseButton.Location = new Point(662, 0);
+            minimiseButton.Margin = new Padding(0);
+            minimiseButton.Name = "minimiseButton";
+            minimiseButton.OverrideDefault.Back.Color1 = Color.FromArgb(26, 26, 26);
+            minimiseButton.OverrideDefault.Back.Color2 = Color.FromArgb(26, 26, 26);
+            minimiseButton.OverrideDefault.Border.Color1 = Color.FromArgb(26, 26, 26);
+            minimiseButton.OverrideDefault.Border.Color2 = Color.FromArgb(26, 26, 26);
+            minimiseButton.OverrideDefault.Border.DrawBorders = PaletteDrawBorders.None;
+            minimiseButton.OverrideFocus.Back.Color1 = Color.FromArgb(56, 56, 56);
+            minimiseButton.OverrideFocus.Back.Color2 = Color.FromArgb(56, 56, 56);
+            minimiseButton.OverrideFocus.Border.Color1 = Color.FromArgb(56, 56, 56);
+            minimiseButton.OverrideFocus.Border.Color2 = Color.FromArgb(56, 56, 56);
+            minimiseButton.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.None;
+            minimiseButton.Size = new Size(46, 31);
+            minimiseButton.StateCommon.Back.Color1 = Color.FromArgb(26, 26, 26);
+            minimiseButton.StateCommon.Back.Color2 = Color.FromArgb(26, 26, 26);
+            minimiseButton.StateCommon.Border.Color1 = Color.FromArgb(26, 26, 26);
+            minimiseButton.StateCommon.Border.Color2 = Color.FromArgb(26, 26, 26);
+            minimiseButton.StateCommon.Border.DrawBorders = PaletteDrawBorders.None;
+            minimiseButton.StateCommon.Content.ShortText.Color1 = Color.White;
+            minimiseButton.StateCommon.Content.ShortText.Color2 = Color.White;
+            minimiseButton.StateCommon.Content.ShortText.Font = new Font("Century Gothic", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            minimiseButton.StateDisabled.Back.Color1 = Color.FromArgb(26, 26, 26);
+            minimiseButton.StateDisabled.Back.Color2 = Color.FromArgb(26, 26, 26);
+            minimiseButton.StateDisabled.Border.DrawBorders = PaletteDrawBorders.None;
+            minimiseButton.StateNormal.Back.Color1 = Color.FromArgb(26, 26, 26);
+            minimiseButton.StateNormal.Back.Color2 = Color.FromArgb(26, 26, 26);
+            minimiseButton.StateNormal.Border.DrawBorders = PaletteDrawBorders.None;
+            minimiseButton.StateNormal.Border.GraphicsHint = PaletteGraphicsHint.AntiAlias;
+            minimiseButton.StatePressed.Back.Color1 = Color.FromArgb(56, 56, 56);
+            minimiseButton.StatePressed.Back.Color2 = Color.FromArgb(56, 56, 56);
+            minimiseButton.StatePressed.Border.DrawBorders = PaletteDrawBorders.None;
+            minimiseButton.StateTracking.Back.Color1 = Color.FromArgb(36, 36, 36);
+            minimiseButton.StateTracking.Back.Color2 = Color.FromArgb(36, 36, 36);
+            minimiseButton.StateTracking.Border.Color1 = Color.FromArgb(56, 56, 56);
+            minimiseButton.StateTracking.Border.Color2 = Color.FromArgb(56, 56, 56);
+            minimiseButton.StateTracking.Border.DrawBorders = PaletteDrawBorders.None;
+            minimiseButton.TabIndex = 14;
+            minimiseButton.Values.Text = "_";
+            minimiseButton.Click += kryptonButton10_Click;
             // 
-            // guna2ControlBox2
+            // maximiseButton
             // 
-            guna2ControlBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            guna2ControlBox2.ControlBoxType = Guna.UI2.WinForms.Enums.ControlBoxType.MaximizeBox;
-            guna2ControlBox2.CustomizableEdges = customizableEdges3;
-            guna2ControlBox2.FillColor = Color.FromArgb(26, 26, 26);
-            guna2ControlBox2.HoverState.FillColor = Color.FromArgb(56, 56, 56);
-            guna2ControlBox2.IconColor = Color.White;
-            guna2ControlBox2.Location = new Point(729, 0);
-            guna2ControlBox2.Name = "guna2ControlBox2";
-            guna2ControlBox2.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            guna2ControlBox2.Size = new Size(37, 20);
-            guna2ControlBox2.TabIndex = 5;
+            maximiseButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            maximiseButton.Location = new Point(708, 0);
+            maximiseButton.Margin = new Padding(0);
+            maximiseButton.Name = "maximiseButton";
+            maximiseButton.OverrideDefault.Back.Color1 = Color.FromArgb(26, 26, 26);
+            maximiseButton.OverrideDefault.Back.Color2 = Color.FromArgb(26, 26, 26);
+            maximiseButton.OverrideDefault.Border.Color1 = Color.FromArgb(26, 26, 26);
+            maximiseButton.OverrideDefault.Border.Color2 = Color.FromArgb(26, 26, 26);
+            maximiseButton.OverrideDefault.Border.DrawBorders = PaletteDrawBorders.Top | PaletteDrawBorders.Bottom | PaletteDrawBorders.Left | PaletteDrawBorders.Right;
+            maximiseButton.OverrideFocus.Back.Color1 = Color.FromArgb(56, 56, 56);
+            maximiseButton.OverrideFocus.Back.Color2 = Color.FromArgb(56, 56, 56);
+            maximiseButton.OverrideFocus.Border.Color1 = Color.FromArgb(56, 56, 56);
+            maximiseButton.OverrideFocus.Border.Color2 = Color.FromArgb(56, 56, 56);
+            maximiseButton.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.Top | PaletteDrawBorders.Bottom | PaletteDrawBorders.Left | PaletteDrawBorders.Right;
+            maximiseButton.Size = new Size(46, 31);
+            maximiseButton.StateCommon.Back.Color1 = Color.FromArgb(26, 26, 26);
+            maximiseButton.StateCommon.Back.Color2 = Color.FromArgb(26, 26, 26);
+            maximiseButton.StateCommon.Border.DrawBorders = PaletteDrawBorders.None;
+            maximiseButton.StateCommon.Content.ShortText.Color1 = Color.White;
+            maximiseButton.StateCommon.Content.ShortText.Color2 = Color.White;
+            maximiseButton.StateCommon.Content.ShortText.Font = new Font("Century Gothic", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            maximiseButton.StateDisabled.Back.Color1 = Color.FromArgb(26, 26, 26);
+            maximiseButton.StateDisabled.Back.Color2 = Color.FromArgb(26, 26, 26);
+            maximiseButton.StateDisabled.Border.DrawBorders = PaletteDrawBorders.None;
+            maximiseButton.StateNormal.Back.Color1 = Color.FromArgb(26, 26, 26);
+            maximiseButton.StateNormal.Back.Color2 = Color.FromArgb(26, 26, 26);
+            maximiseButton.StateNormal.Border.DrawBorders = PaletteDrawBorders.None;
+            maximiseButton.StateNormal.Border.GraphicsHint = PaletteGraphicsHint.AntiAlias;
+            maximiseButton.StatePressed.Back.Color1 = Color.FromArgb(56, 56, 56);
+            maximiseButton.StatePressed.Back.Color2 = Color.FromArgb(56, 56, 56);
+            maximiseButton.StatePressed.Border.DrawBorders = PaletteDrawBorders.None;
+            maximiseButton.StateTracking.Back.Color1 = Color.FromArgb(36, 36, 36);
+            maximiseButton.StateTracking.Back.Color2 = Color.FromArgb(36, 36, 36);
+            maximiseButton.StateTracking.Border.Color1 = Color.FromArgb(56, 56, 56);
+            maximiseButton.StateTracking.Border.Color2 = Color.FromArgb(56, 56, 56);
+            maximiseButton.StateTracking.Border.DrawBorders = PaletteDrawBorders.None;
+            maximiseButton.TabIndex = 13;
+            maximiseButton.Values.Text = "🗖";
+            maximiseButton.Click += kryptonButton9_Click;
             // 
-            // guna2ControlBox1
+            // exitButton
             // 
-            guna2ControlBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            guna2ControlBox1.CustomizableEdges = customizableEdges5;
-            guna2ControlBox1.FillColor = Color.FromArgb(26, 26, 26);
-            guna2ControlBox1.HoverState.FillColor = Color.FromArgb(56, 56, 56);
-            guna2ControlBox1.IconColor = Color.White;
-            guna2ControlBox1.Location = new Point(763, 0);
-            guna2ControlBox1.Name = "guna2ControlBox1";
-            guna2ControlBox1.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            guna2ControlBox1.Size = new Size(37, 20);
-            guna2ControlBox1.TabIndex = 4;
+            exitButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            exitButton.Location = new Point(754, 0);
+            exitButton.Margin = new Padding(0);
+            exitButton.Name = "exitButton";
+            exitButton.Size = new Size(46, 31);
+            exitButton.StateCommon.Back.Color1 = Color.FromArgb(26, 26, 26);
+            exitButton.StateCommon.Border.DrawBorders = PaletteDrawBorders.None;
+            exitButton.StateCommon.Content.ShortText.Color1 = Color.White;
+            exitButton.StateCommon.Content.ShortText.Color2 = Color.White;
+            exitButton.StateCommon.Content.ShortText.Font = new Font("Century Gothic", 12.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            exitButton.StateDisabled.Back.Color1 = Color.FromArgb(26, 26, 26);
+            exitButton.StateDisabled.Back.Color2 = Color.FromArgb(26, 26, 26);
+            exitButton.StateDisabled.Border.DrawBorders = PaletteDrawBorders.None;
+            exitButton.StateNormal.Back.Color1 = Color.FromArgb(26, 26, 26);
+            exitButton.StateNormal.Back.Color2 = Color.FromArgb(26, 26, 26);
+            exitButton.StateNormal.Border.DrawBorders = PaletteDrawBorders.None;
+            exitButton.StateNormal.Border.GraphicsHint = PaletteGraphicsHint.AntiAlias;
+            exitButton.StatePressed.Back.Color1 = Color.FromArgb(56, 56, 56);
+            exitButton.StatePressed.Back.Color2 = Color.FromArgb(56, 56, 56);
+            exitButton.StatePressed.Border.DrawBorders = PaletteDrawBorders.None;
+            exitButton.StateTracking.Back.Color1 = Color.FromArgb(159, 36, 36);
+            exitButton.StateTracking.Back.Color2 = Color.FromArgb(159, 36, 36);
+            exitButton.StateTracking.Border.DrawBorders = PaletteDrawBorders.None;
+            exitButton.TabIndex = 12;
+            exitButton.Values.Text = "×";
+            exitButton.Click += kryptonButton8_Click;
             // 
             // label2
             // 
@@ -155,141 +214,40 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // guna2Button6
+            // kryptonButton1
             // 
-            guna2Button6.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            guna2Button6.CheckedState.CustomBorderColor = Color.FromArgb(64, 64, 64);
-            guna2Button6.CheckedState.FillColor = SystemColors.Control;
-            guna2Button6.CustomBorderThickness = new Padding(0, 0, 0, 3);
-            guna2Button6.CustomizableEdges = customizableEdges7;
-            guna2Button6.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button6.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button6.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button6.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button6.FillColor = SystemColors.Control;
-            guna2Button6.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2Button6.ForeColor = Color.FromArgb(64, 64, 64);
-            guna2Button6.HoverState.FillColor = Color.Silver;
-            guna2Button6.Location = new Point(668, 3);
-            guna2Button6.Name = "guna2Button6";
-            guna2Button6.ShadowDecoration.CustomizableEdges = customizableEdges8;
-            guna2Button6.Size = new Size(127, 38);
-            guna2Button6.TabIndex = 5;
-            guna2Button6.Text = "Placeholder";
-            // 
-            // guna2Button5
-            // 
-            guna2Button5.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            guna2Button5.CheckedState.CustomBorderColor = Color.FromArgb(64, 64, 64);
-            guna2Button5.CheckedState.FillColor = SystemColors.Control;
-            guna2Button5.CustomBorderThickness = new Padding(0, 0, 0, 3);
-            guna2Button5.CustomizableEdges = customizableEdges9;
-            guna2Button5.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button5.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button5.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button5.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button5.FillColor = SystemColors.Control;
-            guna2Button5.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2Button5.ForeColor = Color.FromArgb(64, 64, 64);
-            guna2Button5.HoverState.FillColor = Color.Silver;
-            guna2Button5.Location = new Point(535, 3);
-            guna2Button5.Name = "guna2Button5";
-            guna2Button5.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            guna2Button5.Size = new Size(127, 38);
-            guna2Button5.TabIndex = 4;
-            guna2Button5.Text = "Placeholder";
-            // 
-            // guna2Button4
-            // 
-            guna2Button4.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            guna2Button4.CheckedState.CustomBorderColor = Color.FromArgb(64, 64, 64);
-            guna2Button4.CheckedState.FillColor = SystemColors.Control;
-            guna2Button4.CustomBorderThickness = new Padding(0, 0, 0, 3);
-            guna2Button4.CustomizableEdges = customizableEdges11;
-            guna2Button4.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button4.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button4.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button4.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button4.FillColor = SystemColors.Control;
-            guna2Button4.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2Button4.ForeColor = Color.FromArgb(64, 64, 64);
-            guna2Button4.HoverState.FillColor = Color.Silver;
-            guna2Button4.Location = new Point(402, 3);
-            guna2Button4.Name = "guna2Button4";
-            guna2Button4.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            guna2Button4.Size = new Size(127, 38);
-            guna2Button4.TabIndex = 3;
-            guna2Button4.Text = "Battle statistics";
-            guna2Button4.Click += guna2Button4_Click;
-            // 
-            // guna2Button3
-            // 
-            guna2Button3.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            guna2Button3.CheckedState.CustomBorderColor = Color.FromArgb(64, 64, 64);
-            guna2Button3.CheckedState.FillColor = SystemColors.Control;
-            guna2Button3.CustomBorderThickness = new Padding(0, 0, 0, 3);
-            guna2Button3.CustomizableEdges = customizableEdges13;
-            guna2Button3.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button3.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button3.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button3.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button3.FillColor = SystemColors.Control;
-            guna2Button3.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2Button3.ForeColor = Color.FromArgb(64, 64, 64);
-            guna2Button3.HoverState.FillColor = Color.Silver;
-            guna2Button3.Location = new Point(269, 3);
-            guna2Button3.Name = "guna2Button3";
-            guna2Button3.ShadowDecoration.CustomizableEdges = customizableEdges14;
-            guna2Button3.Size = new Size(127, 38);
-            guna2Button3.TabIndex = 2;
-            guna2Button3.Text = "Essence calculator";
-            guna2Button3.Click += guna2Button3_Click;
-            // 
-            // guna2Button2
-            // 
-            guna2Button2.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            guna2Button2.CheckedState.CustomBorderColor = Color.FromArgb(64, 64, 64);
-            guna2Button2.CheckedState.FillColor = SystemColors.Control;
-            guna2Button2.CustomBorderThickness = new Padding(0, 0, 0, 3);
-            guna2Button2.CustomizableEdges = customizableEdges15;
-            guna2Button2.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button2.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button2.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button2.FillColor = SystemColors.Control;
-            guna2Button2.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2Button2.ForeColor = Color.FromArgb(64, 64, 64);
-            guna2Button2.HoverState.FillColor = Color.Silver;
-            guna2Button2.Location = new Point(136, 3);
-            guna2Button2.Name = "guna2Button2";
-            guna2Button2.ShadowDecoration.CustomizableEdges = customizableEdges16;
-            guna2Button2.Size = new Size(127, 38);
-            guna2Button2.TabIndex = 1;
-            guna2Button2.Text = "Battle logs";
-            guna2Button2.Click += guna2Button2_Click;
-            // 
-            // guna2Button1
-            // 
-            guna2Button1.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            guna2Button1.CheckedState.CustomBorderColor = Color.FromArgb(64, 64, 64);
-            guna2Button1.CheckedState.FillColor = SystemColors.Control;
-            guna2Button1.CustomBorderThickness = new Padding(0, 0, 0, 3);
-            guna2Button1.CustomizableEdges = customizableEdges17;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.FillColor = SystemColors.Control;
-            guna2Button1.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2Button1.ForeColor = Color.FromArgb(64, 64, 64);
-            guna2Button1.HoverState.FillColor = Color.Silver;
-            guna2Button1.Location = new Point(3, 3);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges18;
-            guna2Button1.Size = new Size(127, 38);
-            guna2Button1.TabIndex = 0;
-            guna2Button1.Text = "Chat logs";
-            guna2Button1.Click += guna2Button1_Click;
+            kryptonButton1.Location = new Point(1, 1);
+            kryptonButton1.Margin = new Padding(1);
+            kryptonButton1.Name = "kryptonButton1";
+            kryptonButton1.OverrideDefault.Back.Color1 = Color.Silver;
+            kryptonButton1.OverrideDefault.Back.Color2 = Color.Silver;
+            kryptonButton1.OverrideDefault.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton1.OverrideFocus.Back.Color1 = Color.DarkGray;
+            kryptonButton1.OverrideFocus.Back.Color2 = Color.DarkGray;
+            kryptonButton1.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton1.Size = new Size(112, 42);
+            kryptonButton1.StateCommon.Back.Color1 = SystemColors.Control;
+            kryptonButton1.StateCommon.Back.Color2 = SystemColors.Control;
+            kryptonButton1.StateCommon.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton1.StateCommon.Border.GraphicsHint = PaletteGraphicsHint.AntiAlias;
+            kryptonButton1.StateCommon.Content.ShortText.Color1 = Color.FromArgb(64, 64, 64);
+            kryptonButton1.StateCommon.Content.ShortText.Color2 = Color.FromArgb(64, 64, 64);
+            kryptonButton1.StateCommon.Content.ShortText.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonButton1.StateCommon.Content.ShortText.MultiLine = InheritBool.True;
+            kryptonButton1.StateCommon.Content.ShortText.MultiLineH = PaletteRelativeAlign.Center;
+            kryptonButton1.StateCommon.Content.ShortText.TextH = PaletteRelativeAlign.Center;
+            kryptonButton1.StateCommon.Content.ShortText.TextV = PaletteRelativeAlign.Center;
+            kryptonButton1.StateDisabled.Back.Color1 = SystemColors.Control;
+            kryptonButton1.StateDisabled.Back.Color2 = SystemColors.Control;
+            kryptonButton1.StateNormal.Back.Color1 = SystemColors.Control;
+            kryptonButton1.StateNormal.Back.Color2 = SystemColors.Control;
+            kryptonButton1.StatePressed.Back.Color1 = Color.DarkGray;
+            kryptonButton1.StatePressed.Back.Color2 = Color.DarkGray;
+            kryptonButton1.StateTracking.Back.Color1 = Color.Silver;
+            kryptonButton1.StateTracking.Back.Color2 = Color.Silver;
+            kryptonButton1.TabIndex = 0;
+            kryptonButton1.Values.Text = "Chat logs";
+            kryptonButton1.Click += kryptonButton1_Click;
             // 
             // panelContainer
             // 
@@ -301,19 +259,21 @@
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.ColumnCount = 6;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            tableLayoutPanel1.Controls.Add(guna2Button6, 5, 0);
-            tableLayoutPanel1.Controls.Add(guna2Button5, 4, 0);
-            tableLayoutPanel1.Controls.Add(guna2Button2, 1, 0);
-            tableLayoutPanel1.Controls.Add(guna2Button4, 3, 0);
-            tableLayoutPanel1.Controls.Add(guna2Button3, 2, 0);
-            tableLayoutPanel1.Controls.Add(guna2Button1, 0, 0);
+            tableLayoutPanel1.ColumnCount = 7;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857113F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857151F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857151F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857151F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857151F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857151F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 14.2857113F));
+            tableLayoutPanel1.Controls.Add(kryptonButton7, 6, 0);
+            tableLayoutPanel1.Controls.Add(kryptonButton1, 0, 0);
+            tableLayoutPanel1.Controls.Add(kryptonButton2, 1, 0);
+            tableLayoutPanel1.Controls.Add(kryptonButton4, 3, 0);
+            tableLayoutPanel1.Controls.Add(kryptonButton3, 2, 0);
+            tableLayoutPanel1.Controls.Add(kryptonButton5, 4, 0);
+            tableLayoutPanel1.Controls.Add(kryptonButton6, 5, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 55);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -321,6 +281,222 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel1.Size = new Size(800, 44);
             tableLayoutPanel1.TabIndex = 0;
+            // 
+            // kryptonButton7
+            // 
+            kryptonButton7.Location = new Point(685, 1);
+            kryptonButton7.Margin = new Padding(1);
+            kryptonButton7.Name = "kryptonButton7";
+            kryptonButton7.OverrideDefault.Back.Color1 = Color.Silver;
+            kryptonButton7.OverrideDefault.Back.Color2 = Color.Silver;
+            kryptonButton7.OverrideDefault.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton7.OverrideFocus.Back.Color1 = Color.DarkGray;
+            kryptonButton7.OverrideFocus.Back.Color2 = Color.DarkGray;
+            kryptonButton7.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton7.Size = new Size(112, 42);
+            kryptonButton7.StateCommon.Back.Color1 = SystemColors.Control;
+            kryptonButton7.StateCommon.Back.Color2 = SystemColors.Control;
+            kryptonButton7.StateCommon.Border.Color1 = SystemColors.Control;
+            kryptonButton7.StateCommon.Border.Color2 = SystemColors.Control;
+            kryptonButton7.StateCommon.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton7.StateCommon.Border.GraphicsHint = PaletteGraphicsHint.AntiAlias;
+            kryptonButton7.StateCommon.Content.ShortText.Color1 = Color.FromArgb(64, 64, 64);
+            kryptonButton7.StateCommon.Content.ShortText.Color2 = Color.FromArgb(64, 64, 64);
+            kryptonButton7.StateCommon.Content.ShortText.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonButton7.StateCommon.Content.ShortText.MultiLine = InheritBool.True;
+            kryptonButton7.StateCommon.Content.ShortText.MultiLineH = PaletteRelativeAlign.Center;
+            kryptonButton7.StateCommon.Content.ShortText.TextH = PaletteRelativeAlign.Center;
+            kryptonButton7.StateCommon.Content.ShortText.TextV = PaletteRelativeAlign.Center;
+            kryptonButton7.StateDisabled.Back.Color1 = SystemColors.Control;
+            kryptonButton7.StateDisabled.Back.Color2 = SystemColors.Control;
+            kryptonButton7.StateNormal.Back.Color1 = SystemColors.Control;
+            kryptonButton7.StateNormal.Back.Color2 = SystemColors.Control;
+            kryptonButton7.StatePressed.Back.Color1 = Color.DarkGray;
+            kryptonButton7.StatePressed.Back.Color2 = Color.DarkGray;
+            kryptonButton7.StateTracking.Back.Color1 = Color.Silver;
+            kryptonButton7.StateTracking.Back.Color2 = Color.Silver;
+            kryptonButton7.TabIndex = 11;
+            kryptonButton7.Values.Text = "Placeholder2";
+            kryptonButton7.Click += kryptonButton7_Click;
+            // 
+            // kryptonButton2
+            // 
+            kryptonButton2.Location = new Point(115, 1);
+            kryptonButton2.Margin = new Padding(1);
+            kryptonButton2.Name = "kryptonButton2";
+            kryptonButton2.OverrideDefault.Back.Color1 = Color.Silver;
+            kryptonButton2.OverrideDefault.Back.Color2 = Color.Silver;
+            kryptonButton2.OverrideDefault.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton2.OverrideFocus.Back.Color1 = Color.DarkGray;
+            kryptonButton2.OverrideFocus.Back.Color2 = Color.DarkGray;
+            kryptonButton2.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton2.Size = new Size(112, 42);
+            kryptonButton2.StateCommon.Back.Color1 = SystemColors.Control;
+            kryptonButton2.StateCommon.Back.Color2 = SystemColors.Control;
+            kryptonButton2.StateCommon.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton2.StateCommon.Border.GraphicsHint = PaletteGraphicsHint.AntiAlias;
+            kryptonButton2.StateCommon.Content.ShortText.Color1 = Color.FromArgb(64, 64, 64);
+            kryptonButton2.StateCommon.Content.ShortText.Color2 = Color.FromArgb(64, 64, 64);
+            kryptonButton2.StateCommon.Content.ShortText.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonButton2.StateCommon.Content.ShortText.MultiLine = InheritBool.True;
+            kryptonButton2.StateCommon.Content.ShortText.MultiLineH = PaletteRelativeAlign.Center;
+            kryptonButton2.StateCommon.Content.ShortText.TextH = PaletteRelativeAlign.Center;
+            kryptonButton2.StateCommon.Content.ShortText.TextV = PaletteRelativeAlign.Center;
+            kryptonButton2.StateDisabled.Back.Color1 = SystemColors.Control;
+            kryptonButton2.StateDisabled.Back.Color2 = SystemColors.Control;
+            kryptonButton2.StateNormal.Back.Color1 = SystemColors.Control;
+            kryptonButton2.StateNormal.Back.Color2 = SystemColors.Control;
+            kryptonButton2.StatePressed.Back.Color1 = Color.DarkGray;
+            kryptonButton2.StatePressed.Back.Color2 = Color.DarkGray;
+            kryptonButton2.StateTracking.Back.Color1 = Color.Silver;
+            kryptonButton2.StateTracking.Back.Color2 = Color.Silver;
+            kryptonButton2.TabIndex = 6;
+            kryptonButton2.Values.Text = "Battle logs";
+            kryptonButton2.Click += kryptonButton2_Click;
+            // 
+            // kryptonButton4
+            // 
+            kryptonButton4.Location = new Point(343, 1);
+            kryptonButton4.Margin = new Padding(1);
+            kryptonButton4.Name = "kryptonButton4";
+            kryptonButton4.OverrideDefault.Back.Color1 = Color.Silver;
+            kryptonButton4.OverrideDefault.Back.Color2 = Color.Silver;
+            kryptonButton4.OverrideDefault.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton4.OverrideFocus.Back.Color1 = Color.DarkGray;
+            kryptonButton4.OverrideFocus.Back.Color2 = Color.DarkGray;
+            kryptonButton4.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton4.Size = new Size(112, 42);
+            kryptonButton4.StateCommon.Back.Color1 = SystemColors.Control;
+            kryptonButton4.StateCommon.Back.Color2 = SystemColors.Control;
+            kryptonButton4.StateCommon.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton4.StateCommon.Border.GraphicsHint = PaletteGraphicsHint.AntiAlias;
+            kryptonButton4.StateCommon.Content.ShortText.Color1 = Color.FromArgb(64, 64, 64);
+            kryptonButton4.StateCommon.Content.ShortText.Color2 = Color.FromArgb(64, 64, 64);
+            kryptonButton4.StateCommon.Content.ShortText.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonButton4.StateDisabled.Back.Color1 = SystemColors.Control;
+            kryptonButton4.StateDisabled.Back.Color2 = SystemColors.Control;
+            kryptonButton4.StateDisabled.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton4.StateNormal.Back.Color1 = SystemColors.Control;
+            kryptonButton4.StateNormal.Back.Color2 = SystemColors.Control;
+            kryptonButton4.StateNormal.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton4.StatePressed.Back.Color1 = Color.DarkGray;
+            kryptonButton4.StatePressed.Back.Color2 = Color.DarkGray;
+            kryptonButton4.StatePressed.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton4.StateTracking.Back.Color1 = Color.Silver;
+            kryptonButton4.StateTracking.Back.Color2 = Color.Silver;
+            kryptonButton4.StateTracking.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton4.TabIndex = 8;
+            kryptonButton4.Values.Text = "Calculator";
+            kryptonButton4.Click += kryptonButton4_Click;
+            // 
+            // kryptonButton3
+            // 
+            kryptonButton3.Location = new Point(229, 1);
+            kryptonButton3.Margin = new Padding(1);
+            kryptonButton3.Name = "kryptonButton3";
+            kryptonButton3.OverrideDefault.Back.Color1 = Color.Silver;
+            kryptonButton3.OverrideDefault.Back.Color2 = Color.Silver;
+            kryptonButton3.OverrideDefault.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton3.OverrideFocus.Back.Color1 = Color.DarkGray;
+            kryptonButton3.OverrideFocus.Back.Color2 = Color.DarkGray;
+            kryptonButton3.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton3.Size = new Size(112, 42);
+            kryptonButton3.StateCommon.Back.Color1 = SystemColors.Control;
+            kryptonButton3.StateCommon.Back.Color2 = SystemColors.Control;
+            kryptonButton3.StateCommon.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton3.StateCommon.Border.GraphicsHint = PaletteGraphicsHint.AntiAlias;
+            kryptonButton3.StateCommon.Content.ShortText.Color1 = Color.FromArgb(64, 64, 64);
+            kryptonButton3.StateCommon.Content.ShortText.Color2 = Color.FromArgb(64, 64, 64);
+            kryptonButton3.StateCommon.Content.ShortText.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonButton3.StateCommon.Content.ShortText.MultiLine = InheritBool.True;
+            kryptonButton3.StateCommon.Content.ShortText.MultiLineH = PaletteRelativeAlign.Center;
+            kryptonButton3.StateCommon.Content.ShortText.TextH = PaletteRelativeAlign.Center;
+            kryptonButton3.StateCommon.Content.ShortText.TextV = PaletteRelativeAlign.Center;
+            kryptonButton3.StateDisabled.Back.Color1 = SystemColors.Control;
+            kryptonButton3.StateDisabled.Back.Color2 = SystemColors.Control;
+            kryptonButton3.StateNormal.Back.Color1 = SystemColors.Control;
+            kryptonButton3.StateNormal.Back.Color2 = SystemColors.Control;
+            kryptonButton3.StatePressed.Back.Color1 = Color.DarkGray;
+            kryptonButton3.StatePressed.Back.Color2 = Color.DarkGray;
+            kryptonButton3.StateTracking.Back.Color1 = Color.Silver;
+            kryptonButton3.StateTracking.Back.Color2 = Color.Silver;
+            kryptonButton3.TabIndex = 7;
+            kryptonButton3.Values.Text = "Battle statistics";
+            kryptonButton3.Click += kryptonButton3_Click;
+            // 
+            // kryptonButton5
+            // 
+            kryptonButton5.Location = new Point(457, 1);
+            kryptonButton5.Margin = new Padding(1);
+            kryptonButton5.Name = "kryptonButton5";
+            kryptonButton5.OverrideDefault.Back.Color1 = Color.Silver;
+            kryptonButton5.OverrideDefault.Back.Color2 = Color.Silver;
+            kryptonButton5.OverrideDefault.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton5.OverrideFocus.Back.Color1 = Color.DarkGray;
+            kryptonButton5.OverrideFocus.Back.Color2 = Color.DarkGray;
+            kryptonButton5.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton5.Size = new Size(112, 42);
+            kryptonButton5.StateCommon.Back.Color1 = SystemColors.Control;
+            kryptonButton5.StateCommon.Back.Color2 = SystemColors.Control;
+            kryptonButton5.StateCommon.Border.Color1 = SystemColors.Control;
+            kryptonButton5.StateCommon.Border.Color2 = SystemColors.Control;
+            kryptonButton5.StateCommon.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton5.StateCommon.Border.GraphicsHint = PaletteGraphicsHint.AntiAlias;
+            kryptonButton5.StateCommon.Content.ShortText.Color1 = Color.FromArgb(64, 64, 64);
+            kryptonButton5.StateCommon.Content.ShortText.Color2 = Color.FromArgb(64, 64, 64);
+            kryptonButton5.StateCommon.Content.ShortText.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonButton5.StateCommon.Content.ShortText.MultiLine = InheritBool.True;
+            kryptonButton5.StateCommon.Content.ShortText.MultiLineH = PaletteRelativeAlign.Center;
+            kryptonButton5.StateCommon.Content.ShortText.TextH = PaletteRelativeAlign.Center;
+            kryptonButton5.StateCommon.Content.ShortText.TextV = PaletteRelativeAlign.Center;
+            kryptonButton5.StateDisabled.Back.Color1 = SystemColors.Control;
+            kryptonButton5.StateDisabled.Back.Color2 = SystemColors.Control;
+            kryptonButton5.StateNormal.Back.Color1 = SystemColors.Control;
+            kryptonButton5.StateNormal.Back.Color2 = SystemColors.Control;
+            kryptonButton5.StatePressed.Back.Color1 = Color.DarkGray;
+            kryptonButton5.StatePressed.Back.Color2 = Color.DarkGray;
+            kryptonButton5.StateTracking.Back.Color1 = Color.Silver;
+            kryptonButton5.StateTracking.Back.Color2 = Color.Silver;
+            kryptonButton5.TabIndex = 9;
+            kryptonButton5.Values.Text = "Respawns";
+            kryptonButton5.Click += kryptonButton5_Click;
+            // 
+            // kryptonButton6
+            // 
+            kryptonButton6.Location = new Point(571, 1);
+            kryptonButton6.Margin = new Padding(1);
+            kryptonButton6.Name = "kryptonButton6";
+            kryptonButton6.OverrideDefault.Back.Color1 = Color.Silver;
+            kryptonButton6.OverrideDefault.Back.Color2 = Color.Silver;
+            kryptonButton6.OverrideDefault.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton6.OverrideFocus.Back.Color1 = Color.DarkGray;
+            kryptonButton6.OverrideFocus.Back.Color2 = Color.DarkGray;
+            kryptonButton6.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton6.Size = new Size(112, 42);
+            kryptonButton6.StateCommon.Back.Color1 = SystemColors.Control;
+            kryptonButton6.StateCommon.Back.Color2 = SystemColors.Control;
+            kryptonButton6.StateCommon.Border.Color1 = SystemColors.Control;
+            kryptonButton6.StateCommon.Border.Color2 = SystemColors.Control;
+            kryptonButton6.StateCommon.Border.DrawBorders = PaletteDrawBorders.None;
+            kryptonButton6.StateCommon.Border.GraphicsHint = PaletteGraphicsHint.AntiAlias;
+            kryptonButton6.StateCommon.Content.ShortText.Color1 = Color.FromArgb(64, 64, 64);
+            kryptonButton6.StateCommon.Content.ShortText.Color2 = Color.FromArgb(64, 64, 64);
+            kryptonButton6.StateCommon.Content.ShortText.Font = new Font("Century Gothic", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            kryptonButton6.StateCommon.Content.ShortText.MultiLine = InheritBool.True;
+            kryptonButton6.StateCommon.Content.ShortText.MultiLineH = PaletteRelativeAlign.Center;
+            kryptonButton6.StateCommon.Content.ShortText.TextH = PaletteRelativeAlign.Center;
+            kryptonButton6.StateCommon.Content.ShortText.TextV = PaletteRelativeAlign.Center;
+            kryptonButton6.StateDisabled.Back.Color1 = SystemColors.Control;
+            kryptonButton6.StateDisabled.Back.Color2 = SystemColors.Control;
+            kryptonButton6.StateNormal.Back.Color1 = SystemColors.Control;
+            kryptonButton6.StateNormal.Back.Color2 = SystemColors.Control;
+            kryptonButton6.StatePressed.Back.Color1 = Color.DarkGray;
+            kryptonButton6.StatePressed.Back.Color2 = Color.DarkGray;
+            kryptonButton6.StateTracking.Back.Color1 = Color.Silver;
+            kryptonButton6.StateTracking.Back.Color2 = Color.Silver;
+            kryptonButton6.TabIndex = 10;
+            kryptonButton6.Values.Text = "Placeholder1";
+            kryptonButton6.Click += kryptonButton6_Click;
             // 
             // Form2
             // 
@@ -345,18 +521,19 @@
 
         private Panel panel1;
         private PictureBox pictureBox1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Label label1;
         private Label label2;
-        private Guna.UI2.WinForms.Guna2Button guna2Button6;
-        private Guna.UI2.WinForms.Guna2Button guna2Button5;
-        private Guna.UI2.WinForms.Guna2Button guna2Button4;
-        private Guna.UI2.WinForms.Guna2Button guna2Button3;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Panel panelContainer;
-        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
-        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox3;
-        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox2;
         private TableLayoutPanel tableLayoutPanel1;
+        private Krypton.Toolkit.KryptonButton kryptonButton1;
+        private Krypton.Toolkit.KryptonButton kryptonButton2;
+        private Krypton.Toolkit.KryptonButton kryptonButton4;
+        private Krypton.Toolkit.KryptonButton kryptonButton3;
+        private Krypton.Toolkit.KryptonButton kryptonButton5;
+        private KryptonButton kryptonButton6;
+        private KryptonButton exitButton;
+        private KryptonButton kryptonButton7;
+        private KryptonButton minimiseButton;
+        private KryptonButton maximiseButton;
     }
 }

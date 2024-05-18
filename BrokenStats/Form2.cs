@@ -1,23 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using BrokenStats.UserControls;
+﻿using BrokenStats.UserControls;
 
 namespace BrokenStats
 {
     public partial class Form2 : Form
     {
+        private Point mouseOffset;
+        private bool isMouseDown = false;
+
         public Form2()
         {
             InitializeComponent();
             UC_ChatLog uc = new UC_ChatLog();
             addUserControl(uc);
+            panel1.MouseDown += Panel1_MouseDown;
+            panel1.MouseMove += Panel1_MouseMove;
+            panel1.MouseUp += Panel1_MouseUp;
         }
 
         private void addUserControl(UserControl userControl)
@@ -26,30 +23,95 @@ namespace BrokenStats
             panelContainer.Controls.Clear();
             panelContainer.Controls.Add(userControl);
             userControl.BringToFront();
-
         }
-        private void guna2Button1_Click(object sender, EventArgs e)
+
+        private void Panel1_MouseDown(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Left)
+            {
+                mouseOffset = new Point(e.X, e.Y);
+                isMouseDown = true;
+            }
+        }
+
+        private void Panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isMouseDown)
+            {
+                Point mousePos = Control.MousePosition;
+                mousePos.Offset(-mouseOffset.X, -mouseOffset.Y);
+                Location = mousePos;
+            }
+        }
+
+        private void Panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isMouseDown = false;
+            }
+        }
+
+        private void kryptonButton1_Click(object sender, EventArgs e)
+        {
+
             UC_ChatLog uc = new UC_ChatLog();
             addUserControl(uc);
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
+        private void kryptonButton2_Click(object sender, EventArgs e)
         {
             UC_BattleLog uc = new UC_BattleLog();
             addUserControl(uc);
         }
 
-        private void guna2Button3_Click(object sender, EventArgs e)
+        private void kryptonButton3_Click(object sender, EventArgs e)
+        {
+            UC_BattleStatistics uc = new UC_BattleStatistics();
+            addUserControl(uc);
+        }
+
+        private void kryptonButton4_Click(object sender, EventArgs e)
         {
             UC_EssenceCalculator uc = new UC_EssenceCalculator();
             addUserControl(uc);
         }
 
-        private void guna2Button4_Click(object sender, EventArgs e)
+        private void kryptonButton5_Click(object sender, EventArgs e)
         {
-            UC_BattleStatistics uc = new UC_BattleStatistics();
-            addUserControl(uc);
+
         }
+
+        private void kryptonButton6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kryptonButton7_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void kryptonButton10_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void kryptonButton9_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void kryptonButton8_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
     }
 }
