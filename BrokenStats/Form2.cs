@@ -1,4 +1,9 @@
-﻿using BrokenStats.UserControls;
+﻿using BrokenStats.Tables;
+using BrokenStats.UserControls;
+using Microsoft.EntityFrameworkCore;
+using ScottPlot;
+using System.ComponentModel;
+
 
 namespace BrokenStats
 {
@@ -7,8 +12,11 @@ namespace BrokenStats
         private Point mouseOffset;
         private bool isMouseDown = false;
 
+        private LogsContext? _dbContext;
+
         public Form2()
         {
+            Uruchom_sniffer();
             InitializeComponent();
             UC_ChatLog uc = new UC_ChatLog();
             addUserControl(uc);
@@ -111,6 +119,28 @@ namespace BrokenStats
         private void kryptonButton8_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        
+        private static void Uruchom_sniffer()
+        {
+            Sniffer sniffer = new Sniffer();
+
+            new Thread(() =>
+            {
+                Thread.CurrentThread.IsBackground = true;
+
+                sniffer.Start();
+            }).Start();
+        }
+
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+
+            _dbContext?.Dispose();
+            _dbContext = null;
         }
 
     }

@@ -254,7 +254,7 @@ namespace BrokenStats
             panelContainer.Dock = DockStyle.Fill;
             panelContainer.Location = new Point(0, 55);
             panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(800, 395);
+            panelContainer.Size = new Size(800, 450);
             panelContainer.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -502,7 +502,7 @@ namespace BrokenStats
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 505);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panelContainer);
             Controls.Add(panel1);
