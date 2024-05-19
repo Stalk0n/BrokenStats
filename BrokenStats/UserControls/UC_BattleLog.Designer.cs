@@ -53,13 +53,15 @@
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
-            tableLayoutPanel1.Controls.Add(dataGridView1, 0, 0);
-            tableLayoutPanel1.Controls.Add(dataGridView2, 1, 0);
-            tableLayoutPanel1.Location = new Point(3, 51);
+            tableLayoutPanel1.Controls.Add(dataGridView2, 1, 1);
+            tableLayoutPanel1.Controls.Add(dataGridView1, 0, 1);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowCount = 2;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(794, 396);
+            tableLayoutPanel1.Size = new Size(800, 450);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // dataGridView1
@@ -69,9 +71,9 @@
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nickDataGridViewTextBoxColumn });
             dataGridView1.DataSource = battleLogNicknameBindingSource;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Location = new Point(3, 53);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(192, 390);
+            dataGridView1.Size = new Size(194, 394);
             dataGridView1.TabIndex = 0;
             // 
             // nickDataGridViewTextBoxColumn
@@ -92,9 +94,9 @@
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataDataGridViewTextBoxColumn, experienceDataGridViewTextBoxColumn, psychoExperienceDataGridViewTextBoxColumn, goldDataGridViewTextBoxColumn, droppeditemsDataGridViewTextBoxColumn, opponentsDataGridViewTextBoxColumn });
             dataGridView2.DataSource = battleLogBindingSource;
             dataGridView2.Dock = DockStyle.Fill;
-            dataGridView2.Location = new Point(201, 3);
+            dataGridView2.Location = new Point(203, 53);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(590, 390);
+            dataGridView2.Size = new Size(594, 394);
             dataGridView2.TabIndex = 1;
             // 
             // dataDataGridViewTextBoxColumn
@@ -142,7 +144,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Control;
             Controls.Add(tableLayoutPanel1);
+            Location = new Point(0, 50);
             Name = "UC_BattleLog";
             Size = new Size(800, 450);
             tableLayoutPanel1.ResumeLayout(false);

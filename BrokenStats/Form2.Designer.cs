@@ -152,6 +152,7 @@ namespace BrokenStats
             maximiseButton.StateTracking.Border.DrawBorders = PaletteDrawBorders.None;
             maximiseButton.TabIndex = 13;
             maximiseButton.Values.Text = "🗖";
+            // maximiseButton.Values.Text = "+";
             maximiseButton.Click += kryptonButton9_Click;
             // 
             // exitButton

@@ -1,6 +1,6 @@
 ﻿namespace BrokenStats.CustomControls
 {
-    partial class CustomTextBox
+    public partial class CustomTextBox : UserControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -65,5 +65,12 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBox1;
+
+        // Dodaj publiczną właściwość Text
+        public string Text
+        {
+            get { return textBox1.Text; }
+            set { textBox1.Text = value; }
+        }
     }
 }
