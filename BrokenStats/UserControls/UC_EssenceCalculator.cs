@@ -245,9 +245,9 @@ public partial class UC_EssenceCalculator : UserControl
             }
 
 
-            var cenaWOdlamkachGold = iloscOdlamkow * cenaOdlamkow - GetEsencje(ranga, gwiazdki) * cenaEsencji;
+            var cenaWOdlamkachGold = iloscOdlamkow * cenaOdlamkow - GetEsencje(ranga, gwiazdki) * cenaEsencji - 20000;
 
-            var cenaWEsencjachGold = iloscEsencji * cenaEsencji;
+            var cenaWEsencjachGold = iloscEsencji * cenaEsencji - 20000;
 
 
             // if (synergetyk)
@@ -267,13 +267,15 @@ public partial class UC_EssenceCalculator : UserControl
                 cenaWOdlamkachGold = cenaWOdlamkachGold * 96 / 100;
             }
 
-            var profitGold = decimal.Zero;
+
             if (inhibitor)
-                profitGold = Math.Max(cenaWOdlamkachGold, cenaWEsencjachGold) - cenaPrzedmiotu - 20000 - cenaInhibitoraGold;
-            else
-                profitGold = Math.Max(cenaWOdlamkachGold, cenaWEsencjachGold) - cenaPrzedmiotu - 20000;
+            {
+                cenaWOdlamkachGold -= cenaInhibitoraGold;
+                cenaWEsencjachGold -= cenaInhibitoraGold;
+            }
 
 
+            var profitGold = Math.Max(cenaWOdlamkachGold, cenaWEsencjachGold) - cenaPrzedmiotu;
             var profitPlat = profitGold / cenaPlatyny;
 
             // Aktualizacja labela

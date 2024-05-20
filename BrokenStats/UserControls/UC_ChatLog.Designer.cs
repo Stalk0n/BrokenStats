@@ -160,9 +160,9 @@
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nickDataGridViewTextBoxColumn1 });
             dataGridView1.DataSource = chatLogNicknameBindingSource;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Location = new Point(3, 53);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(391, 319);
+            dataGridView1.Size = new Size(234, 394);
             dataGridView1.TabIndex = 0;
             // 
             // nickDataGridViewTextBoxColumn1
@@ -178,15 +178,17 @@
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Controls.Add(dataGridView1, 0, 0);
-            tableLayoutPanel2.Controls.Add(dataGridView2, 1, 0);
-            tableLayoutPanel2.Location = new Point(3, 48);
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutPanel2.Controls.Add(dataGridView1, 0, 1);
+            tableLayoutPanel2.Controls.Add(dataGridView2, 1, 1);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(0, 0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(794, 325);
+            tableLayoutPanel2.RowCount = 2;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.Size = new Size(800, 450);
             tableLayoutPanel2.TabIndex = 1;
             // 
             // dataGridView2
@@ -196,9 +198,9 @@
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataDataGridViewTextBoxColumn1, messageDataGridViewTextBoxColumn1 });
             dataGridView2.DataSource = messagesBindingSource;
             dataGridView2.Dock = DockStyle.Fill;
-            dataGridView2.Location = new Point(400, 3);
+            dataGridView2.Location = new Point(243, 53);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(391, 319);
+            dataGridView2.Size = new Size(554, 394);
             dataGridView2.TabIndex = 1;
             // 
             // dataDataGridViewTextBoxColumn1
