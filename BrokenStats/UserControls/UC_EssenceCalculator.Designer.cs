@@ -73,12 +73,11 @@
             customComboBoxRanga.Items.AddRange(new object[] { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII" });
             customComboBoxRanga.ListBackColor = Color.FromArgb(230, 228, 245);
             customComboBoxRanga.ListTextColor = Color.DimGray;
-            customComboBoxRanga.Location = new Point(552, 70);
-            customComboBoxRanga.Margin = new Padding(3, 2, 3, 2);
-            customComboBoxRanga.MinimumSize = new Size(62, 26);
+            customComboBoxRanga.Location = new Point(631, 93);
+            customComboBoxRanga.MinimumSize = new Size(71, 35);
             customComboBoxRanga.Name = "customComboBoxRanga";
             customComboBoxRanga.Padding = new Padding(1);
-            customComboBoxRanga.Size = new Size(62, 26);
+            customComboBoxRanga.Size = new Size(71, 35);
             customComboBoxRanga.TabIndex = 45;
             customComboBoxRanga.Texts = "";
             customComboBoxRanga.OnSelectedIndexChanged += customComboBoxRanga_OnSelectedIndexChanged;
@@ -95,12 +94,11 @@
             customComboBoxGwiazdki.Items.AddRange(new object[] { "1* - Bronze 1", "2* - Bronze 2", "3* - Bronze 3", "4* - Silver 1", "5* - Silver 2", "6* - Silver 3", "7* - Gold 1", "8* - Gold 2", "9* - Gold 3" });
             customComboBoxGwiazdki.ListBackColor = Color.FromArgb(230, 228, 245);
             customComboBoxGwiazdki.ListTextColor = Color.DimGray;
-            customComboBoxGwiazdki.Location = new Point(418, 70);
-            customComboBoxGwiazdki.Margin = new Padding(3, 2, 3, 2);
-            customComboBoxGwiazdki.MinimumSize = new Size(62, 26);
+            customComboBoxGwiazdki.Location = new Point(478, 93);
+            customComboBoxGwiazdki.MinimumSize = new Size(71, 35);
             customComboBoxGwiazdki.Name = "customComboBoxGwiazdki";
             customComboBoxGwiazdki.Padding = new Padding(1);
-            customComboBoxGwiazdki.Size = new Size(128, 26);
+            customComboBoxGwiazdki.Size = new Size(146, 35);
             customComboBoxGwiazdki.TabIndex = 46;
             customComboBoxGwiazdki.Texts = "";
             customComboBoxGwiazdki.OnSelectedIndexChanged += customComboBoxGwiazdki_OnSelectedIndexChanged;
@@ -114,15 +112,17 @@
             customTextBoxCenaOdlamkow.BorderSize = 2;
             customTextBoxCenaOdlamkow.Font = new Font("Segoe UI", 9.5F);
             customTextBoxCenaOdlamkow.ForeColor = Color.DimGray;
-            customTextBoxCenaOdlamkow.Location = new Point(284, 69);
-            customTextBoxCenaOdlamkow.Margin = new Padding(4, 3, 4, 3);
+            customTextBoxCenaOdlamkow.Location = new Point(325, 92);
+            customTextBoxCenaOdlamkow.Margin = new Padding(5, 4, 5, 4);
             customTextBoxCenaOdlamkow.Multiline = false;
             customTextBoxCenaOdlamkow.Name = "customTextBoxCenaOdlamkow";
-            customTextBoxCenaOdlamkow.Padding = new Padding(6, 5, 6, 5);
+            customTextBoxCenaOdlamkow.Padding = new Padding(7, 7, 7, 7);
             customTextBoxCenaOdlamkow.PasswordChar = false;
             customTextBoxCenaOdlamkow.PlaceholderColor = Color.DarkGray;
             customTextBoxCenaOdlamkow.PlaceholderText = "Cena odłamków";
-            customTextBoxCenaOdlamkow.Size = new Size(113, 28);
+            customTextBoxCenaOdlamkow.SelectionLength = 0;
+            customTextBoxCenaOdlamkow.SelectionStart = 0;
+            customTextBoxCenaOdlamkow.Size = new Size(129, 36);
             customTextBoxCenaOdlamkow.TabIndex = 42;
             customTextBoxCenaOdlamkow.Texts = "";
             customTextBoxCenaOdlamkow.UnderlinedStyle = false;
@@ -137,15 +137,17 @@
             customTextBoxCenaEsencji.BorderSize = 2;
             customTextBoxCenaEsencji.Font = new Font("Segoe UI", 9.5F);
             customTextBoxCenaEsencji.ForeColor = Color.DimGray;
-            customTextBoxCenaEsencji.Location = new Point(163, 69);
-            customTextBoxCenaEsencji.Margin = new Padding(4, 3, 4, 3);
+            customTextBoxCenaEsencji.Location = new Point(186, 92);
+            customTextBoxCenaEsencji.Margin = new Padding(5, 4, 5, 4);
             customTextBoxCenaEsencji.Multiline = false;
             customTextBoxCenaEsencji.Name = "customTextBoxCenaEsencji";
-            customTextBoxCenaEsencji.Padding = new Padding(6, 5, 6, 5);
+            customTextBoxCenaEsencji.Padding = new Padding(7, 7, 7, 7);
             customTextBoxCenaEsencji.PasswordChar = false;
             customTextBoxCenaEsencji.PlaceholderColor = Color.DarkGray;
             customTextBoxCenaEsencji.PlaceholderText = "Cena esencji";
-            customTextBoxCenaEsencji.Size = new Size(113, 28);
+            customTextBoxCenaEsencji.SelectionLength = 0;
+            customTextBoxCenaEsencji.SelectionStart = 0;
+            customTextBoxCenaEsencji.Size = new Size(129, 36);
             customTextBoxCenaEsencji.TabIndex = 43;
             customTextBoxCenaEsencji.Texts = "";
             customTextBoxCenaEsencji.UnderlinedStyle = false;
@@ -160,15 +162,17 @@
             customTextBoxCenaPlatyny.BorderSize = 2;
             customTextBoxCenaPlatyny.Font = new Font("Segoe UI", 9.5F);
             customTextBoxCenaPlatyny.ForeColor = Color.DimGray;
-            customTextBoxCenaPlatyny.Location = new Point(42, 69);
-            customTextBoxCenaPlatyny.Margin = new Padding(4, 3, 4, 3);
+            customTextBoxCenaPlatyny.Location = new Point(48, 92);
+            customTextBoxCenaPlatyny.Margin = new Padding(5, 4, 5, 4);
             customTextBoxCenaPlatyny.Multiline = false;
             customTextBoxCenaPlatyny.Name = "customTextBoxCenaPlatyny";
-            customTextBoxCenaPlatyny.Padding = new Padding(6, 5, 6, 5);
+            customTextBoxCenaPlatyny.Padding = new Padding(7, 7, 7, 7);
             customTextBoxCenaPlatyny.PasswordChar = false;
             customTextBoxCenaPlatyny.PlaceholderColor = Color.DarkGray;
             customTextBoxCenaPlatyny.PlaceholderText = "Cena plat. za szt.";
-            customTextBoxCenaPlatyny.Size = new Size(113, 28);
+            customTextBoxCenaPlatyny.SelectionLength = 0;
+            customTextBoxCenaPlatyny.SelectionStart = 0;
+            customTextBoxCenaPlatyny.Size = new Size(129, 36);
             customTextBoxCenaPlatyny.TabIndex = 44;
             customTextBoxCenaPlatyny.Texts = "";
             customTextBoxCenaPlatyny.UnderlinedStyle = false;
@@ -177,51 +181,50 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(552, 53);
+            label7.Location = new Point(631, 71);
             label7.Name = "label7";
-            label7.Size = new Size(40, 15);
+            label7.Size = new Size(51, 20);
             label7.TabIndex = 40;
             label7.Text = "Ranga";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(418, 53);
+            label6.Location = new Point(478, 71);
             label6.Name = "label6";
-            label6.Size = new Size(54, 15);
+            label6.Size = new Size(69, 20);
             label6.TabIndex = 39;
             label6.Text = "Gwiazdki";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(687, 112);
+            label5.Location = new Point(785, 149);
             label5.Name = "label5";
-            label5.Size = new Size(81, 15);
+            label5.Size = new Size(100, 20);
             label5.TabIndex = 38;
             label5.Text = "Targ Premium";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(687, 92);
+            label4.Location = new Point(785, 123);
             label4.Name = "label4";
-            label4.Size = new Size(65, 15);
+            label4.Size = new Size(81, 20);
             label4.TabIndex = 37;
             label4.Text = "Synergetyk";
             // 
             // toggleButtonTargPremium
             // 
             toggleButtonTargPremium.AutoSize = true;
-            toggleButtonTargPremium.Location = new Point(642, 111);
-            toggleButtonTargPremium.Margin = new Padding(3, 2, 3, 2);
-            toggleButtonTargPremium.MinimumSize = new Size(39, 16);
+            toggleButtonTargPremium.Location = new Point(734, 148);
+            toggleButtonTargPremium.MinimumSize = new Size(45, 21);
             toggleButtonTargPremium.Name = "toggleButtonTargPremium";
             toggleButtonTargPremium.OffBackColor = Color.Gray;
             toggleButtonTargPremium.OffToggleColor = Color.Gainsboro;
             toggleButtonTargPremium.OnBackColor = Color.MediumSlateBlue;
             toggleButtonTargPremium.OnToggleColor = Color.WhiteSmoke;
-            toggleButtonTargPremium.Size = new Size(39, 16);
+            toggleButtonTargPremium.Size = new Size(45, 21);
             toggleButtonTargPremium.TabIndex = 35;
             toggleButtonTargPremium.UseVisualStyleBackColor = true;
             toggleButtonTargPremium.CheckedChanged += toggleButtonTargPremium_CheckedChanged;
@@ -229,15 +232,14 @@
             // toggleButtonSynergetyk
             // 
             toggleButtonSynergetyk.AutoSize = true;
-            toggleButtonSynergetyk.Location = new Point(642, 91);
-            toggleButtonSynergetyk.Margin = new Padding(3, 2, 3, 2);
-            toggleButtonSynergetyk.MinimumSize = new Size(39, 16);
+            toggleButtonSynergetyk.Location = new Point(734, 121);
+            toggleButtonSynergetyk.MinimumSize = new Size(45, 21);
             toggleButtonSynergetyk.Name = "toggleButtonSynergetyk";
             toggleButtonSynergetyk.OffBackColor = Color.Gray;
             toggleButtonSynergetyk.OffToggleColor = Color.Gainsboro;
             toggleButtonSynergetyk.OnBackColor = Color.MediumSlateBlue;
             toggleButtonSynergetyk.OnToggleColor = Color.WhiteSmoke;
-            toggleButtonSynergetyk.Size = new Size(39, 16);
+            toggleButtonSynergetyk.Size = new Size(45, 21);
             toggleButtonSynergetyk.TabIndex = 36;
             toggleButtonSynergetyk.UseVisualStyleBackColor = true;
             toggleButtonSynergetyk.CheckedChanged += toggleButtonSynergetyk_CheckedChanged;
@@ -245,24 +247,23 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(687, 71);
+            label2.Location = new Point(785, 95);
             label2.Name = "label2";
-            label2.Size = new Size(50, 15);
+            label2.Size = new Size(64, 20);
             label2.TabIndex = 34;
             label2.Text = "Set Item";
             // 
             // toggleButtonSetItem
             // 
             toggleButtonSetItem.AutoSize = true;
-            toggleButtonSetItem.Location = new Point(642, 71);
-            toggleButtonSetItem.Margin = new Padding(3, 2, 3, 2);
-            toggleButtonSetItem.MinimumSize = new Size(39, 16);
+            toggleButtonSetItem.Location = new Point(734, 95);
+            toggleButtonSetItem.MinimumSize = new Size(45, 21);
             toggleButtonSetItem.Name = "toggleButtonSetItem";
             toggleButtonSetItem.OffBackColor = Color.Gray;
             toggleButtonSetItem.OffToggleColor = Color.Gainsboro;
             toggleButtonSetItem.OnBackColor = Color.MediumSlateBlue;
             toggleButtonSetItem.OnToggleColor = Color.WhiteSmoke;
-            toggleButtonSetItem.Size = new Size(39, 16);
+            toggleButtonSetItem.Size = new Size(45, 21);
             toggleButtonSetItem.TabIndex = 33;
             toggleButtonSetItem.UseVisualStyleBackColor = true;
             toggleButtonSetItem.CheckedChanged += toggleButtonSetItem_CheckedChanged;
@@ -271,22 +272,22 @@
             // 
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 50);
+            panel1.Size = new Size(914, 67);
             panel1.TabIndex = 47;
             // 
             // toggleButtonInhibitor
             // 
             toggleButtonInhibitor.AutoSize = true;
-            toggleButtonInhibitor.Location = new Point(642, 131);
-            toggleButtonInhibitor.Margin = new Padding(3, 2, 3, 2);
-            toggleButtonInhibitor.MinimumSize = new Size(39, 16);
+            toggleButtonInhibitor.Location = new Point(734, 175);
+            toggleButtonInhibitor.MinimumSize = new Size(45, 21);
             toggleButtonInhibitor.Name = "toggleButtonInhibitor";
             toggleButtonInhibitor.OffBackColor = Color.Gray;
             toggleButtonInhibitor.OffToggleColor = Color.Gainsboro;
             toggleButtonInhibitor.OnBackColor = Color.MediumSlateBlue;
             toggleButtonInhibitor.OnToggleColor = Color.WhiteSmoke;
-            toggleButtonInhibitor.Size = new Size(39, 16);
+            toggleButtonInhibitor.Size = new Size(45, 21);
             toggleButtonInhibitor.TabIndex = 48;
             toggleButtonInhibitor.UseVisualStyleBackColor = true;
             toggleButtonInhibitor.CheckedChanged += toggleButtonInhibitor_CheckedChanged;
@@ -294,9 +295,9 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(687, 132);
+            label1.Location = new Point(785, 176);
             label1.Name = "label1";
-            label1.Size = new Size(52, 15);
+            label1.Size = new Size(65, 20);
             label1.TabIndex = 49;
             label1.Text = "Inhibitor";
             // 
@@ -316,13 +317,14 @@
             tableLayoutPanel1.Controls.Add(labelIloscEsencji, 0, 1);
             tableLayoutPanel1.Controls.Add(labelIloscOdlamkow, 1, 1);
             tableLayoutPanel1.Controls.Add(labelCenaWEsencjachPo, 2, 1);
-            tableLayoutPanel1.Location = new Point(42, 166);
+            tableLayoutPanel1.Location = new Point(48, 221);
+            tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(710, 100);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 27F));
+            tableLayoutPanel1.Size = new Size(811, 133);
             tableLayoutPanel1.TabIndex = 50;
             // 
             // labelCenaWOdlamkachPo
@@ -330,10 +332,10 @@
             labelCenaWOdlamkachPo.AutoSize = true;
             labelCenaWOdlamkachPo.BackColor = Color.Gainsboro;
             labelCenaWOdlamkachPo.Dock = DockStyle.Fill;
-            labelCenaWOdlamkachPo.Location = new Point(532, 51);
+            labelCenaWOdlamkachPo.Location = new Point(607, 67);
             labelCenaWOdlamkachPo.Margin = new Padding(1, 1, 0, 0);
             labelCenaWOdlamkachPo.Name = "labelCenaWOdlamkachPo";
-            labelCenaWOdlamkachPo.Size = new Size(178, 49);
+            labelCenaWOdlamkachPo.Size = new Size(204, 66);
             labelCenaWOdlamkachPo.TabIndex = 7;
             labelCenaWOdlamkachPo.Text = "label14";
             labelCenaWOdlamkachPo.TextAlign = ContentAlignment.MiddleCenter;
@@ -343,10 +345,10 @@
             label3.AutoSize = true;
             label3.BackColor = Color.FromArgb(196, 196, 196);
             label3.Dock = DockStyle.Fill;
-            label3.Location = new Point(178, 0);
+            label3.Location = new Point(203, 0);
             label3.Margin = new Padding(1, 0, 1, 1);
             label3.Name = "label3";
-            label3.Size = new Size(175, 49);
+            label3.Size = new Size(200, 65);
             label3.TabIndex = 0;
             label3.Text = "Ilość odłamków";
             label3.TextAlign = ContentAlignment.MiddleCenter;
@@ -356,10 +358,10 @@
             label9.AutoSize = true;
             label9.BackColor = Color.FromArgb(196, 196, 196);
             label9.Dock = DockStyle.Fill;
-            label9.Location = new Point(355, 0);
+            label9.Location = new Point(405, 0);
             label9.Margin = new Padding(1, 0, 1, 1);
             label9.Name = "label9";
-            label9.Size = new Size(175, 49);
+            label9.Size = new Size(200, 65);
             label9.TabIndex = 2;
             label9.Text = "Cena w esencjach";
             label9.TextAlign = ContentAlignment.MiddleCenter;
@@ -369,10 +371,10 @@
             label10.AutoSize = true;
             label10.BackColor = Color.FromArgb(196, 196, 196);
             label10.Dock = DockStyle.Fill;
-            label10.Location = new Point(532, 0);
+            label10.Location = new Point(607, 0);
             label10.Margin = new Padding(1, 0, 0, 1);
             label10.Name = "label10";
-            label10.Size = new Size(178, 49);
+            label10.Size = new Size(204, 65);
             label10.TabIndex = 3;
             label10.Text = "Cena w odłamkach";
             label10.TextAlign = ContentAlignment.MiddleCenter;
@@ -385,7 +387,7 @@
             label8.Location = new Point(0, 0);
             label8.Margin = new Padding(0, 0, 1, 1);
             label8.Name = "label8";
-            label8.Size = new Size(176, 49);
+            label8.Size = new Size(201, 65);
             label8.TabIndex = 1;
             label8.Text = "Ilość esencji";
             label8.TextAlign = ContentAlignment.MiddleCenter;
@@ -395,10 +397,10 @@
             labelIloscEsencji.AutoSize = true;
             labelIloscEsencji.BackColor = Color.Gainsboro;
             labelIloscEsencji.Dock = DockStyle.Fill;
-            labelIloscEsencji.Location = new Point(0, 51);
+            labelIloscEsencji.Location = new Point(0, 67);
             labelIloscEsencji.Margin = new Padding(0, 1, 1, 0);
             labelIloscEsencji.Name = "labelIloscEsencji";
-            labelIloscEsencji.Size = new Size(176, 49);
+            labelIloscEsencji.Size = new Size(201, 66);
             labelIloscEsencji.TabIndex = 4;
             labelIloscEsencji.Text = "label11";
             labelIloscEsencji.TextAlign = ContentAlignment.MiddleCenter;
@@ -408,10 +410,10 @@
             labelIloscOdlamkow.AutoSize = true;
             labelIloscOdlamkow.BackColor = Color.Gainsboro;
             labelIloscOdlamkow.Dock = DockStyle.Fill;
-            labelIloscOdlamkow.Location = new Point(178, 51);
+            labelIloscOdlamkow.Location = new Point(203, 67);
             labelIloscOdlamkow.Margin = new Padding(1, 1, 1, 0);
             labelIloscOdlamkow.Name = "labelIloscOdlamkow";
-            labelIloscOdlamkow.Size = new Size(175, 49);
+            labelIloscOdlamkow.Size = new Size(200, 66);
             labelIloscOdlamkow.TabIndex = 5;
             labelIloscOdlamkow.Text = "label12";
             labelIloscOdlamkow.TextAlign = ContentAlignment.MiddleCenter;
@@ -421,10 +423,10 @@
             labelCenaWEsencjachPo.AutoSize = true;
             labelCenaWEsencjachPo.BackColor = Color.Gainsboro;
             labelCenaWEsencjachPo.Dock = DockStyle.Fill;
-            labelCenaWEsencjachPo.Location = new Point(355, 51);
+            labelCenaWEsencjachPo.Location = new Point(405, 67);
             labelCenaWEsencjachPo.Margin = new Padding(1, 1, 1, 0);
             labelCenaWEsencjachPo.Name = "labelCenaWEsencjachPo";
-            labelCenaWEsencjachPo.Size = new Size(175, 49);
+            labelCenaWEsencjachPo.Size = new Size(200, 66);
             labelCenaWEsencjachPo.TabIndex = 6;
             labelCenaWEsencjachPo.Text = "label13";
             labelCenaWEsencjachPo.TextAlign = ContentAlignment.MiddleCenter;
@@ -438,15 +440,17 @@
             customTextBoxCenaPrzedmiotu.BorderSize = 2;
             customTextBoxCenaPrzedmiotu.Font = new Font("Segoe UI", 9.5F);
             customTextBoxCenaPrzedmiotu.ForeColor = Color.DimGray;
-            customTextBoxCenaPrzedmiotu.Location = new Point(163, 111);
-            customTextBoxCenaPrzedmiotu.Margin = new Padding(4, 3, 4, 3);
+            customTextBoxCenaPrzedmiotu.Location = new Point(186, 148);
+            customTextBoxCenaPrzedmiotu.Margin = new Padding(5, 4, 5, 4);
             customTextBoxCenaPrzedmiotu.Multiline = false;
             customTextBoxCenaPrzedmiotu.Name = "customTextBoxCenaPrzedmiotu";
-            customTextBoxCenaPrzedmiotu.Padding = new Padding(6, 5, 6, 5);
+            customTextBoxCenaPrzedmiotu.Padding = new Padding(7, 7, 7, 7);
             customTextBoxCenaPrzedmiotu.PasswordChar = false;
             customTextBoxCenaPrzedmiotu.PlaceholderColor = Color.DarkGray;
             customTextBoxCenaPrzedmiotu.PlaceholderText = "Cena przedmiotu";
-            customTextBoxCenaPrzedmiotu.Size = new Size(113, 28);
+            customTextBoxCenaPrzedmiotu.SelectionLength = 0;
+            customTextBoxCenaPrzedmiotu.SelectionStart = 0;
+            customTextBoxCenaPrzedmiotu.Size = new Size(129, 36);
             customTextBoxCenaPrzedmiotu.TabIndex = 51;
             customTextBoxCenaPrzedmiotu.Texts = "";
             customTextBoxCenaPrzedmiotu.UnderlinedStyle = false;
@@ -461,7 +465,7 @@
             label11.Location = new Point(0, 0);
             label11.Margin = new Padding(0, 0, 0, 1);
             label11.Name = "label11";
-            label11.Size = new Size(175, 48);
+            label11.Size = new Size(200, 64);
             label11.TabIndex = 52;
             label11.Text = "Profit";
             label11.TextAlign = ContentAlignment.MiddleCenter;
@@ -473,12 +477,13 @@
             tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel2.Controls.Add(labelProfit, 0, 1);
             tableLayoutPanel2.Controls.Add(label11, 0, 0);
-            tableLayoutPanel2.Location = new Point(310, 295);
+            tableLayoutPanel2.Location = new Point(354, 393);
+            tableLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(175, 98);
+            tableLayoutPanel2.Size = new Size(200, 131);
             tableLayoutPanel2.TabIndex = 53;
             // 
             // labelProfit
@@ -486,17 +491,17 @@
             labelProfit.AutoSize = true;
             labelProfit.BackColor = Color.Gainsboro;
             labelProfit.Dock = DockStyle.Fill;
-            labelProfit.Location = new Point(0, 50);
+            labelProfit.Location = new Point(0, 66);
             labelProfit.Margin = new Padding(0, 1, 0, 0);
             labelProfit.Name = "labelProfit";
-            labelProfit.Size = new Size(175, 48);
+            labelProfit.Size = new Size(200, 65);
             labelProfit.TabIndex = 53;
             labelProfit.Text = "label12";
             labelProfit.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // UC_EssenceCalculator
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(tableLayoutPanel2);
             Controls.Add(customTextBoxCenaPrzedmiotu);
@@ -517,8 +522,9 @@
             Controls.Add(toggleButtonSynergetyk);
             Controls.Add(label2);
             Controls.Add(toggleButtonSetItem);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "UC_EssenceCalculator";
-            Size = new Size(800, 450);
+            Size = new Size(914, 600);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
             tableLayoutPanel2.ResumeLayout(false);
