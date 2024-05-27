@@ -4,11 +4,14 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.IO;
+using System.Media;
+using System.Net.NetworkInformation;
 
 namespace BrokenStats.UserControls
 {
     public partial class UC_Respawns : UserControl
     {
+            SoundPlayer ping = new SoundPlayer(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "sounds", "ping.wav"));
         // Klasa reprezentująca postać z jej czasem respawnu, obrazkiem i Timerem
         public class CharacterRespawnInfo
         {
@@ -72,6 +75,8 @@ namespace BrokenStats.UserControls
             InitializeComponent();
             InitializeRespawnList();
             InitializeTableLayoutPanel();
+
+            
         }
 
         // Metoda inicjalizująca listę postaci z ich czasami respawnu, obrazkami i Timerami
@@ -145,6 +150,7 @@ namespace BrokenStats.UserControls
                             timeLabel.Text = initialRespawnTime.ToString(); // Aktualizacja etykiety czasu
                             if (initialRespawnTime.TotalSeconds <= 0)
                             {
+                                ping.Play();
                                 tableLayoutPanel1.Controls.Remove(numberPanel);
                                 tableLayoutPanel1.Controls.Remove(leftPanel);
                                 tableLayoutPanel1.Controls.Remove(rightPanel);
@@ -198,6 +204,7 @@ namespace BrokenStats.UserControls
                                                 }
 
                                             }
+
                                         }
                                     }
                                 }
