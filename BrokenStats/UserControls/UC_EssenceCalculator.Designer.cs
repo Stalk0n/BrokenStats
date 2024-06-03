@@ -81,7 +81,7 @@
             customComboBoxRanga.MinimumSize = new Size(62, 26);
             customComboBoxRanga.Name = "customComboBoxRanga";
             customComboBoxRanga.Padding = new Padding(1);
-            customComboBoxRanga.Size = new Size(62, 26);
+            customComboBoxRanga.Size = new Size(70, 26);
             customComboBoxRanga.TabIndex = 45;
             customComboBoxRanga.Texts = "";
             customComboBoxRanga.OnSelectedIndexChanged += customComboBoxRanga_OnSelectedIndexChanged;

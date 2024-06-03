@@ -73,8 +73,8 @@ public partial class UC_EssenceCalculator : UserControl
             var ranga = customComboBoxRanga.SelectedIndex;
 
             decimal cenaInhibitoraGold = 0;
-            decimal iloscEsencji = 0;
-            decimal iloscOdlamkow = 0;
+            decimal iloscEsencji;
+            decimal iloscOdlamkow;
             if (!decimal.TryParse(customTextBoxCenaPlatyny.Text, out var cenaPlatyny))
                 throw new FormatException("Cena platyny musi być liczbą. Podano: " + customTextBoxCenaPlatyny.Text);
             if (!decimal.TryParse(customTextBoxCenaEsencji.Text, out var cenaEsencji))
@@ -90,9 +90,9 @@ public partial class UC_EssenceCalculator : UserControl
             if (customComboBoxGwiazdki.SelectedIndex != -1)
             {
                 if (customComboBoxGwiazdki.SelectedItem is decimal wybranaGwiazdka)
-                    Console.WriteLine("Wybrana gwiazdka: " + wybranaGwiazdka);
+                    Console.WriteLine(@"Wybrana gwiazdka: " + wybranaGwiazdka);
                 else
-                    Console.WriteLine("Nieprawidłowy format gwiazdki.");
+                    Console.WriteLine(@"Nieprawidłowy format gwiazdki.");
             }
             else
             {
@@ -102,9 +102,9 @@ public partial class UC_EssenceCalculator : UserControl
             if (customComboBoxRanga.SelectedIndex != -1)
             {
                 if (customComboBoxRanga.SelectedItem is decimal wybranaRanga)
-                    Console.WriteLine("Wybrana Ranga: " + wybranaRanga);
+                    Console.WriteLine(@"Wybrana Ranga: " + wybranaRanga);
                 else
-                    Console.WriteLine("Nieprawidłowy format rangi.");
+                    Console.WriteLine(@"Nieprawidłowy format rangi.");
             }
             else
             {
@@ -145,15 +145,15 @@ public partial class UC_EssenceCalculator : UserControl
             };
 
             int[] esencjeBezInhibitora =
-            {
+            [
                 2, 5, 12, 24, 32, 40, 55, 70, 85, 115, 145, 175
-            };
+            ];
 
 
             int[] esencjeZInhibitorem =
-            {
+            [
                 3, 7, 16, 32, 42, 52, 72, 91, 111, 150, 189, 228
-            };
+            ];
 
             void AssignValues(int ranga, int gwiazdki, bool inhibitor, bool isSet)
             {
@@ -293,15 +293,15 @@ public partial class UC_EssenceCalculator : UserControl
         catch (FormatException ex)
 
         {
-            MessageBox.Show("Błąd formatu danych: " + ex.Message);
+            MessageBox.Show(@"Błąd formatu danych: " + ex.Message);
         }
         catch (ArgumentOutOfRangeException ex)
         {
-            MessageBox.Show("Błąd wartości danych: " + ex.Message);
+            MessageBox.Show(@"Błąd wartości danych: " + ex.Message);
         }
         catch (Exception ex)
         {
-            MessageBox.Show("Niespodziewany błąd: " + ex.Message);
+            MessageBox.Show(@"Niespodziewany błąd: " + ex.Message);
         }
     }
 

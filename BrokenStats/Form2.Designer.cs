@@ -63,15 +63,14 @@ namespace BrokenStats
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1143, 92);
+            panel1.Size = new Size(800, 55);
             panel1.TabIndex = 0;
             // 
             // minimiseButton
             // 
             minimiseButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            minimiseButton.Location = new Point(946, 0);
+            minimiseButton.Location = new Point(662, 0);
             minimiseButton.Margin = new Padding(0);
             minimiseButton.Name = "minimiseButton";
             minimiseButton.OverrideDefault.Back.Color1 = Color.FromArgb(26, 26, 26);
@@ -84,7 +83,7 @@ namespace BrokenStats
             minimiseButton.OverrideFocus.Border.Color1 = Color.FromArgb(56, 56, 56);
             minimiseButton.OverrideFocus.Border.Color2 = Color.FromArgb(56, 56, 56);
             minimiseButton.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.None;
-            minimiseButton.Size = new Size(66, 52);
+            minimiseButton.Size = new Size(46, 31);
             minimiseButton.StateCommon.Back.Color1 = Color.FromArgb(26, 26, 26);
             minimiseButton.StateCommon.Back.Color2 = Color.FromArgb(26, 26, 26);
             minimiseButton.StateCommon.Border.Color1 = Color.FromArgb(26, 26, 26);
@@ -115,7 +114,7 @@ namespace BrokenStats
             // maximiseButton
             // 
             maximiseButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            maximiseButton.Location = new Point(1011, 0);
+            maximiseButton.Location = new Point(708, 0);
             maximiseButton.Margin = new Padding(0);
             maximiseButton.Name = "maximiseButton";
             maximiseButton.OverrideDefault.Back.Color1 = Color.FromArgb(26, 26, 26);
@@ -128,7 +127,7 @@ namespace BrokenStats
             maximiseButton.OverrideFocus.Border.Color1 = Color.FromArgb(56, 56, 56);
             maximiseButton.OverrideFocus.Border.Color2 = Color.FromArgb(56, 56, 56);
             maximiseButton.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.Top | PaletteDrawBorders.Bottom | PaletteDrawBorders.Left | PaletteDrawBorders.Right;
-            maximiseButton.Size = new Size(66, 52);
+            maximiseButton.Size = new Size(46, 31);
             maximiseButton.StateCommon.Back.Color1 = Color.FromArgb(26, 26, 26);
             maximiseButton.StateCommon.Back.Color2 = Color.FromArgb(26, 26, 26);
             maximiseButton.StateCommon.Border.DrawBorders = PaletteDrawBorders.None;
@@ -152,16 +151,15 @@ namespace BrokenStats
             maximiseButton.StateTracking.Border.DrawBorders = PaletteDrawBorders.None;
             maximiseButton.TabIndex = 13;
             maximiseButton.Values.Text = "🗖";
-            // maximiseButton.Values.Text = "+";
             maximiseButton.Click += kryptonButton9_Click;
             // 
             // exitButton
             // 
             exitButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            exitButton.Location = new Point(1077, 0);
+            exitButton.Location = new Point(754, 0);
             exitButton.Margin = new Padding(0);
             exitButton.Name = "exitButton";
-            exitButton.Size = new Size(66, 52);
+            exitButton.Size = new Size(46, 31);
             exitButton.StateCommon.Back.Color1 = Color.FromArgb(26, 26, 26);
             exitButton.StateCommon.Border.DrawBorders = PaletteDrawBorders.None;
             exitButton.StateCommon.Content.ShortText.Color1 = Color.White;
@@ -189,10 +187,9 @@ namespace BrokenStats
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = SystemColors.ButtonHighlight;
-            label2.Location = new Point(270, 53);
-            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Location = new Point(189, 32);
             label2.Name = "label2";
-            label2.Size = new Size(157, 28);
+            label2.Size = new Size(103, 17);
             label2.TabIndex = 2;
             label2.Text = "Session length: ";
             // 
@@ -201,18 +198,16 @@ namespace BrokenStats
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(270, 5);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(189, 3);
             label1.Name = "label1";
-            label1.Size = new Size(109, 28);
+            label1.Size = new Size(74, 17);
             label1.TabIndex = 1;
             label1.Text = "Character: ";
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(4, 5);
-            pictureBox1.Margin = new Padding(4, 5, 4, 5);
+            pictureBox1.Location = new Point(3, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(180, 47);
             pictureBox1.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -221,8 +216,8 @@ namespace BrokenStats
             // 
             // kryptonButton1
             // 
-            kryptonButton1.Location = new Point(1, 2);
-            kryptonButton1.Margin = new Padding(1, 2, 1, 2);
+            kryptonButton1.Location = new Point(1, 1);
+            kryptonButton1.Margin = new Padding(1);
             kryptonButton1.Name = "kryptonButton1";
             kryptonButton1.OverrideDefault.Back.Color1 = Color.Silver;
             kryptonButton1.OverrideDefault.Back.Color2 = Color.Silver;
@@ -230,7 +225,7 @@ namespace BrokenStats
             kryptonButton1.OverrideFocus.Back.Color1 = Color.DarkGray;
             kryptonButton1.OverrideFocus.Back.Color2 = Color.DarkGray;
             kryptonButton1.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.None;
-            kryptonButton1.Size = new Size(160, 69);
+            kryptonButton1.Size = new Size(112, 41);
             kryptonButton1.StateCommon.Back.Color1 = SystemColors.Control;
             kryptonButton1.StateCommon.Back.Color2 = SystemColors.Control;
             kryptonButton1.StateCommon.Border.DrawBorders = PaletteDrawBorders.None;
@@ -257,10 +252,9 @@ namespace BrokenStats
             // panelContainer
             // 
             panelContainer.Dock = DockStyle.Fill;
-            panelContainer.Location = new Point(0, 92);
-            panelContainer.Margin = new Padding(4, 5, 4, 5);
+            panelContainer.Location = new Point(0, 55);
             panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(1143, 750);
+            panelContainer.Size = new Size(800, 450);
             panelContainer.TabIndex = 2;
             // 
             // tableLayoutPanel1
@@ -281,18 +275,17 @@ namespace BrokenStats
             tableLayoutPanel1.Controls.Add(kryptonButton5, 4, 0);
             tableLayoutPanel1.Controls.Add(kryptonButton6, 5, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
-            tableLayoutPanel1.Location = new Point(0, 92);
-            tableLayoutPanel1.Margin = new Padding(4, 5, 4, 5);
+            tableLayoutPanel1.Location = new Point(0, 55);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1143, 73);
+            tableLayoutPanel1.Size = new Size(800, 44);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // kryptonButton7
             // 
-            kryptonButton7.Location = new Point(979, 2);
-            kryptonButton7.Margin = new Padding(1, 2, 1, 2);
+            kryptonButton7.Location = new Point(685, 1);
+            kryptonButton7.Margin = new Padding(1);
             kryptonButton7.Name = "kryptonButton7";
             kryptonButton7.OverrideDefault.Back.Color1 = Color.Silver;
             kryptonButton7.OverrideDefault.Back.Color2 = Color.Silver;
@@ -300,7 +293,7 @@ namespace BrokenStats
             kryptonButton7.OverrideFocus.Back.Color1 = Color.DarkGray;
             kryptonButton7.OverrideFocus.Back.Color2 = Color.DarkGray;
             kryptonButton7.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.None;
-            kryptonButton7.Size = new Size(160, 69);
+            kryptonButton7.Size = new Size(112, 41);
             kryptonButton7.StateCommon.Back.Color1 = SystemColors.Control;
             kryptonButton7.StateCommon.Back.Color2 = SystemColors.Control;
             kryptonButton7.StateCommon.Border.Color1 = SystemColors.Control;
@@ -328,8 +321,8 @@ namespace BrokenStats
             // 
             // kryptonButton2
             // 
-            kryptonButton2.Location = new Point(164, 2);
-            kryptonButton2.Margin = new Padding(1, 2, 1, 2);
+            kryptonButton2.Location = new Point(115, 1);
+            kryptonButton2.Margin = new Padding(1);
             kryptonButton2.Name = "kryptonButton2";
             kryptonButton2.OverrideDefault.Back.Color1 = Color.Silver;
             kryptonButton2.OverrideDefault.Back.Color2 = Color.Silver;
@@ -337,7 +330,7 @@ namespace BrokenStats
             kryptonButton2.OverrideFocus.Back.Color1 = Color.DarkGray;
             kryptonButton2.OverrideFocus.Back.Color2 = Color.DarkGray;
             kryptonButton2.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.None;
-            kryptonButton2.Size = new Size(160, 69);
+            kryptonButton2.Size = new Size(112, 41);
             kryptonButton2.StateCommon.Back.Color1 = SystemColors.Control;
             kryptonButton2.StateCommon.Back.Color2 = SystemColors.Control;
             kryptonButton2.StateCommon.Border.DrawBorders = PaletteDrawBorders.None;
@@ -363,8 +356,8 @@ namespace BrokenStats
             // 
             // kryptonButton4
             // 
-            kryptonButton4.Location = new Point(490, 2);
-            kryptonButton4.Margin = new Padding(1, 2, 1, 2);
+            kryptonButton4.Location = new Point(343, 1);
+            kryptonButton4.Margin = new Padding(1);
             kryptonButton4.Name = "kryptonButton4";
             kryptonButton4.OverrideDefault.Back.Color1 = Color.Silver;
             kryptonButton4.OverrideDefault.Back.Color2 = Color.Silver;
@@ -372,7 +365,7 @@ namespace BrokenStats
             kryptonButton4.OverrideFocus.Back.Color1 = Color.DarkGray;
             kryptonButton4.OverrideFocus.Back.Color2 = Color.DarkGray;
             kryptonButton4.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.None;
-            kryptonButton4.Size = new Size(160, 69);
+            kryptonButton4.Size = new Size(112, 41);
             kryptonButton4.StateCommon.Back.Color1 = SystemColors.Control;
             kryptonButton4.StateCommon.Back.Color2 = SystemColors.Control;
             kryptonButton4.StateCommon.Border.DrawBorders = PaletteDrawBorders.None;
@@ -398,8 +391,8 @@ namespace BrokenStats
             // 
             // kryptonButton3
             // 
-            kryptonButton3.Location = new Point(327, 2);
-            kryptonButton3.Margin = new Padding(1, 2, 1, 2);
+            kryptonButton3.Location = new Point(229, 1);
+            kryptonButton3.Margin = new Padding(1);
             kryptonButton3.Name = "kryptonButton3";
             kryptonButton3.OverrideDefault.Back.Color1 = Color.Silver;
             kryptonButton3.OverrideDefault.Back.Color2 = Color.Silver;
@@ -407,7 +400,7 @@ namespace BrokenStats
             kryptonButton3.OverrideFocus.Back.Color1 = Color.DarkGray;
             kryptonButton3.OverrideFocus.Back.Color2 = Color.DarkGray;
             kryptonButton3.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.None;
-            kryptonButton3.Size = new Size(160, 69);
+            kryptonButton3.Size = new Size(112, 41);
             kryptonButton3.StateCommon.Back.Color1 = SystemColors.Control;
             kryptonButton3.StateCommon.Back.Color2 = SystemColors.Control;
             kryptonButton3.StateCommon.Border.DrawBorders = PaletteDrawBorders.None;
@@ -433,8 +426,8 @@ namespace BrokenStats
             // 
             // kryptonButton5
             // 
-            kryptonButton5.Location = new Point(653, 2);
-            kryptonButton5.Margin = new Padding(1, 2, 1, 2);
+            kryptonButton5.Location = new Point(457, 1);
+            kryptonButton5.Margin = new Padding(1);
             kryptonButton5.Name = "kryptonButton5";
             kryptonButton5.OverrideDefault.Back.Color1 = Color.Silver;
             kryptonButton5.OverrideDefault.Back.Color2 = Color.Silver;
@@ -442,7 +435,7 @@ namespace BrokenStats
             kryptonButton5.OverrideFocus.Back.Color1 = Color.DarkGray;
             kryptonButton5.OverrideFocus.Back.Color2 = Color.DarkGray;
             kryptonButton5.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.None;
-            kryptonButton5.Size = new Size(160, 69);
+            kryptonButton5.Size = new Size(112, 41);
             kryptonButton5.StateCommon.Back.Color1 = SystemColors.Control;
             kryptonButton5.StateCommon.Back.Color2 = SystemColors.Control;
             kryptonButton5.StateCommon.Border.Color1 = SystemColors.Control;
@@ -470,8 +463,8 @@ namespace BrokenStats
             // 
             // kryptonButton6
             // 
-            kryptonButton6.Location = new Point(816, 2);
-            kryptonButton6.Margin = new Padding(1, 2, 1, 2);
+            kryptonButton6.Location = new Point(571, 1);
+            kryptonButton6.Margin = new Padding(1);
             kryptonButton6.Name = "kryptonButton6";
             kryptonButton6.OverrideDefault.Back.Color1 = Color.Silver;
             kryptonButton6.OverrideDefault.Back.Color2 = Color.Silver;
@@ -479,7 +472,7 @@ namespace BrokenStats
             kryptonButton6.OverrideFocus.Back.Color1 = Color.DarkGray;
             kryptonButton6.OverrideFocus.Back.Color2 = Color.DarkGray;
             kryptonButton6.OverrideFocus.Border.DrawBorders = PaletteDrawBorders.None;
-            kryptonButton6.Size = new Size(160, 69);
+            kryptonButton6.Size = new Size(112, 41);
             kryptonButton6.StateCommon.Back.Color1 = SystemColors.Control;
             kryptonButton6.StateCommon.Back.Color2 = SystemColors.Control;
             kryptonButton6.StateCommon.Border.Color1 = SystemColors.Control;
@@ -507,14 +500,13 @@ namespace BrokenStats
             // 
             // Form2
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1143, 842);
+            ClientSize = new Size(800, 505);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panelContainer);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(4, 5, 4, 5);
             Name = "Form2";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form2";

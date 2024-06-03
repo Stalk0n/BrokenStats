@@ -107,14 +107,7 @@ namespace BrokenStats
 
         private void kryptonButton9_Click(object sender, EventArgs e)
         {
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
+            this.WindowState = this.WindowState == FormWindowState.Maximized ? FormWindowState.Normal : FormWindowState.Maximized;
         }
 
         private void kryptonButton8_Click(object sender, EventArgs e)
