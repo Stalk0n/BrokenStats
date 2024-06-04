@@ -25,6 +25,8 @@ namespace BrokenStats
             panel1.MouseUp += Panel1_MouseUp;
         }
 
+
+
         private void addUserControl(UserControl userControl)
         {
             userControl.Dock = DockStyle.Fill;
@@ -87,7 +89,8 @@ namespace BrokenStats
 
         private void kryptonButton5_Click(object sender, EventArgs e)
         {
-
+            UC_Respawns uc = new UC_Respawns();
+            addUserControl(uc);
         }
 
         private void kryptonButton6_Click(object sender, EventArgs e)

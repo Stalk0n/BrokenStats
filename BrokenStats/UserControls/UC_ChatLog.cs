@@ -57,17 +57,17 @@ namespace BrokenStats.UserControls
         private void button2_Click(object sender, EventArgs e)
         {
               if (_dbContext != null)
-            {
-                _dbContext.AddChatLogMessage("Mateusz PIWOcvzsfvbdfbdfbzdfbzdfbzdbzxcvbxbcxcbzxbzxcbzxcbzxc zxcb zxb zxcb xczbxcbzxcb zxcb zxcb  xcb");
-                _dbContext.SaveChanges();
+              {
+                  _dbContext.AddChatLogMessage("Mateusz PIWOcvzsfvbdfbdfbzdfbzdfbzdbzxcvbxbcxcbzxbzxcbzxcbzxc zxcb zxb zxcb xczbxcbzxcb zxcb zxcb  xcb");
+                  _dbContext.SaveChanges();
 
-                _dbContext.ChatLogNicknames.Load();
-                chatLogNicknameBindingSource.DataSource = _dbContext.ChatLogNicknames.Local.ToBindingList();
-            }
-            else
-            {
-                MessageBox.Show("Brak dostêpu do bazy danych.");
-            }
+                  _dbContext.ChatLogNicknames.Load();
+                  chatLogNicknameBindingSource.DataSource = _dbContext.ChatLogNicknames.Local.ToBindingList();
+              }
+              else
+              {
+                  MessageBox.Show("Brak dostêpu do bazy danych.");
+              }
         }
 
         protected override void OnLoad(EventArgs e)

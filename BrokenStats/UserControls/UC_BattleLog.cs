@@ -57,6 +57,8 @@ namespace BrokenStats.UserControls
             _dbContext.Database.EnsureDeleted();
             _dbContext.Database.EnsureCreated();
 
+
+
             _dbContext.BattleLogNicknames.Load();
 
             battleLogNicknameBindingSource.DataSource = _dbContext.BattleLogNicknames.Local.ToBindingList();

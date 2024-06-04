@@ -31,7 +31,7 @@
             components = new System.ComponentModel.Container();
             tableLayoutPanel1 = new TableLayoutPanel();
             dataGridView1 = new DataGridView();
-            nickDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            battleLogBindingSource1 = new BindingSource(components);
             battleLogNicknameBindingSource = new BindingSource(components);
             dataGridView2 = new DataGridView();
             dataDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -41,8 +41,10 @@
             droppeditemsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             opponentsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             battleLogBindingSource = new BindingSource(components);
+            nickDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)battleLogBindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)battleLogNicknameBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)battleLogBindingSource).BeginInit();
@@ -76,12 +78,10 @@
             dataGridView1.Size = new Size(194, 394);
             dataGridView1.TabIndex = 0;
             // 
-            // nickDataGridViewTextBoxColumn
+            // battleLogBindingSource1
             // 
-            nickDataGridViewTextBoxColumn.DataPropertyName = "Nick";
-            nickDataGridViewTextBoxColumn.HeaderText = "Nick";
-            nickDataGridViewTextBoxColumn.Name = "nickDataGridViewTextBoxColumn";
-            nickDataGridViewTextBoxColumn.ReadOnly = true;
+            battleLogBindingSource1.DataMember = "BattleLog";
+            battleLogBindingSource1.DataSource = battleLogNicknameBindingSource;
             // 
             // battleLogNicknameBindingSource
             // 
@@ -140,6 +140,13 @@
             battleLogBindingSource.DataMember = "BattleLog";
             battleLogBindingSource.DataSource = battleLogNicknameBindingSource;
             // 
+            // nickDataGridViewTextBoxColumn
+            // 
+            nickDataGridViewTextBoxColumn.DataPropertyName = "Nick";
+            nickDataGridViewTextBoxColumn.HeaderText = "Nick";
+            nickDataGridViewTextBoxColumn.Name = "nickDataGridViewTextBoxColumn";
+            nickDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // UC_BattleLog
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -151,6 +158,7 @@
             Size = new Size(800, 450);
             tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)battleLogBindingSource1).EndInit();
             ((System.ComponentModel.ISupportInitialize)battleLogNicknameBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)battleLogBindingSource).EndInit();
@@ -164,12 +172,13 @@
         private DataGridView dataGridView2;
         private BindingSource battleLogNicknameBindingSource;
         private BindingSource battleLogBindingSource;
-        private DataGridViewTextBoxColumn nickDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn experienceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn psychoExperienceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn goldDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn droppeditemsDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn opponentsDataGridViewTextBoxColumn;
+        private BindingSource battleLogBindingSource1;
+        private DataGridViewTextBoxColumn nickDataGridViewTextBoxColumn;
     }
 }
