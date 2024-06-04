@@ -95,7 +95,8 @@ namespace BrokenStats
 
         private void kryptonButton6_Click(object sender, EventArgs e)
         {
-
+            UC_SessionSummary uc = new UC_SessionSummary();
+            addUserControl(uc);
         }
 
         private void kryptonButton7_Click(object sender, EventArgs e)

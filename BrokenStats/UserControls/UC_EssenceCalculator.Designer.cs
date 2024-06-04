@@ -56,7 +56,10 @@
             customTextBoxCenaPrzedmiotu = new CustomControls.CustomTextBox();
             label11 = new Label();
             tableLayoutPanel2 = new TableLayoutPanel();
-            labelProfit = new Label();
+            labelProfitGold = new Label();
+            labelProfitPlat = new Label();
+            label13 = new Label();
+            button1 = new Button();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
@@ -463,19 +466,21 @@
             label11.BackColor = Color.FromArgb(196, 196, 196);
             label11.Dock = DockStyle.Fill;
             label11.Location = new Point(0, 0);
-            label11.Margin = new Padding(0, 0, 0, 1);
+            label11.Margin = new Padding(0, 0, 1, 1);
             label11.Name = "label11";
             label11.Size = new Size(200, 64);
             label11.TabIndex = 52;
-            label11.Text = "Profit";
+            label11.Text = "Profit (gold)";
             label11.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.BackColor = SystemColors.ControlDarkDark;
-            tableLayoutPanel2.ColumnCount = 1;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Controls.Add(labelProfit, 0, 1);
+            tableLayoutPanel2.ColumnCount = 2;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.Controls.Add(labelProfitGold, 0, 1);
+            tableLayoutPanel2.Controls.Add(labelProfitPlat, 0, 1);
             tableLayoutPanel2.Controls.Add(label11, 0, 0);
             tableLayoutPanel2.Location = new Point(354, 393);
             tableLayoutPanel2.Margin = new Padding(3, 4, 3, 4);
@@ -486,7 +491,46 @@
             tableLayoutPanel2.Size = new Size(200, 131);
             tableLayoutPanel2.TabIndex = 53;
             // 
-            // labelProfit
+            // labelProfitGold
+            // 
+            labelProfitGold.AutoSize = true;
+            labelProfitGold.BackColor = Color.Gainsboro;
+            labelProfitGold.Dock = DockStyle.Fill;
+            labelProfitGold.Location = new Point(0, 50);
+            labelProfitGold.Margin = new Padding(0, 1, 1, 0);
+            labelProfitGold.Name = "labelProfitGold";
+            labelProfitGold.Size = new Size(174, 48);
+            labelProfitGold.TabIndex = 54;
+            labelProfitGold.Text = "label12";
+            labelProfitGold.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // labelProfitPlat
+            // 
+            labelProfitPlat.AutoSize = true;
+            labelProfitPlat.BackColor = Color.Gainsboro;
+            labelProfitPlat.Dock = DockStyle.Fill;
+            labelProfitPlat.Location = new Point(176, 50);
+            labelProfitPlat.Margin = new Padding(1, 1, 0, 0);
+            labelProfitPlat.Name = "labelProfitPlat";
+            labelProfitPlat.Size = new Size(174, 48);
+            labelProfitPlat.TabIndex = 53;
+            labelProfitPlat.Text = "label12";
+            labelProfitPlat.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.BackColor = Color.FromArgb(196, 196, 196);
+            label13.Dock = DockStyle.Fill;
+            label13.Location = new Point(176, 0);
+            label13.Margin = new Padding(1, 0, 0, 1);
+            label13.Name = "label13";
+            label13.Size = new Size(174, 48);
+            label13.TabIndex = 54;
+            label13.Text = "Profit (platyna)";
+            label13.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // button1
             // 
             labelProfit.AutoSize = true;
             labelProfit.BackColor = Color.Gainsboro;
@@ -503,6 +547,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button1);
             Controls.Add(tableLayoutPanel2);
             Controls.Add(customTextBoxCenaPrzedmiotu);
             Controls.Add(tableLayoutPanel1);
@@ -563,6 +608,9 @@
         private CustomControls.CustomTextBox customTextBoxCenaPrzedmiotu;
         private Label label11;
         private TableLayoutPanel tableLayoutPanel2;
-        private Label labelProfit;
+        private Label labelProfitPlat;
+        private Label labelProfitGold;
+        private Label label13;
+        private Button button1;
     }
 }
