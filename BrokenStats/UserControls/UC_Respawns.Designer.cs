@@ -34,35 +34,38 @@ namespace BrokenStats.UserControls
             tableLayoutPanel1 = new TableLayoutPanel();
             label1 = new Label();
             customButton1 = new CustomControls.CustomButton();
+            customButton2 = new CustomControls.CustomButton();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(914, 67);
+            panel1.Size = new Size(800, 50);
             panel1.TabIndex = 47;
             // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.AutoSize = true;
             tableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
-            tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel1.Location = new Point(3, 123);
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 70F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150F));
+            tableLayoutPanel1.Location = new Point(207, 81);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
-            tableLayoutPanel1.Size = new Size(908, 389);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 73F));
+            tableLayoutPanel1.Size = new Size(374, 75);
             tableLayoutPanel1.TabIndex = 48;
             // 
             // label1
             // 
-            label1.Location = new Point(422, 86);
+            label1.Location = new Point(369, 64);
             label1.Name = "label1";
-            label1.Size = new Size(53, 20);
+            label1.Size = new Size(46, 15);
             label1.TabIndex = 49;
             label1.Text = "Timers";
             // 
@@ -73,29 +76,52 @@ namespace BrokenStats.UserControls
             customButton1.BorderColor = Color.PaleVioletRed;
             customButton1.BorderRadius = 0;
             customButton1.BorderSize = 0;
+            customButton1.Dock = DockStyle.Bottom;
             customButton1.FlatAppearance.BorderSize = 0;
             customButton1.FlatStyle = FlatStyle.Flat;
             customButton1.ForeColor = Color.White;
-            customButton1.Location = new Point(403, 518);
+            customButton1.Location = new Point(0, 427);
+            customButton1.Margin = new Padding(3, 2, 3, 2);
             customButton1.Name = "customButton1";
-            customButton1.Size = new Size(125, 31);
+            customButton1.Size = new Size(800, 23);
             customButton1.TabIndex = 50;
             customButton1.Text = "tester";
             customButton1.TextColor = Color.White;
             customButton1.UseVisualStyleBackColor = false;
             customButton1.Click += customButton1_Click;
             // 
+            // customButton2
+            // 
+            customButton2.BackColor = Color.MediumSlateBlue;
+            customButton2.BackgroundColor = Color.MediumSlateBlue;
+            customButton2.BorderColor = Color.PaleVioletRed;
+            customButton2.BorderRadius = 0;
+            customButton2.BorderSize = 0;
+            customButton2.Dock = DockStyle.Bottom;
+            customButton2.FlatAppearance.BorderSize = 0;
+            customButton2.FlatStyle = FlatStyle.Flat;
+            customButton2.ForeColor = Color.White;
+            customButton2.Location = new Point(0, 404);
+            customButton2.Margin = new Padding(3, 2, 3, 2);
+            customButton2.Name = "customButton2";
+            customButton2.Size = new Size(800, 23);
+            customButton2.TabIndex = 51;
+            customButton2.Text = "tester";
+            customButton2.TextColor = Color.White;
+            customButton2.UseVisualStyleBackColor = false;
+            customButton2.Click += customButton2_Click;
+            // 
             // UC_Respawns
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(customButton2);
             Controls.Add(customButton1);
             Controls.Add(label1);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "UC_Respawns";
-            Size = new Size(914, 600);
+            Size = new Size(800, 450);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -105,5 +131,6 @@ namespace BrokenStats.UserControls
         private TableLayoutPanel tableLayoutPanel1;
         private Label label1;
         private CustomControls.CustomButton customButton1;
+        private CustomControls.CustomButton customButton2;
     }
 }

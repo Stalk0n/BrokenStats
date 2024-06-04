@@ -25,6 +25,8 @@ namespace BrokenStats
             panel1.MouseUp += Panel1_MouseUp;
         }
 
+
+
         private void addUserControl(UserControl userControl)
         {
             userControl.Dock = DockStyle.Fill;
