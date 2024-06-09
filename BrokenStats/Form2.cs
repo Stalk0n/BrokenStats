@@ -14,6 +14,14 @@ namespace BrokenStats
 
         private LogsContext? _dbContext;
 
+        private UC_ChatLog chatLogUC;
+        private UC_BattleLog battleLogUC;
+        private UC_BattleStatistics battleStatsUC;
+        private UC_EssenceCalculator essenceCalcUC;
+        private UC_Respawns respawnsUC;
+        private UC_SessionSummary sessionSummaryUC;
+
+
         public Form2()
         {
             Uruchom_sniffer();
@@ -30,10 +38,15 @@ namespace BrokenStats
         private void addUserControl(UserControl userControl)
         {
             userControl.Dock = DockStyle.Fill;
+            foreach (Control control in panelContainer.Controls)
+            {
+                control.Visible = false;
+            }
             panelContainer.Controls.Clear();
             panelContainer.Controls.Add(userControl);
-            userControl.BringToFront();
+            userControl.Visible = true;
         }
+
 
         private void Panel1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -89,9 +102,13 @@ namespace BrokenStats
 
         private void kryptonButton5_Click(object sender, EventArgs e)
         {
-            UC_Respawns uc = new UC_Respawns();
-            addUserControl(uc);
+            if (respawnsUC == null)
+            {
+                respawnsUC = new UC_Respawns();
+            }
+            addUserControl(respawnsUC);
         }
+
 
         private void kryptonButton6_Click(object sender, EventArgs e)
         {
