@@ -64,6 +64,7 @@
             label14 = new Label();
             label15 = new Label();
             label16 = new Label();
+            label17 = new Label();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             SuspendLayout();
@@ -128,7 +129,7 @@
             customTextBoxCenaOdlamkow.Padding = new Padding(6, 5, 6, 5);
             customTextBoxCenaOdlamkow.PasswordChar = false;
             customTextBoxCenaOdlamkow.PlaceholderColor = Color.DarkGray;
-            customTextBoxCenaOdlamkow.PlaceholderText = "Cena odłamków";
+            customTextBoxCenaOdlamkow.PlaceholderText = "";
             customTextBoxCenaOdlamkow.SelectionLength = 0;
             customTextBoxCenaOdlamkow.SelectionStart = 0;
             customTextBoxCenaOdlamkow.Size = new Size(113, 28);
@@ -153,7 +154,7 @@
             customTextBoxCenaEsencji.Padding = new Padding(6, 5, 6, 5);
             customTextBoxCenaEsencji.PasswordChar = false;
             customTextBoxCenaEsencji.PlaceholderColor = Color.DarkGray;
-            customTextBoxCenaEsencji.PlaceholderText = "Cena esencji";
+            customTextBoxCenaEsencji.PlaceholderText = "";
             customTextBoxCenaEsencji.SelectionLength = 0;
             customTextBoxCenaEsencji.SelectionStart = 0;
             customTextBoxCenaEsencji.Size = new Size(113, 28);
@@ -178,7 +179,7 @@
             customTextBoxCenaPlatyny.Padding = new Padding(6, 5, 6, 5);
             customTextBoxCenaPlatyny.PasswordChar = false;
             customTextBoxCenaPlatyny.PlaceholderColor = Color.DarkGray;
-            customTextBoxCenaPlatyny.PlaceholderText = "Cena plat. za szt.";
+            customTextBoxCenaPlatyny.PlaceholderText = "";
             customTextBoxCenaPlatyny.SelectionLength = 0;
             customTextBoxCenaPlatyny.SelectionStart = 0;
             customTextBoxCenaPlatyny.Size = new Size(113, 28);
@@ -454,7 +455,7 @@
             customTextBoxCenaPrzedmiotu.Padding = new Padding(6, 5, 6, 5);
             customTextBoxCenaPrzedmiotu.PasswordChar = false;
             customTextBoxCenaPrzedmiotu.PlaceholderColor = Color.DarkGray;
-            customTextBoxCenaPrzedmiotu.PlaceholderText = "Cena przedmiotu";
+            customTextBoxCenaPrzedmiotu.PlaceholderText = "";
             customTextBoxCenaPrzedmiotu.SelectionLength = 0;
             customTextBoxCenaPrzedmiotu.SelectionStart = 0;
             customTextBoxCenaPrzedmiotu.Size = new Size(113, 28);
@@ -539,7 +540,7 @@
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 54;
-            button1.Text = "button1";
+            button1.Text = "Przelicz";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
@@ -579,10 +580,20 @@
             label16.TabIndex = 58;
             label16.Text = "Cena przedmiotu";
             // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(200, 158);
+            label17.Name = "label17";
+            label17.Size = new Size(568, 15);
+            label17.TabIndex = 59;
+            label17.Text = "Kalkulator uruchomi się automatycznie po uzupełnieniu wszystkich pól lub po kliknięciu przyisku \"Przelicz\"";
+            // 
             // UC_EssenceCalculator
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label17);
             Controls.Add(label16);
             Controls.Add(label15);
             Controls.Add(label14);
@@ -655,5 +666,6 @@
         private Label label14;
         private Label label15;
         private Label label16;
+        private Label label17;
     }
 }

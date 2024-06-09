@@ -32,15 +32,23 @@ namespace BrokenStats
 
         private void addUserControl(UserControl userControl)
         {
-            userControl.Dock = DockStyle.Fill;
-            foreach (Control control in panelContainer.Controls)
+            if (this.InvokeRequired)
             {
-                control.Visible = false;
+                this.Invoke(new Action<UserControl>(addUserControl), userControl);
             }
-            panelContainer.Controls.Clear();
-            panelContainer.Controls.Add(userControl);
-            userControl.Visible = true;
+            else
+            {
+                userControl.Dock = DockStyle.Fill;
+                foreach (Control control in panelContainer.Controls)
+                {
+                    control.Visible = false;
+                }
+                panelContainer.Controls.Clear();
+                panelContainer.Controls.Add(userControl);
+                userControl.Visible = true;
+            }
         }
+
 
 
         private void Panel1_MouseDown(object sender, MouseEventArgs e)
@@ -85,8 +93,23 @@ namespace BrokenStats
 
         private void kryptonButton4_Click(object sender, EventArgs e)
         {
-            UC_EssenceCalculator uc = new UC_EssenceCalculator();
-            addUserControl(uc);
+            if (essenceCalcUC == null)
+            {
+                essenceCalcUC = new UC_EssenceCalculator();
+                new Thread(() =>
+                {
+                    Thread.CurrentThread.IsBackground = true;
+
+                    this.Invoke((Action)(() =>
+                    {
+                        addUserControl(essenceCalcUC);
+                    }));
+                }).Start();
+            }
+            else
+            {
+                addUserControl(essenceCalcUC);
+            }
         }
 
         private void kryptonButton5_Click(object sender, EventArgs e)
@@ -94,23 +117,28 @@ namespace BrokenStats
             if (respawnsUC == null)
             {
                 respawnsUC = new UC_Respawns();
+                new Thread(() =>
+                {
+                    Thread.CurrentThread.IsBackground = true;
+
+                    this.Invoke((Action)(() =>
+                    {
+                        addUserControl(respawnsUC);
+                    }));
+                }).Start();
             }
-            addUserControl(respawnsUC);
+            else
+            {
+                addUserControl(respawnsUC);
+            }
         }
 
-        private void kryptonButton7_Click(object sender, EventArgs e)
-        {
 
-        }
         private void kryptonButton10_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void kryptonButton9_Click(object sender, EventArgs e)
-        {
-            this.WindowState = this.WindowState == FormWindowState.Maximized ? FormWindowState.Normal : FormWindowState.Maximized;
-        }
 
         private void kryptonButton8_Click(object sender, EventArgs e)
         {

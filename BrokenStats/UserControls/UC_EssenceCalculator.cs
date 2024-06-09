@@ -9,38 +9,119 @@ public partial class UC_EssenceCalculator : UserControl
 
     private void toggleButtonSetItem_CheckedChanged(object sender, EventArgs e)
     {
+        if (!string.IsNullOrWhiteSpace(customTextBoxCenaPrzedmiotu.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaPlatyny.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaEsencji.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaOdlamkow.Text) &&
+            customComboBoxGwiazdki.SelectedIndex != -1 &&
+            customComboBoxRanga.SelectedIndex != -1)
+        {
+            CalculateProfit();
+        }
     }
 
     private void toggleButtonSynergetyk_CheckedChanged(object sender, EventArgs e)
     {
+        if (!string.IsNullOrWhiteSpace(customTextBoxCenaPrzedmiotu.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaPlatyny.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaEsencji.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaOdlamkow.Text) &&
+            customComboBoxGwiazdki.SelectedIndex != -1 &&
+            customComboBoxRanga.SelectedIndex != -1)
+        {
+            CalculateProfit();
+        }
     }
 
     private void toggleButtonTargPremium_CheckedChanged(object sender, EventArgs e)
     {
+        if (!string.IsNullOrWhiteSpace(customTextBoxCenaPrzedmiotu.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaPlatyny.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaEsencji.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaOdlamkow.Text) &&
+            customComboBoxGwiazdki.SelectedIndex != -1 &&
+            customComboBoxRanga.SelectedIndex != -1)
+        {
+            CalculateProfit();
+        }
     }
 
     private void toggleButtonInhibitor_CheckedChanged(object sender, EventArgs e)
     {
+        if (!string.IsNullOrWhiteSpace(customTextBoxCenaPrzedmiotu.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaPlatyny.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaEsencji.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaOdlamkow.Text) &&
+            customComboBoxGwiazdki.SelectedIndex != -1 &&
+            customComboBoxRanga.SelectedIndex != -1)
+        {
+            CalculateProfit();
+        }
     }
 
     private void customComboBoxGwiazdki_OnSelectedIndexChanged(object sender, EventArgs e)
     {
+        if (!string.IsNullOrWhiteSpace(customTextBoxCenaPrzedmiotu.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaPlatyny.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaEsencji.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaOdlamkow.Text) &&
+            customComboBoxGwiazdki.SelectedIndex != -1 &&
+            customComboBoxRanga.SelectedIndex != -1 )
+        {
+            CalculateProfit();
+        }
     }
 
     private void customComboBoxRanga_OnSelectedIndexChanged(object sender, EventArgs e)
     {
+        if (!string.IsNullOrWhiteSpace(customTextBoxCenaPrzedmiotu.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaPlatyny.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaEsencji.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaOdlamkow.Text) &&
+            customComboBoxGwiazdki.SelectedIndex != -1 &&
+            customComboBoxRanga.SelectedIndex != -1)
+        {
+            CalculateProfit();
+        }
     }
 
     private void customTextBoxCenaPlatyny__TextChanged(object sender, EventArgs e)
     {
+        if (!string.IsNullOrWhiteSpace(customTextBoxCenaPrzedmiotu.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaPlatyny.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaEsencji.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaOdlamkow.Text) &&
+            customComboBoxGwiazdki.SelectedIndex != -1 &&
+            customComboBoxRanga.SelectedIndex != -1)
+        {
+            CalculateProfit();
+        }
     }
 
     private void customTextBoxCenaEsencji__TextChanged(object sender, EventArgs e)
     {
+        if (!string.IsNullOrWhiteSpace(customTextBoxCenaPrzedmiotu.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaPlatyny.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaEsencji.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaOdlamkow.Text) &&
+            customComboBoxGwiazdki.SelectedIndex != -1 &&
+            customComboBoxRanga.SelectedIndex != -1)
+        {
+            CalculateProfit();
+        }
     }
 
     private void customTextBoxCenaOdlamkow__TextChanged(object sender, EventArgs e)
     {
+        if (!string.IsNullOrWhiteSpace(customTextBoxCenaPrzedmiotu.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaPlatyny.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaEsencji.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaOdlamkow.Text) &&
+            customComboBoxGwiazdki.SelectedIndex != -1 &&
+            customComboBoxRanga.SelectedIndex != -1)
+        {
+            CalculateProfit();
+        }
     }
 
 
@@ -250,11 +331,11 @@ public partial class UC_EssenceCalculator : UserControl
             var cenaWEsencjachGold = iloscEsencji * cenaEsencji - 20000;
 
 
-            // if (synergetyk)
-            // {
-            //     cenaWEsencjachGold += 50;
-            //     cenaWOdlamkachGold += 50;
-            // }
+            if (synergetyk)
+            {
+                cenaWEsencjachGold /= 2;
+                cenaWOdlamkachGold /= 2;
+            }
 
             if (targPremium)
             {
