@@ -1,7 +1,4 @@
-﻿using BrokenStats.Tables;
-using BrokenStats.UserControls;
-using Microsoft.EntityFrameworkCore;
-using ScottPlot;
+﻿using BrokenStats.UserControls;
 using System.ComponentModel;
 
 
@@ -16,10 +13,8 @@ namespace BrokenStats
 
         private UC_ChatLog chatLogUC;
         private UC_BattleLog battleLogUC;
-        private UC_BattleStatistics battleStatsUC;
         private UC_EssenceCalculator essenceCalcUC;
         private UC_Respawns respawnsUC;
-        private UC_SessionSummary sessionSummaryUC;
 
 
         public Form2()
@@ -88,12 +83,6 @@ namespace BrokenStats
             addUserControl(uc);
         }
 
-        private void kryptonButton3_Click(object sender, EventArgs e)
-        {
-            UC_BattleStatistics uc = new UC_BattleStatistics();
-            addUserControl(uc);
-        }
-
         private void kryptonButton4_Click(object sender, EventArgs e)
         {
             UC_EssenceCalculator uc = new UC_EssenceCalculator();
@@ -107,13 +96,6 @@ namespace BrokenStats
                 respawnsUC = new UC_Respawns();
             }
             addUserControl(respawnsUC);
-        }
-
-
-        private void kryptonButton6_Click(object sender, EventArgs e)
-        {
-            UC_SessionSummary uc = new UC_SessionSummary();
-            addUserControl(uc);
         }
 
         private void kryptonButton7_Click(object sender, EventArgs e)

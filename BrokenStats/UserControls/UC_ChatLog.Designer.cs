@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             button1 = new Button();
             dataGridViewChatLogMessage = new DataGridView();
             dataDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -46,7 +46,6 @@
             dataDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             messageDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             messagesBindingSource = new BindingSource(components);
-            button2 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewChatLogMessage).BeginInit();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewChatNickname).BeginInit();
@@ -76,14 +75,14 @@
             dataGridViewChatLogMessage.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewChatLogMessage.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewChatLogMessage.Columns.AddRange(new DataGridViewColumn[] { dataDataGridViewTextBoxColumn, messageDataGridViewTextBoxColumn });
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridViewChatLogMessage.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dataGridViewChatLogMessage.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewChatLogMessage.Dock = DockStyle.Left;
             dataGridViewChatLogMessage.Location = new Point(3, 3);
             dataGridViewChatLogMessage.Name = "dataGridViewChatLogMessage";
@@ -109,7 +108,6 @@
             messageDataGridViewTextBoxColumn.MinimumWidth = 6;
             messageDataGridViewTextBoxColumn.Name = "messageDataGridViewTextBoxColumn";
             messageDataGridViewTextBoxColumn.ReadOnly = true;
-            messageDataGridViewTextBoxColumn.Width = 78;
             // 
             // tableLayoutPanel1
             // 
@@ -156,13 +154,15 @@
             // dataGridView1
             // 
             dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nickDataGridViewTextBoxColumn1 });
             dataGridView1.DataSource = chatLogNicknameBindingSource;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(3, 53);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(234, 394);
+            dataGridView1.Size = new Size(339, 544);
             dataGridView1.TabIndex = 0;
             // 
             // nickDataGridViewTextBoxColumn1
@@ -188,19 +188,21 @@
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(800, 450);
+            tableLayoutPanel2.Size = new Size(1150, 600);
             tableLayoutPanel2.TabIndex = 1;
             // 
             // dataGridView2
             // 
             dataGridView2.AutoGenerateColumns = false;
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataDataGridViewTextBoxColumn1, messageDataGridViewTextBoxColumn1 });
             dataGridView2.DataSource = messagesBindingSource;
             dataGridView2.Dock = DockStyle.Fill;
-            dataGridView2.Location = new Point(243, 53);
+            dataGridView2.Location = new Point(348, 53);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(554, 394);
+            dataGridView2.Size = new Size(799, 544);
             dataGridView2.TabIndex = 1;
             // 
             // dataDataGridViewTextBoxColumn1
@@ -222,24 +224,13 @@
             messagesBindingSource.DataMember = "Messages";
             messagesBindingSource.DataSource = chatLogNicknameBindingSource;
             // 
-            // button2
-            // 
-            button2.Location = new Point(367, 397);
-            button2.Name = "button2";
-            button2.Size = new Size(63, 23);
-            button2.TabIndex = 2;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
             // UC_ChatLog
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(button2);
             Controls.Add(tableLayoutPanel2);
             Name = "UC_ChatLog";
-            Size = new Size(800, 450);
+            Size = new Size(1150, 600);
             ((System.ComponentModel.ISupportInitialize)dataGridViewChatLogMessage).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewChatNickname).EndInit();
@@ -269,6 +260,5 @@
         private DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn messageDataGridViewTextBoxColumn1;
         private BindingSource messagesBindingSource;
-        private Button button2;
     }
 }

@@ -30,9 +30,6 @@
         {
             components = new System.ComponentModel.Container();
             tableLayoutPanel1 = new TableLayoutPanel();
-            dataGridView1 = new DataGridView();
-            battleLogBindingSource1 = new BindingSource(components);
-            battleLogNicknameBindingSource = new BindingSource(components);
             dataGridView2 = new DataGridView();
             dataDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             experienceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -41,13 +38,16 @@
             droppeditemsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             opponentsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             battleLogBindingSource = new BindingSource(components);
+            battleLogNicknameBindingSource = new BindingSource(components);
+            dataGridView1 = new DataGridView();
             nickDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            battleLogBindingSource1 = new BindingSource(components);
             tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)battleLogBindingSource1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)battleLogNicknameBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)battleLogBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)battleLogNicknameBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)battleLogBindingSource1).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -63,40 +63,21 @@
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(800, 450);
+            tableLayoutPanel1.Size = new Size(1150, 600);
             tableLayoutPanel1.TabIndex = 1;
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nickDataGridViewTextBoxColumn });
-            dataGridView1.DataSource = battleLogNicknameBindingSource;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 53);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(194, 394);
-            dataGridView1.TabIndex = 0;
-            // 
-            // battleLogBindingSource1
-            // 
-            battleLogBindingSource1.DataMember = "BattleLog";
-            battleLogBindingSource1.DataSource = battleLogNicknameBindingSource;
-            // 
-            // battleLogNicknameBindingSource
-            // 
-            battleLogNicknameBindingSource.DataSource = typeof(Tables.BattleLogNickname);
             // 
             // dataGridView2
             // 
             dataGridView2.AutoGenerateColumns = false;
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataDataGridViewTextBoxColumn, experienceDataGridViewTextBoxColumn, psychoExperienceDataGridViewTextBoxColumn, goldDataGridViewTextBoxColumn, droppeditemsDataGridViewTextBoxColumn, opponentsDataGridViewTextBoxColumn });
             dataGridView2.DataSource = battleLogBindingSource;
             dataGridView2.Dock = DockStyle.Fill;
-            dataGridView2.Location = new Point(203, 53);
+            dataGridView2.Location = new Point(290, 53);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(594, 394);
+            dataGridView2.Size = new Size(857, 544);
             dataGridView2.TabIndex = 1;
             // 
             // dataDataGridViewTextBoxColumn
@@ -140,12 +121,35 @@
             battleLogBindingSource.DataMember = "BattleLog";
             battleLogBindingSource.DataSource = battleLogNicknameBindingSource;
             // 
+            // battleLogNicknameBindingSource
+            // 
+            battleLogNicknameBindingSource.DataSource = typeof(Tables.BattleLogNickname);
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { nickDataGridViewTextBoxColumn });
+            dataGridView1.DataSource = battleLogNicknameBindingSource;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(3, 53);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(281, 544);
+            dataGridView1.TabIndex = 0;
+            // 
             // nickDataGridViewTextBoxColumn
             // 
             nickDataGridViewTextBoxColumn.DataPropertyName = "Nick";
             nickDataGridViewTextBoxColumn.HeaderText = "Nick";
             nickDataGridViewTextBoxColumn.Name = "nickDataGridViewTextBoxColumn";
             nickDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // battleLogBindingSource1
+            // 
+            battleLogBindingSource1.DataMember = "BattleLog";
+            battleLogBindingSource1.DataSource = battleLogNicknameBindingSource;
             // 
             // UC_BattleLog
             // 
@@ -155,13 +159,13 @@
             Controls.Add(tableLayoutPanel1);
             Location = new Point(0, 50);
             Name = "UC_BattleLog";
-            Size = new Size(800, 450);
+            Size = new Size(1150, 600);
             tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)battleLogBindingSource1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)battleLogNicknameBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ((System.ComponentModel.ISupportInitialize)battleLogBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)battleLogNicknameBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)battleLogBindingSource1).EndInit();
             ResumeLayout(false);
         }
 

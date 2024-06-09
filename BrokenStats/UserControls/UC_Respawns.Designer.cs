@@ -42,7 +42,7 @@ namespace BrokenStats.UserControls
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 50);
+            panel1.Size = new Size(1150, 50);
             panel1.TabIndex = 47;
             // 
             // tableLayoutPanel1
@@ -53,17 +53,17 @@ namespace BrokenStats.UserControls
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 70F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150F));
-            tableLayoutPanel1.Location = new Point(207, 81);
+            tableLayoutPanel1.Location = new Point(150, 70);
             tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 73F));
-            tableLayoutPanel1.Size = new Size(374, 75);
+            tableLayoutPanel1.Size = new Size(850, 75);
             tableLayoutPanel1.TabIndex = 48;
             // 
             // label1
             // 
-            label1.Location = new Point(369, 64);
+            label1.Location = new Point(575, 53);
             label1.Name = "label1";
             label1.Size = new Size(46, 15);
             label1.TabIndex = 49;
@@ -80,10 +80,10 @@ namespace BrokenStats.UserControls
             customButton1.FlatAppearance.BorderSize = 0;
             customButton1.FlatStyle = FlatStyle.Flat;
             customButton1.ForeColor = Color.White;
-            customButton1.Location = new Point(0, 427);
+            customButton1.Location = new Point(0, 577);
             customButton1.Margin = new Padding(3, 2, 3, 2);
             customButton1.Name = "customButton1";
-            customButton1.Size = new Size(800, 23);
+            customButton1.Size = new Size(1150, 23);
             customButton1.TabIndex = 50;
             customButton1.Text = "tester";
             customButton1.TextColor = Color.White;
@@ -101,10 +101,10 @@ namespace BrokenStats.UserControls
             customButton2.FlatAppearance.BorderSize = 0;
             customButton2.FlatStyle = FlatStyle.Flat;
             customButton2.ForeColor = Color.White;
-            customButton2.Location = new Point(0, 404);
+            customButton2.Location = new Point(0, 554);
             customButton2.Margin = new Padding(3, 2, 3, 2);
             customButton2.Name = "customButton2";
-            customButton2.Size = new Size(800, 23);
+            customButton2.Size = new Size(1150, 23);
             customButton2.TabIndex = 51;
             customButton2.Text = "tester";
             customButton2.TextColor = Color.White;
@@ -121,7 +121,7 @@ namespace BrokenStats.UserControls
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel1);
             Name = "UC_Respawns";
-            Size = new Size(800, 450);
+            Size = new Size(1150, 600);
             ResumeLayout(false);
             PerformLayout();
         }

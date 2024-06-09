@@ -9,16 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ArtanBojaxhi.Classes" Version="1.0.0" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
     <PackageReference Include="Krypton.Toolkit" Version="80.24.3.64" />
-    <PackageReference Include="LiveCharts" Version="0.9.7" />
-    <PackageReference Include="LiveCharts.WinForms" Version="0.9.7.1" />
-    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.4" />
     <PackageReference Include="Pcap.Net.x64" Version="1.0.4.1" />
-    <PackageReference Include="ScottPlot" Version="5.0.32" />
-    <PackageReference Include="ScottPlot.WinForms" Version="5.0.32" />
   </ItemGroup>
 
   <ItemGroup>
