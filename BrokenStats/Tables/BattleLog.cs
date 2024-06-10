@@ -8,9 +8,9 @@ public class BattleLog
     [Key] public int Id { get; set; }
     public string? Data { get; set; }
     public double? Experience { get; set; }
-    public double? Psycho_Experience { get; set; }
+    public double? PsychoExperience { get; set; }
     public double? Gold { get; set; }
-    public string? Dropped_items { get; set; }
+    public string? DroppedItems { get; set; }
     public string? Opponents { get; set; }
 
     public int NicknameId { get; set; }

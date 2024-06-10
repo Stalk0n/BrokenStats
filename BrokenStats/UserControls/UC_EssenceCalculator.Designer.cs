@@ -1,6 +1,6 @@
 ﻿namespace BrokenStats.UserControls
 {
-    partial class UC_EssenceCalculator
+    partial class UcEssenceCalculator
     {
         /// <summary> 
         /// Required designer variable.
@@ -136,7 +136,7 @@
             customTextBoxCenaOdlamkow.TabIndex = 42;
             customTextBoxCenaOdlamkow.Texts = "";
             customTextBoxCenaOdlamkow.UnderlinedStyle = false;
-            customTextBoxCenaOdlamkow._TextChanged += customTextBoxCenaOdlamkow__TextChanged;
+            customTextBoxCenaOdlamkow.TextChanged += customTextBoxCenaOdlamkow__TextChanged;
             // 
             // customTextBoxCenaEsencji
             // 
@@ -161,7 +161,7 @@
             customTextBoxCenaEsencji.TabIndex = 43;
             customTextBoxCenaEsencji.Texts = "";
             customTextBoxCenaEsencji.UnderlinedStyle = false;
-            customTextBoxCenaEsencji._TextChanged += customTextBoxCenaEsencji__TextChanged;
+            customTextBoxCenaEsencji.TextChanged += customTextBoxCenaEsencji__TextChanged;
             // 
             // customTextBoxCenaPlatyny
             // 
@@ -186,7 +186,7 @@
             customTextBoxCenaPlatyny.TabIndex = 44;
             customTextBoxCenaPlatyny.Texts = "";
             customTextBoxCenaPlatyny.UnderlinedStyle = false;
-            customTextBoxCenaPlatyny._TextChanged += customTextBoxCenaPlatyny__TextChanged;
+            customTextBoxCenaPlatyny.TextChanged += customTextBoxCenaPlatyny__TextChanged;
             // 
             // label7
             // 
@@ -462,8 +462,7 @@
             customTextBoxCenaPrzedmiotu.TabIndex = 51;
             customTextBoxCenaPrzedmiotu.Texts = "";
             customTextBoxCenaPrzedmiotu.UnderlinedStyle = false;
-            customTextBoxCenaPrzedmiotu._TextChanged += customTextBoxCenaPrzedmiotu__TextChanged;
-            customTextBoxCenaPrzedmiotu.Leave += customTextBoxCenaPrzedmiotu__Leave;
+            customTextBoxCenaPrzedmiotu.TextChanged += customTextBoxCenaPrzedmiotu__TextChanged;
             // 
             // label11
             // 
@@ -618,7 +617,7 @@
             Controls.Add(toggleButtonSynergetyk);
             Controls.Add(label2);
             Controls.Add(toggleButtonSetItem);
-            Name = "UC_EssenceCalculator";
+            Name = "UcEssenceCalculator";
             Size = new Size(1150, 600);
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();

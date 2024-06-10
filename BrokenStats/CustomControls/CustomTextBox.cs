@@ -30,7 +30,7 @@ namespace BrokenStats.CustomControls
         private bool isPasswordChar = false;
 
         //Events
-        public event EventHandler _TextChanged;
+        public event EventHandler TextChanged;
 
         #endregion
 
@@ -352,8 +352,8 @@ namespace BrokenStats.CustomControls
         #region -> TextBox events
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (_TextChanged != null)
-                _TextChanged.Invoke(sender, e);
+            if (TextChanged != null)
+                TextChanged.Invoke(sender, e);
         }
         private void textBox1_Click(object sender, EventArgs e)
         {

@@ -2,7 +2,7 @@
 
 namespace BrokenStats.Tables;
 
-public class XP
+public class Xp
 {
     [Key] public int LogId { get; set; }
 

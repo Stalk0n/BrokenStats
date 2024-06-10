@@ -82,6 +82,11 @@ namespace BrokenStats
             }
         }
 
+        public static void ProcessBattleLogPacket(string packetData)
+        {
+            BattleLogPackedFound?.Invoke(packetData);
+        }
+
         // Callback function invoked by libpcap for every incoming packet
         private static void PacketHandler(Packet packet)
         {

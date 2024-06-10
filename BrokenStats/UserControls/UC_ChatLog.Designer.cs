@@ -1,6 +1,6 @@
 ﻿namespace BrokenStats.UserControls
 {
-    partial class UC_ChatLog
+    partial class UcChatLog
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             button1 = new Button();
             dataGridViewChatLogMessage = new DataGridView();
             dataDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -75,14 +75,14 @@
             dataGridViewChatLogMessage.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewChatLogMessage.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewChatLogMessage.Columns.AddRange(new DataGridViewColumn[] { dataDataGridViewTextBoxColumn, messageDataGridViewTextBoxColumn });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dataGridViewChatLogMessage.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewChatLogMessage.DefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewChatLogMessage.Dock = DockStyle.Left;
             dataGridViewChatLogMessage.Location = new Point(3, 3);
             dataGridViewChatLogMessage.Name = "dataGridViewChatLogMessage";
@@ -162,7 +162,7 @@
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(3, 53);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(339, 544);
+            dataGridView1.Size = new Size(281, 544);
             dataGridView1.TabIndex = 0;
             // 
             // nickDataGridViewTextBoxColumn1
@@ -178,8 +178,8 @@
             // tableLayoutPanel2
             // 
             tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
             tableLayoutPanel2.Controls.Add(dataGridView1, 0, 1);
             tableLayoutPanel2.Controls.Add(dataGridView2, 1, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
@@ -195,19 +195,20 @@
             // 
             dataGridView2.AutoGenerateColumns = false;
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataDataGridViewTextBoxColumn1, messageDataGridViewTextBoxColumn1 });
             dataGridView2.DataSource = messagesBindingSource;
             dataGridView2.Dock = DockStyle.Fill;
-            dataGridView2.Location = new Point(348, 53);
+            dataGridView2.Location = new Point(290, 53);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(799, 544);
+            dataGridView2.Size = new Size(857, 544);
             dataGridView2.TabIndex = 1;
             // 
             // dataDataGridViewTextBoxColumn1
             // 
             dataDataGridViewTextBoxColumn1.DataPropertyName = "Data";
+            dataDataGridViewTextBoxColumn1.FillWeight = 20F;
             dataDataGridViewTextBoxColumn1.HeaderText = "Data";
             dataDataGridViewTextBoxColumn1.Name = "dataDataGridViewTextBoxColumn1";
             dataDataGridViewTextBoxColumn1.ReadOnly = true;
@@ -224,12 +225,12 @@
             messagesBindingSource.DataMember = "Messages";
             messagesBindingSource.DataSource = chatLogNicknameBindingSource;
             // 
-            // UC_ChatLog
+            // UcChatLog
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(tableLayoutPanel2);
-            Name = "UC_ChatLog";
+            Name = "UcChatLog";
             Size = new Size(1150, 600);
             ((System.ComponentModel.ISupportInitialize)dataGridViewChatLogMessage).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
@@ -257,8 +258,8 @@
         private DataGridView dataGridView2;
         private DataGridViewTextBoxColumn nickDataGridViewTextBoxColumn1;
         private BindingSource chatLogNicknameBindingSource;
+        private BindingSource messagesBindingSource;
         private DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn messageDataGridViewTextBoxColumn1;
-        private BindingSource messagesBindingSource;
     }
 }

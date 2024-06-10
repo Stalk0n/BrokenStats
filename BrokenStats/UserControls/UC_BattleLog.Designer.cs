@@ -1,6 +1,6 @@
 ﻿namespace BrokenStats.UserControls
 {
-    partial class UC_BattleLog
+    partial class UcBattleLog
     {
         /// <summary> 
         /// Required designer variable.
@@ -31,17 +31,17 @@
             components = new System.ComponentModel.Container();
             tableLayoutPanel1 = new TableLayoutPanel();
             dataGridView2 = new DataGridView();
-            dataDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            experienceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            psychoExperienceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            goldDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            droppeditemsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            opponentsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             battleLogBindingSource = new BindingSource(components);
             battleLogNicknameBindingSource = new BindingSource(components);
             dataGridView1 = new DataGridView();
             nickDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             battleLogBindingSource1 = new BindingSource(components);
+            dataDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            experienceDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            PsychoExperience = new DataGridViewTextBoxColumn();
+            goldDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            DroppedItems = new DataGridViewTextBoxColumn();
+            opponentsDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)battleLogBindingSource).BeginInit();
@@ -72,49 +72,13 @@
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataDataGridViewTextBoxColumn, experienceDataGridViewTextBoxColumn, psychoExperienceDataGridViewTextBoxColumn, goldDataGridViewTextBoxColumn, droppeditemsDataGridViewTextBoxColumn, opponentsDataGridViewTextBoxColumn });
+            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataDataGridViewTextBoxColumn, experienceDataGridViewTextBoxColumn, PsychoExperience, goldDataGridViewTextBoxColumn, DroppedItems, opponentsDataGridViewTextBoxColumn });
             dataGridView2.DataSource = battleLogBindingSource;
             dataGridView2.Dock = DockStyle.Fill;
             dataGridView2.Location = new Point(290, 53);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(857, 544);
             dataGridView2.TabIndex = 1;
-            // 
-            // dataDataGridViewTextBoxColumn
-            // 
-            dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
-            dataDataGridViewTextBoxColumn.HeaderText = "Data";
-            dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
-            // 
-            // experienceDataGridViewTextBoxColumn
-            // 
-            experienceDataGridViewTextBoxColumn.DataPropertyName = "Experience";
-            experienceDataGridViewTextBoxColumn.HeaderText = "Experience";
-            experienceDataGridViewTextBoxColumn.Name = "experienceDataGridViewTextBoxColumn";
-            // 
-            // psychoExperienceDataGridViewTextBoxColumn
-            // 
-            psychoExperienceDataGridViewTextBoxColumn.DataPropertyName = "Psycho_Experience";
-            psychoExperienceDataGridViewTextBoxColumn.HeaderText = "Psycho_Experience";
-            psychoExperienceDataGridViewTextBoxColumn.Name = "psychoExperienceDataGridViewTextBoxColumn";
-            // 
-            // goldDataGridViewTextBoxColumn
-            // 
-            goldDataGridViewTextBoxColumn.DataPropertyName = "Gold";
-            goldDataGridViewTextBoxColumn.HeaderText = "Gold";
-            goldDataGridViewTextBoxColumn.Name = "goldDataGridViewTextBoxColumn";
-            // 
-            // droppeditemsDataGridViewTextBoxColumn
-            // 
-            droppeditemsDataGridViewTextBoxColumn.DataPropertyName = "Dropped_items";
-            droppeditemsDataGridViewTextBoxColumn.HeaderText = "Dropped_items";
-            droppeditemsDataGridViewTextBoxColumn.Name = "droppeditemsDataGridViewTextBoxColumn";
-            // 
-            // opponentsDataGridViewTextBoxColumn
-            // 
-            opponentsDataGridViewTextBoxColumn.DataPropertyName = "Opponents";
-            opponentsDataGridViewTextBoxColumn.HeaderText = "Opponents";
-            opponentsDataGridViewTextBoxColumn.Name = "opponentsDataGridViewTextBoxColumn";
             // 
             // battleLogBindingSource
             // 
@@ -151,14 +115,50 @@
             battleLogBindingSource1.DataMember = "BattleLog";
             battleLogBindingSource1.DataSource = battleLogNicknameBindingSource;
             // 
-            // UC_BattleLog
+            // dataDataGridViewTextBoxColumn
+            // 
+            dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
+            dataDataGridViewTextBoxColumn.HeaderText = "Data";
+            dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
+            // 
+            // experienceDataGridViewTextBoxColumn
+            // 
+            experienceDataGridViewTextBoxColumn.DataPropertyName = "Experience";
+            experienceDataGridViewTextBoxColumn.HeaderText = "Experience";
+            experienceDataGridViewTextBoxColumn.Name = "experienceDataGridViewTextBoxColumn";
+            // 
+            // PsychoExperience
+            // 
+            PsychoExperience.DataPropertyName = "PsychoExperience";
+            PsychoExperience.HeaderText = "PsychoExperience";
+            PsychoExperience.Name = "PsychoExperience";
+            // 
+            // goldDataGridViewTextBoxColumn
+            // 
+            goldDataGridViewTextBoxColumn.DataPropertyName = "Gold";
+            goldDataGridViewTextBoxColumn.HeaderText = "Gold";
+            goldDataGridViewTextBoxColumn.Name = "goldDataGridViewTextBoxColumn";
+            // 
+            // DroppedItems
+            // 
+            DroppedItems.DataPropertyName = "DroppedItems";
+            DroppedItems.HeaderText = "DroppedItems";
+            DroppedItems.Name = "DroppedItems";
+            // 
+            // opponentsDataGridViewTextBoxColumn
+            // 
+            opponentsDataGridViewTextBoxColumn.DataPropertyName = "Opponents";
+            opponentsDataGridViewTextBoxColumn.HeaderText = "Opponents";
+            opponentsDataGridViewTextBoxColumn.Name = "opponentsDataGridViewTextBoxColumn";
+            // 
+            // UcBattleLog
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             Controls.Add(tableLayoutPanel1);
             Location = new Point(0, 50);
-            Name = "UC_BattleLog";
+            Name = "UcBattleLog";
             Size = new Size(1150, 600);
             tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
@@ -176,13 +176,15 @@
         private DataGridView dataGridView2;
         private BindingSource battleLogNicknameBindingSource;
         private BindingSource battleLogBindingSource;
-        private DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn experienceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn psychoExperienceDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn goldDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn droppeditemsDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn opponentsDataGridViewTextBoxColumn;
         private BindingSource battleLogBindingSource1;
         private DataGridViewTextBoxColumn nickDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dataDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn experienceDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn PsychoExperience;
+        private DataGridViewTextBoxColumn goldDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn DroppedItems;
+        private DataGridViewTextBoxColumn opponentsDataGridViewTextBoxColumn;
     }
 }

@@ -1,8 +1,8 @@
 ﻿namespace BrokenStats.UserControls;
 
-public partial class UC_EssenceCalculator : UserControl
+public partial class UcEssenceCalculator : UserControl
 {
-    public UC_EssenceCalculator()
+    public UcEssenceCalculator()
     {
         InitializeComponent();
     }
@@ -127,16 +127,15 @@ public partial class UC_EssenceCalculator : UserControl
 
     private void customTextBoxCenaPrzedmiotu__TextChanged(object sender, EventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(customTextBoxCenaPrzedmiotu.Text))
+        if (!string.IsNullOrWhiteSpace(customTextBoxCenaPrzedmiotu.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaPlatyny.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaEsencji.Text) &&
+            !string.IsNullOrWhiteSpace(customTextBoxCenaOdlamkow.Text) &&
+            customComboBoxGwiazdki.SelectedIndex != -1 &&
+            customComboBoxRanga.SelectedIndex != -1)
         {
-            customTextBoxCenaPrzedmiotu.Text = "0";
-            customTextBoxCenaPrzedmiotu.SelectionStart = customTextBoxCenaPrzedmiotu.Text.Length;
+            CalculateProfit();
         }
-    }
-
-    private void customTextBoxCenaPrzedmiotu__Leave(object sender, EventArgs e)
-    {
-        if (string.IsNullOrWhiteSpace(customTextBoxCenaPrzedmiotu.Text)) customTextBoxCenaPrzedmiotu.Text = "0";
     }
 
 

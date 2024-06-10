@@ -43,6 +43,7 @@ namespace BrokenStats
             kryptonButton2 = new KryptonButton();
             kryptonButton4 = new KryptonButton();
             kryptonButton5 = new KryptonButton();
+            kryptonButton3 = new KryptonButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tableLayoutPanel1.SuspendLayout();
@@ -51,6 +52,7 @@ namespace BrokenStats
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(26, 26, 26);
+            panel1.Controls.Add(kryptonButton3);
             panel1.Controls.Add(minimiseButton);
             panel1.Controls.Add(exitButton);
             panel1.Controls.Add(label2);
@@ -340,6 +342,15 @@ namespace BrokenStats
             kryptonButton5.Values.Text = "Respawns";
             kryptonButton5.Click += kryptonButton5_Click;
             // 
+            // kryptonButton3
+            // 
+            kryptonButton3.Location = new Point(513, 17);
+            kryptonButton3.Name = "kryptonButton3";
+            kryptonButton3.Size = new Size(90, 25);
+            kryptonButton3.TabIndex = 15;
+            kryptonButton3.Values.Text = "kryptonButton3";
+            kryptonButton3.Click += kryptonButton3_Click;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -373,5 +384,6 @@ namespace BrokenStats
         private Krypton.Toolkit.KryptonButton kryptonButton5;
         private KryptonButton exitButton;
         private KryptonButton minimiseButton;
+        private KryptonButton kryptonButton3;
     }
 }
