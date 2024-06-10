@@ -2,23 +2,21 @@
 {
     partial class UcBattleLog
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
-
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        private System.Windows.Forms.BindingSource battleLogNicknameBindingSource;
+        private System.Windows.Forms.DataGridView battleLogDataGridView;
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
             {
-                components.Dispose();
+                if (battleLogDataGridView != null && battleLogDataGridView.Parent != null)
+                {
+                    components.Dispose();
+                }
             }
             base.Dispose(disposing);
         }
+
 
         #region Component Designer generated code
 
@@ -174,7 +172,6 @@
         private TableLayoutPanel tableLayoutPanel1;
         private DataGridView dataGridView1;
         private DataGridView dataGridView2;
-        private BindingSource battleLogNicknameBindingSource;
         private BindingSource battleLogBindingSource;
         private DataGridViewTextBoxColumn psychoExperienceDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn droppeditemsDataGridViewTextBoxColumn;

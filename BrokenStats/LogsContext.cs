@@ -33,7 +33,6 @@ public class LogsContext : DbContext
         {
             existingNickname = new ChatLogNickname { Nick = nickname };
             ChatLogNicknames.Add(existingNickname);
-            SaveChanges();
         }
 
         var newMessage = new ChatMessage
@@ -43,9 +42,7 @@ public class LogsContext : DbContext
             Data = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
         };
         ChatMessages.Add(newMessage);
-        SaveChanges();
     }
-
 
     public void AddBattleLogInstance(string input)
     {
@@ -62,9 +59,7 @@ public class LogsContext : DbContext
         {
             existingNickname = new BattleLogNickname { Nick = nick };
             BattleLogNicknames.Add(existingNickname);
-            SaveChanges();
         }
-
 
         var newBattleLog = new BattleLog
         {
@@ -77,6 +72,5 @@ public class LogsContext : DbContext
             Data = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
         };
         BattleLogs.Add(newBattleLog);
-        SaveChanges();
     }
 }

@@ -18,6 +18,9 @@ public partial class UcRespawns : UserControl
         InitializeRespawnList();
         InitializeTableLayoutPanel();
         Sniffer.BattleLogPackedFound += ReceiveBattlePacket;
+
+        customButton1.Visible = false;
+        customButton2.Visible = false;
     }
 
     private void InitializeRespawnList()

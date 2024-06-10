@@ -7,27 +7,52 @@ public partial class Form2 : Form
 {
     public delegate void BattleLogPackedFoundEventHandler(string packetData);
 
-    private UcBattleLog battleLogUc;
-    private UcChatLog chatLogUc;
-
+    private readonly UcBattleLog battleLogUc;
+    private readonly UcChatLog chatLogUc;
+    private readonly UcEssenceCalculator essenceCalcUc;
+    private readonly UcRespawns respawnsUc;
     private LogsContext? dbContext;
-    private UcEssenceCalculator essenceCalcUc;
     private bool isMouseDown;
     private Point mouseOffset;
-    private UcRespawns respawnsUc;
-
 
     public Form2()
     {
-        Uruchom_sniffer();
         InitializeComponent();
-        var uc = new UcChatLog();
-        AddUserControl(uc);
+        UruchomSniffer();
+
+        dbContext = new LogsContext();
+
+        chatLogUc = new UcChatLog();
+        battleLogUc = new UcBattleLog();
+        essenceCalcUc = new UcEssenceCalculator();
+        respawnsUc = new UcRespawns();
+
+        InitializeUserControls();
+
+        AddUserControl(chatLogUc);
+        AddUserControl(battleLogUc);
+        AddUserControl(essenceCalcUc);
+        AddUserControl(respawnsUc);
+
+        ShowUserControl(chatLogUc);
+
         panel1.MouseDown += Panel1_MouseDown;
         panel1.MouseMove += Panel1_MouseMove;
         panel1.MouseUp += Panel1_MouseUp;
+
+        kryptonButton3.Visible = false;
+        label1.Visible = false;
+        label2.Visible = false;
     }
 
+    private void InitializeUserControls()
+    {
+        if (dbContext != null)
+        {
+            battleLogUc.SetDbContext();
+            chatLogUc.SetDbContext(dbContext);
+        }
+    }
 
     private void AddUserControl(UserControl userControl)
     {
@@ -38,13 +63,23 @@ public partial class Form2 : Form
         else
         {
             userControl.Dock = DockStyle.Fill;
-            foreach (Control control in panelContainer.Controls) control.Visible = false;
-            panelContainer.Controls.Clear();
+            userControl.Visible = false;
             panelContainer.Controls.Add(userControl);
-            userControl.Visible = true;
         }
     }
 
+    private void ShowUserControl(UserControl userControl)
+    {
+        if (InvokeRequired)
+        {
+            Invoke(new Action<UserControl>(ShowUserControl), userControl);
+        }
+        else
+        {
+            foreach (Control control in panelContainer.Controls) control.Visible = false;
+            userControl.Visible = true;
+        }
+    }
 
     private void Panel1_MouseDown(object sender, MouseEventArgs e)
     {
@@ -72,112 +107,51 @@ public partial class Form2 : Form
 
     private void kryptonButton1_Click(object sender, EventArgs e)
     {
-        if (chatLogUc == null)
-        {
-            chatLogUc = new UcChatLog();
-            new Thread(() =>
-            {
-                Thread.CurrentThread.IsBackground = true;
-
-                Invoke(() => { AddUserControl(chatLogUc); });
-            }).Start();
-        }
-        else
-        {
-            AddUserControl(chatLogUc);
-        }
+        ShowUserControl(chatLogUc);
     }
 
     private void kryptonButton2_Click(object sender, EventArgs e)
     {
-        if (battleLogUc == null)
-        {
-            battleLogUc = new UcBattleLog();
-            new Thread(() =>
-            {
-                Thread.CurrentThread.IsBackground = true;
-
-                Invoke(() => { AddUserControl(battleLogUc); });
-            }).Start();
-        }
-        else
-        {
-            AddUserControl(battleLogUc);
-        }
+        ShowUserControl(battleLogUc);
     }
 
     private void kryptonButton4_Click(object sender, EventArgs e)
     {
-        if (essenceCalcUc == null)
-        {
-            essenceCalcUc = new UcEssenceCalculator();
-            new Thread(() =>
-            {
-                Thread.CurrentThread.IsBackground = true;
-
-                Invoke(() => { AddUserControl(essenceCalcUc); });
-            }).Start();
-        }
-        else
-        {
-            AddUserControl(essenceCalcUc);
-        }
+        ShowUserControl(essenceCalcUc);
     }
 
     private void kryptonButton5_Click(object sender, EventArgs e)
     {
-        if (respawnsUc == null)
-        {
-            respawnsUc = new UcRespawns();
-            new Thread(() =>
-            {
-                Thread.CurrentThread.IsBackground = true;
-
-                Invoke(() => { AddUserControl(respawnsUc); });
-            }).Start();
-        }
-        else
-        {
-            AddUserControl(respawnsUc);
-        }
+        ShowUserControl(respawnsUc);
     }
-
 
     private void kryptonButton10_Click(object sender, EventArgs e)
     {
         WindowState = FormWindowState.Minimized;
     }
 
-
     private void kryptonButton8_Click(object sender, EventArgs e)
     {
         Close();
     }
 
-
-    private static void Uruchom_sniffer()
+    private static void UruchomSniffer()
     {
         var sniffer = new Sniffer();
 
         new Thread(() =>
         {
             Thread.CurrentThread.IsBackground = true;
-
             sniffer.Start();
         }).Start();
     }
 
-
     protected override void OnClosing(CancelEventArgs e)
     {
         base.OnClosing(e);
-
         dbContext?.Dispose();
         dbContext = null;
     }
-
-    public event BattleLogPackedFoundEventHandler BattleLogPackedFound;
-
 
     private void kryptonButton3_Click(object sender, EventArgs e)
     {

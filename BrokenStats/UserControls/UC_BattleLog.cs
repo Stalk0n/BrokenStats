@@ -36,19 +36,23 @@ public partial class UcBattleLog : UserControl
         }
     }
 
+    public void SetDbContext()
+    {
+        dbContext = new LogsContext();
+    }
+
     protected override void OnLoad(EventArgs e)
     {
         base.OnLoad(e);
 
         dbContext = new LogsContext();
 
-        // Uncomment the line below to start fresh with a new database.
-        // dbContext.Database.EnsureDeleted();
-        // dbContext.Database.EnsureCreated();
-
+        dbContext.Database.EnsureCreated();
 
         dbContext.BattleLogNicknames.Load();
+        dbContext.BattleLogs.Load();
 
         battleLogNicknameBindingSource.DataSource = dbContext.BattleLogNicknames.Local.ToBindingList();
+        battleLogBindingSource.DataSource = dbContext.BattleLogs.Local.ToBindingList();
     }
 }
