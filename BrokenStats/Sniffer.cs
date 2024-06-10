@@ -2,6 +2,7 @@
 using PcapDotNet.Packets;
 using PcapDotNet.Packets.IpV4;
 using PcapDotNet.Packets.Transport;
+using System.Net.NetworkInformation;
 
 namespace BrokenStats
 {
@@ -18,61 +19,20 @@ namespace BrokenStats
 
         public void Start()
         {
-            // Retrieve the device list from the local machine
-            IList<LivePacketDevice> allDevices = LivePacketDevice.AllLocalMachine;
+            string[] targetIpAddresses = { "147.135.70.223", "145.239.19.54" };
+            PacketDevice selectedDevice = FindActiveDevice(targetIpAddresses);
 
-            if (allDevices.Count == 0)
+            if (selectedDevice == null)
             {
-                Console.WriteLine(@"No interfaces found! Make sure WinPcap is installed.");
+                Console.WriteLine("Postać nie jest zalogowana w grze!");
                 return;
             }
 
-            // Print the list
-            for (int i = 0; i != allDevices.Count; ++i)
+            using (PacketCommunicator communicator = selectedDevice.Open(65536, PacketDeviceOpenAttributes.Promiscuous, 1000))
             {
-                LivePacketDevice device = allDevices[i];
-                Console.Write((i + 1) + @". " + device.Name);
-                if (device.Description != null)
-                    Console.WriteLine(@" (" + device.Description + @")");
-                else
-                    Console.WriteLine(@" (No description available)");
-            }
-
-            int deviceIndex = 1;
-            // do
-            // {
-            //     Console.WriteLine("Enter the interface number (1-" + allDevices.Count + "):");
-            //     string deviceIndexString = Console.ReadLine();
-            //     if (!int.TryParse(deviceIndexString, out deviceIndex) ||
-            //         deviceIndex < 1 || deviceIndex > allDevices.Count)
-            //     {
-            //         deviceIndex = 0;
-            //     }
-            // } while (deviceIndex == 0);
-
-            // Take the selected adapter
-            PacketDevice selectedDevice = allDevices[deviceIndex - 1];
-
-            // Open the device
-            using (PacketCommunicator communicator =
-                   selectedDevice.Open(65536, // portion of the packet to capture
-                       // 65536 guarantees that the whole packet will be captured on all the link layers
-                       PacketDeviceOpenAttributes.Promiscuous, // promiscuous mode
-                       1000)) // read timeout
-            {
-                // Check the link layer. We support only Ethernet for simplicity.
-                // if (communicator.DataLink.Kind != DataLinkKind.Ethernet)
-                // {
-                //     Console.WriteLine("This program works only on Ethernet networks.");
-                //     return;
-                // }
-
-                // Compile the filter
-                string ipAddress = "147.135.70.223";
-                // string ipAddress = "145.239.19.54";
+                string ipAddress = targetIpAddresses[0]; // Tutaj możesz wybrać dowolny adres IP z listy
                 using (BerkeleyPacketFilter filter = communicator.CreateFilter("ip and tcp and src host " + ipAddress))
                 {
-                    // Set the filter
                     communicator.SetFilter(filter);
                 }
 
@@ -81,6 +41,53 @@ namespace BrokenStats
                 communicator.ReceivePackets(0, PacketHandler);
             }
         }
+
+        private PacketDevice FindActiveDevice(string[] targetIpAddresses)
+        {
+            IList<LivePacketDevice> allDevices = LivePacketDevice.AllLocalMachine;
+
+            foreach (LivePacketDevice device in allDevices)
+            {
+                foreach (string ipAddress in targetIpAddresses)
+                {
+                    if (IsAddressReachable(ipAddress, device))
+                    {
+                        return device;
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        private bool IsAddressReachable(string ipAddress, LivePacketDevice device)
+        {
+            Ping pingSender = new Ping();
+            PingOptions options = new PingOptions
+            {
+                DontFragment = true
+            };
+
+            int timeout = 10000; // 10 sekund na sprawdzenie dostępności
+
+            try
+            {
+                PingReply reply = pingSender.Send(ipAddress, timeout, new byte[32], options);
+
+                if (reply != null && reply.Status == IPStatus.Success)
+                {
+                    return true;
+                }
+            }
+            catch (PingException)
+            {
+                // Ignoruj błędy pingowania
+            }
+
+            return false;
+        }
+
+
 
         public static void ProcessBattleLogPacket(string packetData)
         {
