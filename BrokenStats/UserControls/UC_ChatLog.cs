@@ -43,8 +43,13 @@ public partial class UcChatLog : UserControl
     {
         dbContext = context;
         LoadChatLogs();
+        RefreshDataGridView();
     }
-
+    private void RefreshDataGridView()
+    {
+        dbContext.ChatLogNicknames.Load();
+        dataGridView1.DataSource = dbContext.ChatLogNicknames.Local.ToBindingList();
+    }
     private void LoadChatLogs()
     {
         if (dbContext != null)

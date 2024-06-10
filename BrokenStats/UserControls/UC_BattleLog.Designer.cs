@@ -9,10 +9,7 @@
         {
             if (disposing && (components != null))
             {
-                if (battleLogDataGridView != null && battleLogDataGridView.Parent != null)
-                {
-                    components.Dispose();
-                }
+                components.Dispose();
             }
             base.Dispose(disposing);
         }

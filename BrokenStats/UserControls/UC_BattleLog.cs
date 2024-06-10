@@ -26,6 +26,7 @@ public partial class UcBattleLog : UserControl
             var parts = packetData.Split('\t');
 
             dbContext?.SaveChanges();
+            RefreshDataGridView();
 
             dbContext?.BattleLogNicknames.Load();
             battleLogNicknameBindingSource.DataSource = dbContext?.BattleLogNicknames.Local.ToBindingList();
@@ -36,9 +37,16 @@ public partial class UcBattleLog : UserControl
         }
     }
 
+    private void RefreshDataGridView()
+    {
+        dbContext.BattleLogNicknames.Load();
+        dataGridView1.DataSource = dbContext.BattleLogNicknames.Local.ToBindingList();
+    }
+
     public void SetDbContext()
     {
         dbContext = new LogsContext();
+        RefreshDataGridView();
     }
 
     protected override void OnLoad(EventArgs e)
