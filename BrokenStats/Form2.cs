@@ -49,7 +49,7 @@ public partial class Form2 : Form
     {
         if (dbContext != null)
         {
-            battleLogUc.SetDbContext();
+            battleLogUc.SetDbContext(dbContext);
             chatLogUc.SetDbContext(dbContext);
         }
     }

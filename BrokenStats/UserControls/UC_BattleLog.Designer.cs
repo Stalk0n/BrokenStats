@@ -9,7 +9,10 @@
         {
             if (disposing && (components != null))
             {
-                components.Dispose();
+                if (battleLogDataGridView != null && battleLogDataGridView.Parent != null)
+                {
+                    components.Dispose();
+                }
             }
             base.Dispose(disposing);
         }
@@ -48,8 +51,8 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 17.65F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 82.35F));
             tableLayoutPanel1.Controls.Add(dataGridView2, 1, 1);
             tableLayoutPanel1.Controls.Add(dataGridView1, 0, 1);
             tableLayoutPanel1.Dock = DockStyle.Fill;
@@ -70,9 +73,9 @@
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataDataGridViewTextBoxColumn, experienceDataGridViewTextBoxColumn, PsychoExperience, goldDataGridViewTextBoxColumn, DroppedItems, opponentsDataGridViewTextBoxColumn });
             dataGridView2.DataSource = battleLogBindingSource;
             dataGridView2.Dock = DockStyle.Fill;
-            dataGridView2.Location = new Point(290, 53);
+            dataGridView2.Location = new Point(205, 53);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(857, 544);
+            dataGridView2.Size = new Size(942, 544);
             dataGridView2.TabIndex = 1;
             // 
             // battleLogBindingSource
@@ -95,7 +98,7 @@
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(3, 53);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(281, 544);
+            dataGridView1.Size = new Size(196, 544);
             dataGridView1.TabIndex = 0;
             // 
             // nickDataGridViewTextBoxColumn
@@ -113,31 +116,35 @@
             // dataDataGridViewTextBoxColumn
             // 
             dataDataGridViewTextBoxColumn.DataPropertyName = "Data";
+            dataDataGridViewTextBoxColumn.FillWeight = 56F;
             dataDataGridViewTextBoxColumn.HeaderText = "Data";
             dataDataGridViewTextBoxColumn.Name = "dataDataGridViewTextBoxColumn";
             // 
             // experienceDataGridViewTextBoxColumn
             // 
             experienceDataGridViewTextBoxColumn.DataPropertyName = "Experience";
+            experienceDataGridViewTextBoxColumn.FillWeight = 50F;
             experienceDataGridViewTextBoxColumn.HeaderText = "Experience";
             experienceDataGridViewTextBoxColumn.Name = "experienceDataGridViewTextBoxColumn";
             // 
             // PsychoExperience
             // 
             PsychoExperience.DataPropertyName = "PsychoExperience";
-            PsychoExperience.HeaderText = "PsychoExperience";
+            PsychoExperience.FillWeight = 60F;
+            PsychoExperience.HeaderText = "Psycho Experience";
             PsychoExperience.Name = "PsychoExperience";
             // 
             // goldDataGridViewTextBoxColumn
             // 
             goldDataGridViewTextBoxColumn.DataPropertyName = "Gold";
+            goldDataGridViewTextBoxColumn.FillWeight = 35F;
             goldDataGridViewTextBoxColumn.HeaderText = "Gold";
             goldDataGridViewTextBoxColumn.Name = "goldDataGridViewTextBoxColumn";
             // 
             // DroppedItems
             // 
             DroppedItems.DataPropertyName = "DroppedItems";
-            DroppedItems.HeaderText = "DroppedItems";
+            DroppedItems.HeaderText = "Dropped Items";
             DroppedItems.Name = "DroppedItems";
             // 
             // opponentsDataGridViewTextBoxColumn

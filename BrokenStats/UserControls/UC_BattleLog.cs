@@ -1,66 +1,95 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Linq;
+using System.Windows.Forms;
+using BrokenStats.Tables;
+using Microsoft.EntityFrameworkCore;
 
-namespace BrokenStats.UserControls;
-
-public partial class UcBattleLog : UserControl
+namespace BrokenStats.UserControls
 {
-    private LogsContext? dbContext;
-
-    public UcBattleLog()
+    public partial class UcBattleLog : UserControl
     {
-        InitializeComponent();
-        Sniffer.BattleLogPackedFound += OnBattleLogPacketFound;
-    }
+        private LogsContext? dbContext;
+        private string selectedNick = string.Empty;
 
-    private void OnBattleLogPacketFound(string packetData)
-    {
-        if (InvokeRequired)
+        public UcBattleLog()
         {
-            Invoke(() => OnBattleLogPacketFound(packetData));
-            return;
+            InitializeComponent();
+            Sniffer.BattleLogPackedFound += OnBattleLogPacketFound;
+            dataGridView1.CellClick += DataGridView1_CellClick;
         }
 
-        if (dbContext != null)
+        private void OnBattleLogPacketFound(string packetData)
         {
-            dbContext.AddBattleLogInstance(packetData);
-            var parts = packetData.Split('\t');
+            if (InvokeRequired)
+            {
+                Invoke(() => OnBattleLogPacketFound(packetData));
+                return;
+            }
 
-            dbContext?.SaveChanges();
-            RefreshDataGridView();
+            if (dbContext != null)
+            {
+                dbContext.AddBattleLogInstance(packetData);
+                dbContext.SaveChanges();
 
-            dbContext?.BattleLogNicknames.Load();
-            battleLogNicknameBindingSource.DataSource = dbContext?.BattleLogNicknames.Local.ToBindingList();
+                LoadBattleLogs();
+            }
+            else
+            {
+                MessageBox.Show(@"Brak dostępu do bazy danych.");
+            }
         }
-        else
+
+        public void SetDbContext(LogsContext context)
         {
-            MessageBox.Show(@"Brak dostępu do bazy danych.");
+            dbContext = context;
+            LoadBattleLogs();
         }
-    }
 
-    private void RefreshDataGridView()
-    {
-        dbContext.BattleLogNicknames.Load();
-        dataGridView1.DataSource = dbContext.BattleLogNicknames.Local.ToBindingList();
-    }
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            LoadBattleLogs();
+        }
 
-    public void SetDbContext()
-    {
-        dbContext = new LogsContext();
-        RefreshDataGridView();
-    }
+        private void LoadBattleLogs()
+        {
+            if (dbContext != null)
+            {
+                dbContext.Database.EnsureCreated();
+                dbContext.BattleLogNicknames.Load();
+                dbContext.BattleLogs.Load();
 
-    protected override void OnLoad(EventArgs e)
-    {
-        base.OnLoad(e);
+                battleLogNicknameBindingSource.DataSource = dbContext.BattleLogNicknames.Local.ToBindingList();
 
-        dbContext = new LogsContext();
+                if (string.IsNullOrEmpty(selectedNick) && battleLogNicknameBindingSource.Count > 0)
+                {
+                    selectedNick = ((BattleLogNickname)battleLogNicknameBindingSource[0]).Nick;
+                }
 
-        dbContext.Database.EnsureCreated();
+                if (!string.IsNullOrEmpty(selectedNick))
+                {
+                    var filteredLogs = dbContext.BattleLogs.Where(log => log.BattleLogNickname.Nick == selectedNick).ToList();
+                    battleLogBindingSource.DataSource = filteredLogs;
+                }
+                else
+                {
+                    battleLogBindingSource.DataSource = dbContext.BattleLogs.Local.ToBindingList();
+                }
+            }
+            else
+            {
+                MessageBox.Show(@"Brak dostępu do bazy danych.");
+            }
+        }
 
-        dbContext.BattleLogNicknames.Load();
-        dbContext.BattleLogs.Load();
 
-        battleLogNicknameBindingSource.DataSource = dbContext.BattleLogNicknames.Local.ToBindingList();
-        battleLogBindingSource.DataSource = dbContext.BattleLogs.Local.ToBindingList();
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                selectedNick = dataGridView1.Rows[e.RowIndex].Cells["nickDataGridViewTextBoxColumn"].Value.ToString();
+                LoadBattleLogs();
+            }
+        }
     }
 }
