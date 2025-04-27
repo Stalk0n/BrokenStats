@@ -19,7 +19,7 @@ namespace BrokenStats
 
         public void Start()
         {
-            string[] targetIpAddresses = { "147.135.70.223", "145.239.19.54" };
+            string[] targetIpAddresses = { "146.59.111.11", "147.135.70.223", "145.239.19.54" };
             PacketDevice selectedDevice = FindActiveDevice(targetIpAddresses);
 
             if (selectedDevice == null)
@@ -172,7 +172,9 @@ namespace BrokenStats
                     else break;
                 }
 
-                opponents = opponents[..^1];
+                if (!string.IsNullOrEmpty(opponents))
+                    opponents = opponents[..^1];
+
 
                 for (int i = 0; i < countOnes; i++)
                 {
@@ -183,7 +185,7 @@ namespace BrokenStats
                     result += parts[2] + "\t"; //    Experience
                     result += parts[24] + "\t"; //    Psycho Experience 
                     result += parts[4] + "\t"; //    Gold
-                    result += parts[7] + " " + parts[9] + "\t"; //    Dropped items: [7] item, [9] creature product 
+                    result += parts[7] + " " + parts[9] + " " + parts[25] + "\t"; //    Dropped items: [7] item, [9] creature product 
                     result += opponents;
                     // Console.WriteLine(result);
                     BattleLogPackedFound?.Invoke(result);

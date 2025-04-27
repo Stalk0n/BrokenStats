@@ -69,7 +69,7 @@ public class LogsContext : DbContext
             DroppedItems = droppedItems,
             Opponents = opponents,
             BattleLogNickname = existingNickname,
-            Data = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+            Data = DateTime.Now
         };
         BattleLogs.Add(newBattleLog);
     }

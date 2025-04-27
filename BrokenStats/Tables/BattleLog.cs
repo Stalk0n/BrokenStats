@@ -6,7 +6,7 @@ namespace BrokenStats.Tables;
 public class BattleLog
 {
     [Key] public int Id { get; set; }
-    public string? Data { get; set; }
+    public DateTime Data { get; set; }
     public double? Experience { get; set; }
     public double? PsychoExperience { get; set; }
     public double? Gold { get; set; }
