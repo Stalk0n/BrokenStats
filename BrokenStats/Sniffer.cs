@@ -3,7 +3,7 @@ using PcapDotNet.Packets;
 using PcapDotNet.Packets.IpV4;
 using PcapDotNet.Packets.Transport;
 using System.Net.NetworkInformation;
-
+using System.Linq;
 namespace BrokenStats
 {
     class Sniffer
@@ -183,7 +183,14 @@ namespace BrokenStats
                     // result += parts[0] + "\t"; //    Party
                     result += parts[1] + "\t"; //    Nick
                     result += parts[2] + "\t"; //    Experience
-                    result += parts[24] + "\t"; //    Psycho Experience 
+                    string psychoExperience = parts[24];
+ 
+                    if (!string.IsNullOrEmpty(parts[7]) && parts[7].All(char.IsDigit))
+                    {
+                        psychoExperience = parts[7];
+                    }
+                    result += psychoExperience + "\t"; // Psycho Experience
+
                     result += parts[4] + "\t"; //    Gold
                     result += parts[7] + " " + parts[9] + " " + parts[25] + "\t"; //    Dropped items: [7] item, [9] creature product 
                     result += opponents;

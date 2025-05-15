@@ -139,6 +139,8 @@ public partial class UcRespawns : UserControl
         respawnList.Add(
             new CharacterRespawnInfo("Lugus", TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1), TimeSpan.FromHours(48),
                 "Lochy"));
+        respawnList.Add(new CharacterRespawnInfo("Morkvirr", new TimeSpan(0, 6, 25), new TimeSpan(0, 6, 40),
+            TimeSpan.FromHours(1.25), "Jaskinia Niedźwiedzia"));
     }
 
     private void CheckChampionList(string mobName)
