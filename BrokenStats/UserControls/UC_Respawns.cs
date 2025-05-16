@@ -8,7 +8,7 @@ public partial class UcRespawns : UserControl
     private static readonly string ProjectDirectory =
         Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\"));
 
-    private readonly SoundPlayer ping = new(Path.Combine(ProjectDirectory, "Sounds", "ping.wav"));
+    private readonly SoundPlayer ping = new(Path.Combine(ProjectDirectory, "Sounds", "aaa.wav"));
 
     private readonly List<CharacterRespawnInfo> respawnList = new();
 
@@ -220,10 +220,10 @@ public partial class UcRespawns : UserControl
                         (character.SpawningPeriod - character.OriginalDeadPeriod).TotalSeconds > 0 &&
                         character.LivingPeriod.TotalSeconds > 0)
                     {
-                        if (!pingEvent)
+                        if (!character.HasPinged)
                         {
                             ping.Play();
-                            pingEvent = true;
+                            character.HasPinged = true;
                         }
 
                         timeLabel.BackColor = Color.Yellow;
@@ -349,6 +349,7 @@ public partial class UcRespawns : UserControl
         public CharacterRespawnInfo(string name, TimeSpan deadPeriod, TimeSpan spawningPeriod, TimeSpan livingPeriod,
             string location)
         {
+
             CharacterName = name;
             DeadPeriod = deadPeriod;
             SpawningPeriod = spawningPeriod;
@@ -364,7 +365,7 @@ public partial class UcRespawns : UserControl
             RemainingTimeLabel = new Label();
             InitializeTimer();
         }
-
+        public bool HasPinged { get; set; } = false;
         public string CharacterName { get; set; }
         public TimeSpan DeadPeriod { get; set; }
         public TimeSpan SpawningPeriod { get; set; }
@@ -395,7 +396,9 @@ public partial class UcRespawns : UserControl
             DeadPeriod = OriginalDeadPeriod;
             SpawningPeriod = OriginalSpawningPeriod;
             LivingPeriod = OriginalLivingPeriod;
+            HasPinged = false;
         }
+
 
         public void ResetTimer()
         {
