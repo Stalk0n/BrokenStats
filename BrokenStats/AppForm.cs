@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel;
 using BrokenStats.UserControls;
+using PcapDotNet.Core;
 
 namespace BrokenStats;
 
-public partial class Form2 : Form
+public partial class AppForm : Form
 {
     public delegate void BattleLogPackedFoundEventHandler(string packetData);
 
@@ -15,10 +16,10 @@ public partial class Form2 : Form
     private bool isMouseDown;
     private Point mouseOffset;
 
-    public Form2()
+    public AppForm(PacketDevice selectedDevice)
     {
         InitializeComponent();
-        UruchomSniffer();
+        StartSniffer(selectedDevice);
 
         dbContext = new LogsContext();
 
@@ -43,6 +44,17 @@ public partial class Form2 : Form
         kryptonButton3.Visible = false;
         label1.Visible = false;
         label2.Visible = false;
+    }
+
+    private static void StartSniffer(PacketDevice selectedDevice)
+    {
+        var sniffer = new Sniffer(selectedDevice);
+
+        new Thread(() =>
+        {
+            Thread.CurrentThread.IsBackground = true;
+            sniffer.Start();
+        }).Start();
     }
 
     private void InitializeUserControls()
@@ -135,16 +147,7 @@ public partial class Form2 : Form
         Close();
     }
 
-    private static void UruchomSniffer()
-    {
-        var sniffer = new Sniffer();
 
-        new Thread(() =>
-        {
-            Thread.CurrentThread.IsBackground = true;
-            sniffer.Start();
-        }).Start();
-    }
 
     protected override void OnClosing(CancelEventArgs e)
     {

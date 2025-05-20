@@ -2,7 +2,7 @@
 
 namespace BrokenStats
 {
-    partial class Form2
+    partial class AppForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace BrokenStats
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppForm));
             panel1 = new Panel();
             minimiseButton = new KryptonButton();
             exitButton = new KryptonButton();
@@ -351,7 +351,7 @@ namespace BrokenStats
             kryptonButton3.Values.Text = "kryptonButton3";
             kryptonButton3.Click += kryptonButton3_Click;
             // 
-            // Form2
+            // AppForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -360,9 +360,9 @@ namespace BrokenStats
             Controls.Add(panelContainer);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Form2";
+            Name = "AppForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form2";
+            Text = "AppForm";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

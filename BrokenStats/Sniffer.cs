@@ -8,6 +8,13 @@ namespace BrokenStats
 {
     class Sniffer
     {
+        private PacketDevice selectedDevice;
+
+        public Sniffer(PacketDevice selectedDevice)
+        {
+            this.selectedDevice = selectedDevice;
+        }
+
         public delegate void BattleLogPackedFoundEventHandler(string packetData);
 
         public static event BattleLogPackedFoundEventHandler? BattleLogPackedFound;
@@ -17,10 +24,10 @@ namespace BrokenStats
 
         public static event ChatLogPacketFoundEventHandler? ChatLogPacketFound;
 
+        // public void Start(PacketDevice selectedDevice)
         public void Start()
         {
             string[] targetIpAddresses = { "146.59.111.11", "147.135.70.223", "145.239.19.54" };
-            PacketDevice selectedDevice = FindActiveDevice(targetIpAddresses);
 
             if (selectedDevice == null)
             {
@@ -184,7 +191,7 @@ namespace BrokenStats
                     result += parts[1] + "\t"; //    Nick
                     result += parts[2] + "\t"; //    Experience
                     string psychoExperience = parts[24];
- 
+
                     if (!string.IsNullOrEmpty(parts[7]) && parts[7].All(char.IsDigit))
                     {
                         psychoExperience = parts[7];
