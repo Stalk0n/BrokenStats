@@ -183,16 +183,27 @@ namespace BrokenStats
                     // result += parts[0] + "\t"; //    Party
                     result += parts[1] + "\t"; //    Nick
                     result += parts[2] + "\t"; //    Experience
-                    string psychoExperience = parts[24];
- 
-                    if (!string.IsNullOrEmpty(parts[7]) && parts[7].All(char.IsDigit))
+                    string psychoExperience = string.Empty;
+                    if (parts.Length >= 24)
+                    {
+                         psychoExperience = parts[24];
+                    }
+                    else if (!string.IsNullOrEmpty(parts[7]) && parts[7].All(char.IsDigit))
                     {
                         psychoExperience = parts[7];
                     }
                     result += psychoExperience + "\t"; // Psycho Experience
 
                     result += parts[4] + "\t"; //    Gold
-                    result += parts[7] + " " + parts[9] + " " + parts[25] + "\t"; //    Dropped items: [7] item, [9] creature product 
+                    result += parts[7] + " " + parts[9]; //    Dropped items: [7] item, [9] creature product
+                    if (parts.Length >= 24)
+                    {
+                        result += " " + parts[25] + "\t";
+                    }
+                    else
+                    {
+                        result += "\t";
+                    }
                     result += opponents;
                     // Console.WriteLine(result);
                     BattleLogPackedFound?.Invoke(result);
