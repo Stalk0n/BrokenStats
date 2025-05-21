@@ -16,6 +16,7 @@ namespace BrokenStats.UserControls
             InitializeComponent();
             Sniffer.BattleLogPackedFound += OnBattleLogPacketFound;
             dataGridView1.CellClick += DataGridView1_CellClick;
+
         }
 
         private void OnBattleLogPacketFound(string packetData)
@@ -74,6 +75,13 @@ namespace BrokenStats.UserControls
                 else
                 {
                     battleLogBindingSource.DataSource = dbContext.BattleLogs.Local.ToBindingList();
+                }
+
+                if (dataGridView2.Rows.Count > 0)
+                {
+                    dataGridView2.FirstDisplayedScrollingRowIndex = dataGridView2.Rows.Count - 1;
+                    dataGridView2.ClearSelection();
+                    dataGridView2.Rows[dataGridView2.Rows.Count - 1].Selected = true;
                 }
             }
             else
