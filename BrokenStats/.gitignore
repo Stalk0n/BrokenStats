@@ -1,0 +1,5 @@
+packet_log.txt
+packet_errors.txt
+MyDB.db-wal
+MyDB.db-shm
+MyDB.db

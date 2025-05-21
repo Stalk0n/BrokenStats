@@ -72,14 +72,42 @@ namespace BrokenStats
 
         private void LogPacket(Packet packet, string src, string dst)
         {
-            string logLine = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}\tSRC: {src}\tDST: {dst}\tLEN: {packet.Length}";
+            // Pobierz payload TCP jeśli istnieje
+            string payloadHex = "";
+            string payloadText = "";
+
+            try
+            {
+                var ip = packet.Ethernet.IpV4;
+                if (ip != null)
+                {
+                    var tcp = ip.Tcp;
+                    if (tcp != null)
+                    {
+                        var payload = tcp.Payload;
+                        byte[] dataBytes = payload.ToArray();
+                        payloadHex = BitConverter.ToString(dataBytes);
+                        // Próbuj zdekodować jako UTF8, jeśli się nie uda zostaw puste
+                        try
+                        {
+                            payloadText = System.Text.Encoding.UTF8.GetString(dataBytes);
+                        }
+                        catch { payloadText = ""; }
+                    }
+                }
+            }
+            catch { /* ignoruj błędy przy pobieraniu payload */ }
+
+            string logLine = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}\tSRC: {src}\tDST: {dst}\tLEN: {packet.Length}\n" +
+                             $"HEX: {payloadHex}\n" +
+                             $"TXT: {payloadText}\n";
+
             try
             {
                 File.AppendAllText(logFilePath, logLine + Environment.NewLine);
             }
             catch (IOException ex)
             {
-                // Obsłuż błąd zapisu, np. wyświetl w konsoli
                 Console.WriteLine("Błąd zapisu logu: " + ex.Message);
             }
         }
@@ -286,8 +314,35 @@ namespace BrokenStats
         private void LogPacketError(Packet packet, Exception ex)
         {
             string errorLogPath = "packet_errors.txt";
-            string logLine = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}\tERROR: {ex.Message}\n";
-            logLine += $"Packet: {BitConverter.ToString(packet.Buffer)}\n";
+            string payloadHex = "";
+            string payloadText = "";
+
+            try
+            {
+                var ip = packet.Ethernet.IpV4;
+                if (ip != null)
+                {
+                    var tcp = ip.Tcp;
+                    if (tcp != null)
+                    {
+                        var payload = tcp.Payload;
+                        byte[] dataBytes = payload.ToArray();
+                        payloadHex = BitConverter.ToString(dataBytes);
+                        try
+                        {
+                            payloadText = System.Text.Encoding.UTF8.GetString(dataBytes);
+                        }
+                        catch { payloadText = ""; }
+                    }
+                }
+            }
+            catch { /* ignoruj błędy przy pobieraniu payload */ }
+
+            string logLine = $"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}\tERROR: {ex.Message}\n" +
+                             $"Packet: {BitConverter.ToString(packet.Buffer)}\n" +
+                             $"HEX: {payloadHex}\n" +
+                             $"TXT: {payloadText}\n";
+
             try
             {
                 File.AppendAllText(errorLogPath, logLine + Environment.NewLine);
