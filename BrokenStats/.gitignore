@@ -1,5 +1,7 @@
 packet_log.txt
 packet_errors.txt
+battle_progress_log.txt
+party_status_log.txt
 MyDB.db-wal
 MyDB.db-shm
 MyDB.db

@@ -155,10 +155,4 @@ public partial class AppForm : Form
         dbContext?.Dispose();
         dbContext = null;
     }
-
-    private void kryptonButton3_Click(object sender, EventArgs e)
-    {
-        var packet = "Nokbrab\t267\t0\t153\t Stara księga(1)\tBrachyura,Krabostwór,Krabostwór";
-        Sniffer.ProcessBattleLogPacket(packet);
-    }
 }

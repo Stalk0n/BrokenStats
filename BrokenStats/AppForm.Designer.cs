@@ -341,16 +341,7 @@ namespace BrokenStats
             kryptonButton5.TabIndex = 9;
             kryptonButton5.Values.Text = "Respawns";
             kryptonButton5.Click += kryptonButton5_Click;
-            // 
-            // kryptonButton3
-            // 
-            kryptonButton3.Location = new Point(513, 17);
-            kryptonButton3.Name = "kryptonButton3";
-            kryptonButton3.Size = new Size(90, 25);
-            kryptonButton3.TabIndex = 15;
-            kryptonButton3.Values.Text = "kryptonButton3";
-            kryptonButton3.Click += kryptonButton3_Click;
-            // 
+            //
             // AppForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);

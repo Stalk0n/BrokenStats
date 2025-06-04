@@ -17,7 +17,6 @@ internal static class MainClass
         else
         {
             MessageBox.Show("Nie wybrano interfejsu sieciowego.");
-            // Application.Exit();
         }
     }
 }
