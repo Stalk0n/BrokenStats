@@ -141,6 +141,8 @@ public partial class UcRespawns : UserControl
                 "Lochy"));
         respawnList.Add(new CharacterRespawnInfo("Morkvirr", new TimeSpan(0, 6, 25), new TimeSpan(0, 6, 40),
             TimeSpan.FromHours(1.25), "Jaskinia Niedźwiedzia"));
+        respawnList.Add(new CharacterRespawnInfo("Sabeltig", new TimeSpan(0, 7, 45), new TimeSpan(0, 8, 00),
+            TimeSpan.FromHours(1.25), "Las Orków, Jaskinia u orków"));
     }
 
     private void CheckChampionList(string mobName)
@@ -164,139 +166,139 @@ public partial class UcRespawns : UserControl
     private void AddTimerToLayoutPanel(CharacterRespawnInfo character)
     {
         for (var col = 0; col < tableLayoutPanel1.ColumnCount - 3; col += 4)
-        for (var row = 0; row < tableLayoutPanel1.RowCount; row++)
-            if (tableLayoutPanel1.GetControlFromPosition(col, row) == null)
-            {
-                var picturePanel = new Panel();
-                picturePanel.Dock = DockStyle.Fill;
-
-                var pictureBox = new PictureBox();
-                pictureBox.Dock = DockStyle.Fill;
-                pictureBox.Image = Image.FromFile(Path.Combine(ProjectDirectory, "Images", character.ImageFileName));
-                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-                picturePanel.Controls.Add(pictureBox);
-
-                var namePanel = new Panel();
-                namePanel.Dock = DockStyle.Fill;
-                var nameLabel = new Label();
-                nameLabel.Text = character.CharacterName;
-                nameLabel.Dock = DockStyle.Fill;
-                nameLabel.AutoSize = false;
-                nameLabel.TextAlign = ContentAlignment.MiddleCenter;
-                namePanel.Controls.Add(nameLabel);
-
-                var locationPanel = new Panel();
-                locationPanel.Dock = DockStyle.Fill;
-                var locationLabel = new Label();
-                locationLabel.Text = character.Location;
-                locationLabel.Dock = DockStyle.Fill;
-                locationLabel.AutoSize = false;
-                locationLabel.TextAlign = ContentAlignment.MiddleCenter;
-                locationPanel.Controls.Add(locationLabel);
-
-                var timePanel = new Panel();
-                timePanel.Dock = DockStyle.Fill;
-                var timeLabel = new Label();
-                timeLabel.Text = character.DeadPeriod.ToString();
-                timeLabel.Dock = DockStyle.Fill;
-                timeLabel.AutoSize = false;
-                timeLabel.TextAlign = ContentAlignment.MiddleCenter;
-                timePanel.Controls.Add(timeLabel);
-
-                tableLayoutPanel1.Controls.Add(picturePanel, col, row);
-                tableLayoutPanel1.Controls.Add(namePanel, col + 1, row);
-                tableLayoutPanel1.Controls.Add(locationPanel, col + 2, row);
-                tableLayoutPanel1.Controls.Add(timePanel, col + 3, row);
-
-                var respawnTimer = new Timer();
-                respawnTimer.Enabled = false;
-                timeLabel.BackColor = Color.Red;
-                respawnTimer.Interval = 1000;
-                var pingEvent = false;
-
-                respawnTimer.Tick += (sender, e) =>
+            for (var row = 0; row < tableLayoutPanel1.RowCount; row++)
+                if (tableLayoutPanel1.GetControlFromPosition(col, row) == null)
                 {
-                    if (character.DeadPeriod.TotalSeconds <= 0 &&
-                        (character.SpawningPeriod - character.OriginalDeadPeriod).TotalSeconds > 0 &&
-                        character.LivingPeriod.TotalSeconds > 0)
+                    var picturePanel = new Panel();
+                    picturePanel.Dock = DockStyle.Fill;
+
+                    var pictureBox = new PictureBox();
+                    pictureBox.Dock = DockStyle.Fill;
+                    pictureBox.Image = Image.FromFile(Path.Combine(ProjectDirectory, "Images", character.ImageFileName));
+                    pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                    picturePanel.Controls.Add(pictureBox);
+
+                    var namePanel = new Panel();
+                    namePanel.Dock = DockStyle.Fill;
+                    var nameLabel = new Label();
+                    nameLabel.Text = character.CharacterName;
+                    nameLabel.Dock = DockStyle.Fill;
+                    nameLabel.AutoSize = false;
+                    nameLabel.TextAlign = ContentAlignment.MiddleCenter;
+                    namePanel.Controls.Add(nameLabel);
+
+                    var locationPanel = new Panel();
+                    locationPanel.Dock = DockStyle.Fill;
+                    var locationLabel = new Label();
+                    locationLabel.Text = character.Location;
+                    locationLabel.Dock = DockStyle.Fill;
+                    locationLabel.AutoSize = false;
+                    locationLabel.TextAlign = ContentAlignment.MiddleCenter;
+                    locationPanel.Controls.Add(locationLabel);
+
+                    var timePanel = new Panel();
+                    timePanel.Dock = DockStyle.Fill;
+                    var timeLabel = new Label();
+                    timeLabel.Text = character.DeadPeriod.ToString();
+                    timeLabel.Dock = DockStyle.Fill;
+                    timeLabel.AutoSize = false;
+                    timeLabel.TextAlign = ContentAlignment.MiddleCenter;
+                    timePanel.Controls.Add(timeLabel);
+
+                    tableLayoutPanel1.Controls.Add(picturePanel, col, row);
+                    tableLayoutPanel1.Controls.Add(namePanel, col + 1, row);
+                    tableLayoutPanel1.Controls.Add(locationPanel, col + 2, row);
+                    tableLayoutPanel1.Controls.Add(timePanel, col + 3, row);
+
+                    var respawnTimer = new Timer();
+                    respawnTimer.Enabled = false;
+                    timeLabel.BackColor = Color.Red;
+                    respawnTimer.Interval = 1000;
+                    var pingEvent = false;
+
+                    respawnTimer.Tick += (sender, e) =>
                     {
-                        if (!character.HasPinged)
+                        if (character.DeadPeriod.TotalSeconds <= 0 &&
+                            (character.SpawningPeriod - character.OriginalDeadPeriod).TotalSeconds > 0 &&
+                            character.LivingPeriod.TotalSeconds > 0)
                         {
-                            ping.Play();
-                            character.HasPinged = true;
+                            if (!character.HasPinged)
+                            {
+                                ping.Play();
+                                character.HasPinged = true;
+                            }
+
+                            timeLabel.BackColor = Color.Yellow;
+                            character.SpawningPeriod = character.SpawningPeriod.Subtract(TimeSpan.FromSeconds(1));
+                            timeLabel.Text =
+                                (character.SpawningPeriod - character.OriginalDeadPeriod).ToString(@"hh\:mm\:ss");
                         }
-
-                        timeLabel.BackColor = Color.Yellow;
-                        character.SpawningPeriod = character.SpawningPeriod.Subtract(TimeSpan.FromSeconds(1));
-                        timeLabel.Text =
-                            (character.SpawningPeriod - character.OriginalDeadPeriod).ToString(@"hh\:mm\:ss");
-                    }
-                    else if (character.DeadPeriod.TotalSeconds > 0 &&
-                             (character.SpawningPeriod - character.DeadPeriod).TotalSeconds > 0)
-                    {
-                        timeLabel.BackColor = Color.Red;
-                        character.DeadPeriod = character.DeadPeriod.Subtract(TimeSpan.FromSeconds(1));
-                        timeLabel.Text = character.DeadPeriod.ToString(@"hh\:mm\:ss");
-                    }
-                    else if ((character.SpawningPeriod - character.OriginalDeadPeriod).TotalSeconds <= 0 &&
-                             character.DeadPeriod.TotalSeconds <= 0 && character.LivingPeriod.TotalSeconds > 0)
-                    {
-                        timeLabel.BackColor = Color.Green;
-                        character.LivingPeriod = character.LivingPeriod.Subtract(TimeSpan.FromSeconds(1));
-                        timeLabel.Text = character.LivingPeriod.ToString(@"hh\:mm\:ss");
-                    }
-                    else
-                    {
-                        tableLayoutPanel1.Controls.Remove(picturePanel);
-                        tableLayoutPanel1.Controls.Remove(namePanel);
-                        tableLayoutPanel1.Controls.Remove(locationPanel);
-                        tableLayoutPanel1.Controls.Remove(timePanel);
-                        respawnTimer.Enabled = false;
-                        character.RespawnTimer.Enabled = false;
-
-                        for (var c = 0; c < tableLayoutPanel1.ColumnCount - 3; c += 4)
-                        for (var r = 0; r < tableLayoutPanel1.RowCount; r++)
+                        else if (character.DeadPeriod.TotalSeconds > 0 &&
+                                 (character.SpawningPeriod - character.DeadPeriod).TotalSeconds > 0)
                         {
-                            var control1 = tableLayoutPanel1.GetControlFromPosition(c, r);
-                            var control2 = tableLayoutPanel1.GetControlFromPosition(c + 1, r);
-                            var control3 = tableLayoutPanel1.GetControlFromPosition(c + 2, r);
-                            var control4 = tableLayoutPanel1.GetControlFromPosition(c + 3, r);
-
-                            if (control1 == null || control2 == null || control3 == null || control4 == null) continue;
-                            var newRow = 0;
-                            if (c > 2 && r == 0)
-                            {
-                                var newColumn = c - 4;
-                                newRow = tableLayoutPanel1.RowCount - 1;
-                                tableLayoutPanel1.SetCellPosition(control1,
-                                    new TableLayoutPanelCellPosition(newColumn, newRow));
-                                tableLayoutPanel1.SetCellPosition(control2,
-                                    new TableLayoutPanelCellPosition(newColumn + 1, newRow));
-                                tableLayoutPanel1.SetCellPosition(control3,
-                                    new TableLayoutPanelCellPosition(newColumn + 2, newRow));
-                                tableLayoutPanel1.SetCellPosition(control4,
-                                    new TableLayoutPanelCellPosition(newColumn + 3, newRow));
-                            }
-                            else
-                            {
-                                newRow = r - 1;
-                                if (newRow < 0) continue;
-                                tableLayoutPanel1.SetCellPosition(control1,
-                                    new TableLayoutPanelCellPosition(c, newRow));
-                                tableLayoutPanel1.SetCellPosition(control2,
-                                    new TableLayoutPanelCellPosition(c + 1, newRow));
-                                tableLayoutPanel1.SetCellPosition(control3,
-                                    new TableLayoutPanelCellPosition(c + 2, newRow));
-                                tableLayoutPanel1.SetCellPosition(control4,
-                                    new TableLayoutPanelCellPosition(c + 3, newRow));
-                            }
+                            timeLabel.BackColor = Color.Red;
+                            character.DeadPeriod = character.DeadPeriod.Subtract(TimeSpan.FromSeconds(1));
+                            timeLabel.Text = character.DeadPeriod.ToString(@"hh\:mm\:ss");
                         }
-                    }
-                };
+                        else if ((character.SpawningPeriod - character.OriginalDeadPeriod).TotalSeconds <= 0 &&
+                                 character.DeadPeriod.TotalSeconds <= 0 && character.LivingPeriod.TotalSeconds > 0)
+                        {
+                            timeLabel.BackColor = Color.Green;
+                            character.LivingPeriod = character.LivingPeriod.Subtract(TimeSpan.FromSeconds(1));
+                            timeLabel.Text = character.LivingPeriod.ToString(@"hh\:mm\:ss");
+                        }
+                        else
+                        {
+                            tableLayoutPanel1.Controls.Remove(picturePanel);
+                            tableLayoutPanel1.Controls.Remove(namePanel);
+                            tableLayoutPanel1.Controls.Remove(locationPanel);
+                            tableLayoutPanel1.Controls.Remove(timePanel);
+                            respawnTimer.Enabled = false;
+                            character.RespawnTimer.Enabled = false;
 
-                respawnTimer.Start();
-                return;
-            }
+                            for (var c = 0; c < tableLayoutPanel1.ColumnCount - 3; c += 4)
+                                for (var r = 0; r < tableLayoutPanel1.RowCount; r++)
+                                {
+                                    var control1 = tableLayoutPanel1.GetControlFromPosition(c, r);
+                                    var control2 = tableLayoutPanel1.GetControlFromPosition(c + 1, r);
+                                    var control3 = tableLayoutPanel1.GetControlFromPosition(c + 2, r);
+                                    var control4 = tableLayoutPanel1.GetControlFromPosition(c + 3, r);
+
+                                    if (control1 == null || control2 == null || control3 == null || control4 == null) continue;
+                                    var newRow = 0;
+                                    if (c > 2 && r == 0)
+                                    {
+                                        var newColumn = c - 4;
+                                        newRow = tableLayoutPanel1.RowCount - 1;
+                                        tableLayoutPanel1.SetCellPosition(control1,
+                                        new TableLayoutPanelCellPosition(newColumn, newRow));
+                                        tableLayoutPanel1.SetCellPosition(control2,
+                                        new TableLayoutPanelCellPosition(newColumn + 1, newRow));
+                                        tableLayoutPanel1.SetCellPosition(control3,
+                                        new TableLayoutPanelCellPosition(newColumn + 2, newRow));
+                                        tableLayoutPanel1.SetCellPosition(control4,
+                                        new TableLayoutPanelCellPosition(newColumn + 3, newRow));
+                                    }
+                                    else
+                                    {
+                                        newRow = r - 1;
+                                        if (newRow < 0) continue;
+                                        tableLayoutPanel1.SetCellPosition(control1,
+                                        new TableLayoutPanelCellPosition(c, newRow));
+                                        tableLayoutPanel1.SetCellPosition(control2,
+                                        new TableLayoutPanelCellPosition(c + 1, newRow));
+                                        tableLayoutPanel1.SetCellPosition(control3,
+                                        new TableLayoutPanelCellPosition(c + 2, newRow));
+                                        tableLayoutPanel1.SetCellPosition(control4,
+                                        new TableLayoutPanelCellPosition(c + 3, newRow));
+                                    }
+                                }
+                        }
+                    };
+
+                    respawnTimer.Start();
+                    return;
+                }
     }
 
     private void InitializeTableLayoutPanel()
